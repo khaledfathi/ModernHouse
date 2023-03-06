@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>تسجيل الدخول</title>
     <link rel="icon" type="image/x-icon" href="{{asset('assets/images/logo/favicon.png')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/login/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/login/login.css')}}">
 </head>
 <body>
     <header>

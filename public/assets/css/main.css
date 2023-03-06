@@ -1,6 +1,7 @@
 /*### General ###*/
 body{
-    background-color: rgb(226, 226, 226);
+    background-image: linear-gradient(to top , rgba(218, 28, 92, 0.3) , rgba(173, 216, 230, 0.3) , white );  
+    /* background-color: rgb(245, 245, 245); */
     margin: 0px ;
 }
 /* ############# */
@@ -98,5 +99,7 @@ nav{
     display: grid;
     grid-template-columns:repeat(12 , 1fr);
 }
-.
+.justify-item-center{
+    justify-items: center;
+}
 /* ########### */

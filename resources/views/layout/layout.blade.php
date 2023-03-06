@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <link rel="icon" type="image/x-icon" href="{{asset('assets/images/logo/favicon.png')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/search/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
     @yield('links')
 </head>
 <body>
@@ -20,23 +20,23 @@
                 <a class="@yield('activeSearch')" href="{{url('search')}}">استعلام</a>
             </li>
             <li>
-                <a  class="@yield('activeSearch')" href="{{url('customer')}}">اضافة عميل</a>
+                <a  class="@yield('activeCustomer')" href="{{url('customer')}}">اضافة عميل</a>
             </li>
             <li>
-                <a class="@yield('activeSearch')" href="{{url('bill')}}">فاتورة</a>
+                <a class="@yield('activeBill')" href="{{url('bill')}}">فاتورة</a>
             </li>
             <li>
-                <a class="@yield('activeSearch')" href="{{url('products')}}">منتجات</a>
+                <a class="@yield('activeProduct')" href="{{url('product')}}">منتجات</a>
             </li>
              <li>
-                <a class="@yield('activeSearch')" href="{{url('transaction')}}">ماليات</a>
+                <a class="@yield('activeTransaction')" href="{{url('transaction')}}">ماليات</a>
             </li>
             <li>
-                <a class="@yield('activeSearch')" href="{{url('report')}}">تقارير</a>
+                <a class="@yield('activeReport')" href="{{url('report')}}">تقارير</a>
             </li>
 
             <li>
-                <a class="@yield('activeSearch')" href="{{url('setting')}}">اعدادت</a>
+                <a class="@yield('activeSetting')" href="{{url('setting')}}">اعدادت</a>
             </li>
             <li>
                 <a class="logout" href="{{url('logout')}}">خروج</a>

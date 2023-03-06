@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Search extends Controller
+class SearchController extends Controller
 {
     public function SearchPage(){
-        return view('search'); 
+        return view('search.search'); 
     }
 }

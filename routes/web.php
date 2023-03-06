@@ -1,7 +1,14 @@
 <?php
 
-use App\Http\Controllers\Login;
-use App\Http\Controllers\Search;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\BillController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,10 +27,17 @@ Route::get('/', function () {
 });
 
 
-Route::get('login' , [Login::class , 'LoginPage'])->middleware('guest'); 
-Route::post('login' , [Login::class , 'Login'])->name('login'); 
-Route::get('logout' , [Login::class , 'Logout']);  
+Route::get('login' , [LoginController::class , 'LoginPage'])->middleware('guest'); 
+Route::post('login' , [LoginController::class , 'Login'])->name('login'); 
+Route::get('logout' , [LoginController::class , 'Logout']);  
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('search' , [Search::class , 'SearchPage']); 
+    Route::get('search' , [SearchController::class , 'SearchPage']); 
+    Route::get('customer' , [CustomerController::class , 'CustomerPage']); 
+    Route::get('bill' , [BillController::class , 'BillPage']); 
+    Route::get('product' , [ProductController::class , 'ProductPage']); 
+    Route::get('transaction' , [TransactionController::class , 'TransactionPage']);
+    Route::get('report' , [ReportController::class , 'ReportPage']); 
+    Route::get('setting' , [SettingController::class , 'SettingPage']); 
+    Route::get('profile' , [ProfileController::class , 'ProfilePage']); 
 });
