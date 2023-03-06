@@ -1,0 +1,95 @@
+/* 
+screens sizes
+    320px
+    480px * 
+    600px  
+    768px *
+    900px
+    1024px * >
+    1200px 
+*/
+
+body{
+    background-color: rgb(226, 226, 226);
+    min-height: 100vh;
+    margin: 0px;
+}
+img{
+    display: block;
+    margin: 20px auto;
+}
+section{
+    background-color: lightblue;
+    border-radius: 10px;
+    max-width: 40%;
+    margin: 0px auto ;
+    padding: 20px;
+    box-shadow: 0px 0px 20px 5px white;
+}
+
+section p {
+    background-color: red;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    color:white ;
+}
+
+section form{
+    margin: 0px auto;
+    width: fit-content;
+    /* background-color: red; */
+}
+
+section form div label{
+    display: inline-block;
+    width: 130px;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+section form div input[type="text"],
+section form div input[type="password"]
+{
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid blue;
+    padding: 5px;
+}
+
+section form input[type="submit"]{
+    margin: 30px auto 10px;
+    display: block;
+    width: 100px;
+    height: 30px;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    
+}
+
+@media only screen and (max-width:768px){
+    section{
+        max-width: 80%;
+    }
+}
+
+@media only screen and (max-width:480px){
+    section{
+        max-width: 80%;
+    }
+    section form{
+        width: 90%;
+    }
+    section form div label,
+    section form div input[type="text"],
+    section form div input[type="password"]
+    {
+        display: block;
+        margin: 10px auto;
+        width: 90%;
+    }
+
+}

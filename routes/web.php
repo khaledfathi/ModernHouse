@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Login;
+use App\Http\Controllers\Search;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
+});
+
+
+Route::get('login' , [Login::class , 'LoginPage'])->middleware('guest'); 
+Route::post('login' , [Login::class , 'Login'])->name('login'); 
+Route::get('logout' , [Login::class , 'Logout']);  
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('search' , [Search::class , 'SearchPage']); 
 });

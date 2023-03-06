@@ -1,0 +1,38 @@
+Search Pattern
+
+
+	Customer >
+		id (equal)
+		name (like)
+		phone (equal)
+		address (like)		
+	Project >
+		id (equal)
+		customer_name (like)
+		(date , start_date , end_date)
+			date (equal)
+			date_after
+			date_before
+			period 
+	Bill >
+		id (equal)
+		date
+			date (equal)
+			date_after 
+			date_before
+			period 
+		status
+	transaction >
+		id (equal)
+		transaction_type
+		date
+			date (equal)
+			date_after 
+			date_before
+			period 			
+		direction
+	 product > 
+		id  (equal)
+		name  (like)
+
+searchs  / Bills / transactions / products / reports / settings
