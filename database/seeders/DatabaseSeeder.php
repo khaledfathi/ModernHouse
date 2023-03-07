@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::create([
             'name' => 'admin',
+            'phone'=>'01002049971',
             'password'=> Hash::make('admin'),
             'type'=>'admin', 
             'status'=>'enabled'

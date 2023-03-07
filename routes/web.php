@@ -33,11 +33,25 @@ Route::get('logout' , [LoginController::class , 'Logout']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('search' , [SearchController::class , 'SearchPage']); 
+
     Route::get('customer' , [CustomerController::class , 'CustomerPage']); 
+    Route::get('newcustomer' , [CustomerController::class , 'NewCustomer']); 
+
     Route::get('bill' , [BillController::class , 'BillPage']); 
+
     Route::get('product' , [ProductController::class , 'ProductPage']); 
+
     Route::get('transaction' , [TransactionController::class , 'TransactionPage']);
+
     Route::get('report' , [ReportController::class , 'ReportPage']); 
+
     Route::get('setting' , [SettingController::class , 'SettingPage']); 
+
     Route::get('profile' , [ProfileController::class , 'ProfilePage']); 
 });
+
+
+
+Route::get ('dd' , function (){
+    dd(session()->all()); 
+}); 
