@@ -22,5 +22,19 @@ class DatabaseSeeder extends Seeder
             'type'=>'admin', 
             'status'=>'enabled'
         ]);
+        
+        $projectStatus = [
+            'قيد التنفيذ',
+            'تم التسليم',
+            'تم التسليم ولدية مديونية',
+            'انتهى ولم يتم التسليم',
+            'مؤجل',
+        ]; 
+        foreach($projectStatus as $status){
+            \App\Models\ProjectStatusModel::create([
+                'status'=>$status
+
+            ]); 
+        }
     }
 }

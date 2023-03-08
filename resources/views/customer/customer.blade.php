@@ -15,11 +15,15 @@
     <form class="d-flex flex-col justify-content-center" action="newcustomer" method="get">
         @csrf
         @if ($errors->any())
+            <p class="error">
             @foreach ($errors->all() as $error)
-            <p class="error">{{$error}}</p>
+                - {{$error}}<br>
             @endforeach
+            </p>
         @endif
-        <p class="ok">OK</p>
+        @if (session('ok'))
+            <p class="ok">{{session('ok').' - ( رقم العميل '.session('id').' )'}}</p>
+        @endif
         <div>
             <label for="">الاسم</label>
             <input type="text" name="name" value="">
@@ -33,7 +37,7 @@
             <textarea  name="address"></textarea>
         </div>
         <div>
-            <label class="lableTextArea" for="">الموقع</label>
+            <label class="lableTextArea" for="" >الموقع</label>
             <input type="text" placeholder="رابط الموقع بخرائط جوجل" name="coordinates" value="">
         </div>
         <div>
@@ -41,8 +45,8 @@
             <textarea name="details"></textarea>
         </div>
         <div class="buttonsDiv">
-            <button type="submit" value="save">حفظ</button>
-            <button type="submit" value="saveAndAddProject">حفظ واضافة مشروع</button>
+            <button type="submit" name="direction" value="save">حفظ</button>
+            <button type="submit" name="direction" value="saveAndAddProject">حفظ واضافة مشروع</button>
         </div>
         <input type="hidden" name="id" value="{{session('id')}}">
     </form>

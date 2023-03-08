@@ -4,6 +4,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: local;
     margin: 0px ;
+    min-height: 100vh;
 }
 /* ############# */
 

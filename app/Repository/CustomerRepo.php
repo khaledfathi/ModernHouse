@@ -12,8 +12,22 @@ class CustomerRepo implements CustomerRepoContract{
         return CustomerModel::create([
             'name'=>$request->name, 
             'phone'=>$request->phone,
-            'address'=>$request->addeess, 
-            'coordinates'=>$request->coordinates
+            'address'=>$request->address, 
+            'coordinates'=>$request->coordinates,
+            'details'=>$request->details,
         ]); 
    }
+   public function getById(string $id):object
+   {
+        return CustomerModel::where('id' , $id)->get(); 
+   }
+   public function getByName(string $name):object
+   {
+     return CustomerModel::where('name' , 'like' , '%'.$name.'%')->get(); 
+   }
+   public function getByPhone(string $phone):object
+   {
+     return CustomerModel::where('phone' , $phone)->get(); 
+   }
+
 }

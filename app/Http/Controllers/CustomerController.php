@@ -16,7 +16,10 @@ class CustomerController extends Controller
         return view('customer.customer'); 
     }
     public function NewCustomer(CustomerRequest $request){
-        $record = $this->customerProvider->store($request);
+        $record = $this->customerProvider->Store($request);
+        if ($request->direction == 'saveAndAddProject'){
+            return redirect('newproject')->with(['id'=>$record->id]);
+        }
         return back()->with(['ok'=>'تم الحفظ بنجاح' , 'id'=>$record->id]); 
     }
     
