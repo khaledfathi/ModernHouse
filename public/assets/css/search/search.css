@@ -58,7 +58,7 @@ screens sizes
     border: none;
     vertical-align: middle;
 }
-.search img{
+.search svg{
     width: 25px;
     height: 25px;
 }
