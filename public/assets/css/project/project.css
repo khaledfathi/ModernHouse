@@ -1,0 +1,166 @@
+ /* 
+screens sizes
+    320px
+    480px * 
+    600px  
+    768px *
+    900px
+    1024px * >
+    1200px 
+*/
+/* ### Container ### */
+.container{
+    margin: 35px auto;
+    padding: 10px;
+}
+form{
+   width: 95%;
+   margin: 0px auto;
+   padding: 20px;
+   border-radius:10px;
+   box-shadow: 0px 0px 10px blue;
+}
+.messageDiv{
+    display: grid;
+    grid-column:1 / span 12  ;
+}
+.customerDetails{
+    display: grid; 
+    grid-column: 1 / span 6;
+    grid-row: 2;
+}
+.projectDates{
+    display: grid; 
+    grid-column: 7 / span 6;
+    grid-row: 2;
+}
+.projectDetails{
+    margin-top: 50px;
+    display: grid; 
+    grid-column: 3 / span 8;
+    grid-row: 3;
+}
+.customerDetails input{
+    background-color: rgba(173, 216, 230, 0.3);
+    font-weight: bold;
+    color: blue;
+    text-align: center;
+}
+
+.projectDates input{
+    text-align: center;
+    direction: ltr;
+}
+.amount{
+    font-weight: bold;
+}
+.submitButtons{
+    display: grid;
+    grid-row: 4;
+    grid-column: 3 / span 8;
+}
+form label{
+    display: inline-block;
+    width: 150px;
+}
+form input , form select ,form textarea{
+    margin: 10px 0px;
+    width:60%;
+}
+form input , form select{
+    height: 30px;
+}
+form input , form select , textarea{
+    border: 1px solid blue ;
+    border-radius: 5px;
+}
+form textarea{
+    resize: none;
+    height: 100px;
+}
+.materialsDiv , .details{
+    display: flex;
+}
+.materialsDiv label{
+    display: flex;
+    align-items: center;
+}
+.details label{
+    display: flex;
+    align-items: center;
+}
+.submitButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+.submitButtons button{
+    justify-content: center;
+    text-align: center;
+    width: 30%;
+    margin: auto;
+    height: 40px;
+    border: none;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+.error , .ok {
+    border-radius: 5px;
+    color:white; 
+    text-align: center;
+    padding: 10px;
+}
+.error{
+    background: red;
+}
+.ok{
+
+    background: green;
+}
+
+@media only screen and (max-width:768px){
+    .customerDetails{
+        grid-column: 1 / span 12; 
+        grid-row: 2; 
+    }
+    .projectDates{
+        grid-column: 1 / span 12; 
+        grid-row: 3; 
+    }
+    .projectDetails{
+        grid-column: 1 / span 12; 
+        grid-row: 4; 
+    }
+    .submitButtons{
+        grid-column: 1 / span 12; 
+        grid-row: 5; 
+    }
+}
+@media only screen and (max-width:480px){
+    .container{
+        margin: 0px !important;
+    }
+    form{
+        width: 85%;
+    }
+    form * {
+        display:block !important; 
+        margin: auto !important;
+        text-align: center;
+    }
+    form div , form label , form input , form select , form textarea {
+        width: 100% ;
+    }
+    .error , .ok{
+        margin: 20px auto !important;
+    }
+    .submitButtons button {
+        width: 100%;
+        margin: 40px 0px !important;
+    }
+    
+}
+
+/* ################# */

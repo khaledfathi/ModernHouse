@@ -18,7 +18,8 @@ class CustomerController extends Controller
     public function NewCustomer(CustomerRequest $request){
         $record = $this->customerProvider->Store($request);
         if ($request->direction == 'saveAndAddProject'){
-            return redirect('newproject')->with(['id'=>$record->id]);
+            session(['customer'=>$record]);
+            return redirect('newproject');
         }
         return back()->with(['ok'=>'تم الحفظ بنجاح' , 'id'=>$record->id]); 
     }

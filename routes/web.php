@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('customer' , [CustomerController::class , 'CustomerPage']); 
     Route::get('newcustomer' , [CustomerController::class , 'NewCustomer']); 
 
-    Route::get('newproject' , [ProjectController::class , 'ProjectPage']);
+    Route::get('newproject' , [ProjectController::class , 'ProjectPage'])->name('newproject');
 
     Route::get('bill' , [BillController::class , 'BillPage']); 
 

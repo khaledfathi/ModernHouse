@@ -48,7 +48,6 @@
             <button type="submit" name="direction" value="save">حفظ</button>
             <button type="submit" name="direction" value="saveAndAddProject">حفظ واضافة مشروع</button>
         </div>
-        <input type="hidden" name="id" value="{{session('id')}}">
     </form>
 </div>
 @endsection
