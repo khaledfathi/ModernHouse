@@ -24,27 +24,33 @@
                 </div>
             </div>
             <div class="searchBy">
-                <div>
+                <div >
                     <label for="">بحث بواسطة</label>
-                    <select name="searchBy" id="searchBy">
+                    <select name="customerSearchBy" id="customerSearchBy">
                         {{-- customer --}}
-                        <option value="customer_id">رقم العميل</option>
+                        <option selected value="customer_id">رقم العميل</option>
                         <option value="customer_name">الاسم</option>
                         <option value="customer_phone">التليفون</option>
+                    </select>
 
                         {{-- project --}}
-                        <option hidden value="project_id">رقم المشروع</option>
-                        <option hidden value="project_customer_name">اسم العميل</option>
-                        <option hidden value="project_customer_phone">تليفون العميل</option>
+                    <select hidden name="projectSearchBy" id="projectSearchBy">
+                        <option selected  value="project_id">رقم المشروع</option>
+                        <option  value="project_customer_name">اسم العميل</option>
+                        <option  value="project_customer_phone">تليفون العميل</option>
+                    </select>
 
                         {{-- Bill --}}
-                        <option hidden value="phone">رقم الفاتورة</option>
-                        <option hidden value="id">تليفون العميل</option>
-                        <option hidden value="phone">اسم العميل</option>
+                    <select hidden name="billSearchBy" id="billSearchBy">
+                        <option selected  value="phone">رقم الفاتورة</option>
+                        <option  value="id">تليفون العميل</option>
+                        <option  value="phone">اسم العميل</option>
+                    </select>
 
                         {{-- product --}}
-                        <option hidden value="phone">رقم المنتج</option>
-                        <option hidden value="phone">اسم المنتج</option>
+                    <select hidden name="productSearchBy" id="productSearchBy">
+                        <option selected value="phone">رقم المنتج</option>
+                        <option value="phone">اسم المنتج</option>
                     </select>
                 </div>
             </div>

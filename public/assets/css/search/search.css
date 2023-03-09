@@ -121,7 +121,7 @@ screens sizes
 }
 .results table {
     min-width: 1000px;
-    width: 100%;    
+    width: 100%; 
 }
 .results thead{
     background-color: lightblue;
@@ -131,6 +131,7 @@ screens sizes
 .results td{
     border-bottom: 1px solid blue;
     text-align: center;
+    white-space: pre;
 }
 .inTableIcon{
     width:30px; 

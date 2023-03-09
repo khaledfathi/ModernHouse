@@ -28,7 +28,7 @@ class SearchController extends Controller
             switch ($request->searchFor){
                 case 'customer':
                     $data['searchFor']= 'customer'; 
-                    switch($request->searchBy){
+                    switch($request->customerSearchBy){
                         case 'customer_id':
                             $records = $this->customerProvider->GetById($request->find);
                             $data['records'] =$records;
@@ -45,7 +45,7 @@ class SearchController extends Controller
                     break; 
                 case 'project':
                     $data['searchFor']= 'project'; 
-                    switch($request->searchBy){
+                    switch($request->projectSearchBy){
                         case 'project_id':
                             $records = $this->projectProvider->GetById($request->find); 
                             $data['records'] =$records;

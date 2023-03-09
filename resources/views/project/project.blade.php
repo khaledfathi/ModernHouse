@@ -3,8 +3,8 @@
 @section('links')
     <link rel="stylesheet" href="{{ asset('assets/css/project/project.css') }}">
 @endsection
-@section('links')
-    <script src="#"></script>
+@section('scripts')
+    <script src="{{asset('assets/js/project/project.js')}}"></script>
 @endsection
 
 
@@ -44,7 +44,7 @@
             <div class="projectDates">
                 <div>
                     <label for="">تاريخ التعاقد</label>
-                    <input type="date" name="date" id="">
+                    <input type="date" name="date" id="date">
                 </div>
                 <div>
                     <label for="">تاريخ البدء</label>
