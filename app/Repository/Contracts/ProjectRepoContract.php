@@ -5,4 +5,7 @@ use App\Models\ProjectModel;
 
 interface ProjectRepoContract {
     public function Store(ProjectRequest $request):ProjectModel;
+    public function GetById(string $id):object;
+    public function GetByCustomerName(string $id):object;
+    public function GetByCustomerPhone(string $id):object;
 }

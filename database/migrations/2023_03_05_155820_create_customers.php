@@ -19,6 +19,9 @@ return new class extends Migration
             $table->text('coordinates')->nullable(true); 
             $table->text('details')->nullable(true); 
             $table->timestamps();
+            //FK
+            $table->foreignId('user_id')->nullable(true)->default(null)->references ('id')->on('users')->onDelete('set null'); 
+            
         });
     }
 

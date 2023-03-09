@@ -13,11 +13,13 @@
         <form class="d-grid" action="newproject" , method="get">
             <div class="messageDiv">
                 @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <p class="error">{{ $error }}</p>
-                    @endforeach
+                    <p class="error">
+                        @foreach ($errors->all() as $error)
+                            - {{ $error }}<br>
+                        @endforeach
+                    </p>
                 @elseif (session('ok'))
-                    <p class="ok">{{session('ok') . ' - رقم المشروع ( '.session('id').' )'}}</p>
+                    <p class="ok">{{ session('ok') . ' - رقم المشروع ( ' . session('id') . ' )' }}</p>
                 @endif
             </div>
             @csrf
@@ -77,8 +79,8 @@
                 </div>
             </div>
             <div class="submitButtons">
-                <button type="sumbit" name ="direction" value="save">حفظ</button>
-                <button type="submit" name ="direction" value="saveAndAddPay">حفظ ودفع</button>
+                <button type="sumbit" name="direction" value="save">حفظ</button>
+                <button type="submit" name="direction" value="saveAndAddPay">حفظ ودفع</button>
             </div>
         </form>
 

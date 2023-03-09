@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->date('date')->nullable(false);
-            $table->date('start_date')->nullable(false); 
-            $table->date('end_date')->nullable(false); 
+            $table->time('time')->nullable(false);
             $table->bigInteger('amount')->nullable(false); 
-            $table->text('materials')->nullable(true); 
+            $table->enum('direction' , ['deposit' , 'withdraw'])->nullable(true); 
             $table->text('details')->nullable(true); 
             $table->timestamps();
             //FK

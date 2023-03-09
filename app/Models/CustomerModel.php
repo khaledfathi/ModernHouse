@@ -14,6 +14,8 @@ class CustomerModel extends Model
         'phone', 
         'address',
         'coordinates',
-        'details'
+        'details',
+        'user_id'
+
     ];
 }

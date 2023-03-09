@@ -3,8 +3,8 @@
 @section('links')
     <link rel="stylesheet" href="{{ asset('assets/css/search/search.css') }}">
 @endsection
-@section('links')
-    <script src="#"></script>
+@section('scripts')
+    <script src="{{ asset('assets/js/search/search.js') }}"></script>
 @endsection
 @section('activeSearch', 'active')
 
@@ -15,23 +15,36 @@
             <div class="searchFor">
                 <div>
                     <label for="">بحث عن</label>
-                    <select name="searchFor" id="">
-                        <option value="customer">عميل</option>
+                    <select name="searchFor" id="searchFor">
+                        <option selected value="customer">عميل</option>
                         <option value="project">مشروع</option>
                         <option value="bill">فاتورة</option>
-                        <option value="transaction">معاملة مالية</option>
                         <option value="product">منتج</option>
                     </select>
                 </div>
             </div>
             <div class="searchBy">
                 <div>
-
                     <label for="">بحث بواسطة</label>
-                    <select name="searchBy" id="">
-                        <option value="id">رقم العميل</option>
-                        <option value="name">الاسم</option>
-                        <option value="phone">التليفون</option>
+                    <select name="searchBy" id="searchBy">
+                        {{-- customer --}}
+                        <option value="customer_id">رقم العميل</option>
+                        <option value="customer_name">الاسم</option>
+                        <option value="customer_phone">التليفون</option>
+
+                        {{-- project --}}
+                        <option hidden value="project_id">رقم المشروع</option>
+                        <option hidden value="project_customer_name">اسم العميل</option>
+                        <option hidden value="project_customer_phone">تليفون العميل</option>
+
+                        {{-- Bill --}}
+                        <option hidden value="phone">رقم الفاتورة</option>
+                        <option hidden value="id">تليفون العميل</option>
+                        <option hidden value="phone">اسم العميل</option>
+
+                        {{-- product --}}
+                        <option hidden value="phone">رقم المنتج</option>
+                        <option hidden value="phone">اسم المنتج</option>
                     </select>
                 </div>
             </div>
@@ -39,10 +52,15 @@
                 <div class="searchBox">
                     <input type="text" name="find">
                     <button type="submit">
-                        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                            <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 14.866 14.866 18 11 18C7.13401 18 4 14.866 4 11ZM11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C13.125 20 15.078 19.2635 16.6177 18.0319L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L18.0319 16.6177C19.2635 15.078 20 13.125 20 11C20 6.02944 15.9706 2 11 2Z" fill="#000000"/> </g>
+                        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 14.866 14.866 18 11 18C7.13401 18 4 14.866 4 11ZM11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C13.125 20 15.078 19.2635 16.6177 18.0319L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L18.0319 16.6177C19.2635 15.078 20 13.125 20 11C20 6.02944 15.9706 2 11 2Z"
+                                    fill="#000000" />
+                            </g>
                         </svg>
                     </button>
                 </div>
@@ -72,11 +90,12 @@
                                         <td>{{ $record->address }}</td>
                                         <td>{{ $record->details }}</td>
                                         @if ($record->coordinates)
-                                            <td><a href="{{$record->coordinates}}" target="_blank"><img class="inTableIcon" src="{{url('assets/images/svg/map_icon.svg')}}" alt="map_icon"></a></td>
+                                            <td><a href="{{ $record->coordinates }}" target="_blank"><img class="inTableIcon"
+                                                        src="{{ url('assets/images/svg/map_icon.svg') }}" alt="map_icon"></a></td>
                                         @else
                                             <td></td>
                                         @endif
-                                        <td><a href=""><img class="inTableIcon" src="{{url('assets/images/svg/view_icon.svg')}}" alt="view_icon"></a></td>
+                                        <td><a href=""><img class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}" alt="view_icon"></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -84,6 +103,38 @@
                     @break
 
                     @case('project')
+                        <table>
+                            <thead>
+                                <th>رقم المشروع</th>
+                                <th>العميل</th>
+                                <th>تليفون</th>
+                                <th>التاريخ</th>
+                                <th>البدء</th>
+                                <th>التسليم</th>
+                                <th>المبلغ</th>
+                                <th>الخامات</th>
+                                <th>حالة المشروع</th>
+                                <th>تفاصيل</th>
+                                <th>عرض</th>
+                            </thead>
+                            <tbody>
+                                @foreach (session('records') as $record)
+                                    <tr>
+                                        <td width="5%">{{$record->id}}</td>
+                                        <td>{{$record->name}}</td>
+                                        <td>{{$record->phone}}</td>
+                                        <td>{{$record->date}}</td>
+                                        <td>{{$record->start_date}}</td>
+                                        <td>{{$record->end_date}}</td>
+                                        <td>{{$record->amount}}</td>
+                                        <td>{{$record->materials}}</td>
+                                        <td>{{$record->status}}</td>
+                                        <td>{{$record->details}}</td>
+                                        <td><a href=""><img class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}" alt="view_icon"></a></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     @break
 
                     @case('bill')

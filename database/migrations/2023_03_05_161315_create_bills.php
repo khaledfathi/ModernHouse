@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
+            $table->string('customer_name',100)->nullable(true); 
             $table->date('date')->nullable(false);
             $table->time('time')->nullable(false);
             $table->enum('status',['ok', 'returned'])->nullable(false);
             $table->timestamps();
             //FK
+            $table->foreignId('customer_id')->nullable(true)->default(null)->references('id')->on('customers')->onDelete('set null'); 
             $table->foreignId('user_id')->nullable(true)->default(null)->references('id')->on('users')->onDelete('set null'); 
 
         });

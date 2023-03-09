@@ -61,6 +61,7 @@ screens sizes
 .search svg{
     width: 25px;
     height: 25px;
+    position: sticky;
 }
 .searchBy label , .searchFor label{
     margin-left: 10px;

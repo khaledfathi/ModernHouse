@@ -29,4 +29,7 @@ class ProjectController extends Controller
         }
         return back()->with(['ok'=>'تم الحفظ بنجاح' , 'id'=>$record->id]); 
     }
+    public function PaymentPage(){
+        return view('project.payment'); 
+    }
 }

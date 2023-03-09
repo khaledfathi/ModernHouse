@@ -20,4 +20,26 @@ class ProjectRepo implements ProjectRepoContract {
             'project_status_id'=>$request->project_status
         ]);  
     }
+    public function GetById(string $id):object
+    {
+        return ProjectModel::Join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
+            join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
+            select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
+            where('projects.id' , '=' , $id)->get(); 
+    }
+    public function GetByCustomerName(string $name):object
+    {
+        return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
+            join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
+            select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
+            where('customers.name' , '=' , $name)->orderBy('name' ,'asc')->get(); 
+    }
+    public function GetByCustomerPhone(string $phone):object
+    {
+        return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
+            join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
+            select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
+            where('customers.phone' , '=' , $phone)->orderBy('name' ,'asc')->get(); 
+    }
+
 }
