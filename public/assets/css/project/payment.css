@@ -51,6 +51,11 @@ input[type="submit"]{
     height: 40px;
     margin: 20px auto;
 }
+.amount  , .remaining {
+    width: 30%;
+    margin-left: 10px;
+
+}
 .messageDiv{
     display: block;    
 }
@@ -85,7 +90,10 @@ input[type="submit"]{
         flex-direction: column;
     }
     form input , textarea{
-        width: 100%
-    };
+        width: 100% !important; 
+    }
+    input{
+        text-align: center
+    }
 }
 /* ######## */
