@@ -30,5 +30,15 @@ class CustomerRepo implements CustomerRepoContract{
    {
      return CustomerModel::where('phone' , $phone)->get(); 
    }
+   public function Destroy(string $id):bool
+   {
+      $record = CustomerModel::find($id); 
+      if ($record) return $record->delete(); 
+      return false ; 
+   }
+   public function Update(array $toUpdate , string $id):bool
+   {
+      return true ; 
+   }
 
 }

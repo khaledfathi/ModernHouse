@@ -8,4 +8,6 @@ interface CustomerRepoContract{
    public function GetById(string $id):object;
    public function GetByName(string $name):object;
    public function GetByPhone(string $phone):object;
+   public function Destroy(string $id):bool; 
+   public function Update(array $toUpdate , string $id):bool; 
 }

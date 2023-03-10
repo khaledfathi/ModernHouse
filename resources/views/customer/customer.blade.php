@@ -21,9 +21,6 @@
             @endforeach
             </p>
         @endif
-        @if (session('ok'))
-            <p class="ok">{{session('ok').' - ( رقم العميل '.session('id').' )'}}</p>
-        @endif
         <div>
             <label for="">الاسم</label>
             <input type="text" name="name" value="">

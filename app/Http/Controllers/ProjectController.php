@@ -30,16 +30,16 @@ class ProjectController extends Controller
     public function NewProject(ProjectRequest $request)
     {
         $record = $this->projectProvider->store($request); 
-        
+        $record->customer_id = session('customer')->id; 
+        $record->customer_name = session('customer')->name; 
+        $record->customer_phone = session('customer')->phone; 
+       
         if ($request->direction== 'saveAndAddPay'){        
-            $record->customer_id = session('customer')->id; 
-            $record->customer_name = session('customer')->name; 
-            $record->customer_phone = session('customer')->phone; 
             session(['project'=>$record]); 
             return redirect('payment'); 
         }
         session()->remove('customer'); 
-        return back()->with(['ok'=>'تم الحفظ بنجاح' , 'id'=>$record->id]); 
+        return redirect('customer/'.$record->customer_id)->with(['ok'=>"تم حفظ المشروع ( رقم  $record->id )"]); 
     }
     public function PaymentPage(){
         return view('project.payment'); 

@@ -101,7 +101,7 @@
                                         @else
                                             <td></td>
                                         @endif
-                                        <td><a href=""><img class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}" alt="view_icon"></a></td>
+                                        <td><a href="{{url('customer/'.$record->id)}}"><img class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}" alt="view_icon"></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

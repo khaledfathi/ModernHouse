@@ -1,0 +1,152 @@
+/* 
+screens sizes
+    320px
+    480px * 
+    600px  
+    768px *
+    900px
+    1024px * >
+    1200px 
+*/
+
+/* ### General ### */
+form ,  .projectContainer{
+    margin: auto;
+    width: 90%;
+    padding: 30px;
+    border-radius:10px;
+    box-shadow: 0px 0px 10px blue;
+}
+.messages{
+    display: grid;
+    grid-column: 1 / span 12;
+    grid-row: 1;
+    justify-items: center;
+}
+.customerBlockA{
+    display: grid;
+    grid-column: 1 / span 6;
+    grid-row: 2 / span 3;
+}
+.customerBlockB{
+    display: grid;
+    grid-column: 7 / span 6;
+    grid-row: 2 / span 5;
+
+}
+.customerBlockB > div {
+    display: flex;
+}
+.labelTextArea{
+    display: flex;
+    margin: auto 0px ; 
+    align-items: center;
+}
+.customerButtons{
+    display: grid;
+    grid-row: 7;
+    grid-column: 1 / span 12;
+}
+.buttonsDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap : 60%; 
+}
+.buttonsDiv button {
+    color : white; 
+    background-color: blue;
+    border: none;
+    font-size: 13pt;
+    border-radius: 5px ;
+    height : 40px ; 
+    width: 130px;
+}
+.deleteButton{
+    background-color: red !important; 
+}
+form label{
+    width: 100px;
+    display: inline-block;
+    height: 30px;
+}
+form input {
+    height: 30px;
+    margin: 5px 0px;
+}
+form input , form textarea {
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 70%;
+    margin: 5px 0px;
+}
+form textarea {
+    resize: none;
+    height: 50px;
+}
+.error , .ok{
+    background-color: red;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    width: 90%;
+}
+.ok {
+    background-color: green !important;
+}
+/* ############### */
+
+
+/* ### customer ### */
+.container {
+    margin: 35px auto;
+    padding: 10px;
+}
+/* ################## */
+
+
+
+/* ### Project ### */
+ /* result secion  */
+.noResult{
+    display: block;
+    text-align: center;
+    margin: 10px auto ;
+}
+.results{
+    overflow: scroll;
+    max-height: 400px;
+    min-height: 100px;
+}
+.results table {
+    min-width: 1000px;
+    width: 100%; 
+}
+.results thead{
+    background-color: lightblue;
+    position: sticky;
+    top:0px;
+}
+.results td{
+    border-bottom: 1px solid blue;
+    text-align: center;
+    white-space: pre;
+}
+.inTableIcon{
+    width:30px; 
+}
+.addProjectButton{
+    display: block;
+    margin: 10px 10px 20px ;
+    width: 100px;    
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: blue;
+    color: white;
+}
+/* end result section */
+
+/* ############### */

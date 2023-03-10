@@ -18,8 +18,6 @@
                             - {{ $error }}<br>
                         @endforeach
                     </p>
-                @elseif (session('ok'))
-                    <p class="ok">{{ session('ok') . ' - رقم المشروع ( ' . session('id') . ' )' }}</p>
                 @endif
             </div>
             @csrf

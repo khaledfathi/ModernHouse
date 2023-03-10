@@ -17,5 +17,6 @@
     <p>app info [ver .. etc]</p>
     <p>change logo</p>
     <p>changeStyle(o)</p>
+    <p>process monitoring</p>
 @endsection
     

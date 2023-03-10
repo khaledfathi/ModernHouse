@@ -27,6 +27,13 @@ class ProjectRepo implements ProjectRepoContract {
             select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
             where('projects.id' , '=' , $id)->get(); 
     }
+    public function GetByCustomerId(string $id):object
+    {
+        return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
+            join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
+            select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
+            where('customers.id' , '=' , $id)->orderBy('name' ,'asc')->get(); 
+    }
     public function GetByCustomerName(string $name):object
     {
         return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
