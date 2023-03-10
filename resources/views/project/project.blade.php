@@ -26,18 +26,15 @@
             <div class="customerDetails">
                 <div>
                     <label for="">رقم العميل</label>
-                    <input type="text" name="customer_id" id="" readonly
-                        @if (session('customer')) ? value="{{ session('customer')->id }}" : value='' @endif>
+                    <input type="text" name="customer_id" id="" readonly value = "{{(session('customer')) ? session('customer')->id : null}}">
                 </div>
                 <div>
                     <label for="">اسم العميل</label>
-                    <input type="text" name="customer_name" id="" readonly
-                        @if (session('customer')) ? value="{{ session('customer')->name }}" : value='' @endif>
+                    <input type="text" name="customer_name" id="" readonly value = "{{(session('customer')) ? session('customer')->name : null}}">
                 </div>
                 <div>
                     <label for="">تليفون العميل</label>
-                    <input type="text" name="customer_phone" id="" readonly
-                        @if (session('customer')) ? value="{{ session('customer')->phone }}" : value='' @endif>
+                    <input type="text" name="customer_phone" id="" readonly value = "{{(session('customer')) ? session('customer')->phone : null}}">
                 </div>
             </div>
 

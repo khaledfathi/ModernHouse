@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('project' , [ProjectController::class , 'ProjectPage']);
     Route::get('newproject' , [ProjectController::class , 'NewProject']);
     Route::get('payment' , [ProjectController::class , 'PaymentPage']); 
+    Route::get('newpayment' , [ProjectController::class , 'NewPayment']); 
 
     Route::get('bill' , [BillController::class , 'BillPage']); 
 

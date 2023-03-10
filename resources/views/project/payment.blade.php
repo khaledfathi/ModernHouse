@@ -5,51 +5,62 @@
     <link rel="stylesheet" href="{{ asset('assets/css/project/payment.css') }}">
 @endsection
 @section('scripts')
-    <script src="{{asset('assets/js/project/payment.js')}}"></script>
+    <script src="{{ asset('assets/js/project/payment.js') }}"></script>
 @endsection
 
 
 @section('content')
     <div class="container">
-        <form action="">
+        <form action="newpayment" method="get">
             <div class="messageDiv">
-                <p class="error">Error</p>
-                <p class="ok">OK</p>
+                @if ($errors->any())
+                    <p class="error">
+                        @foreach ($errors->all() as $error)
+                            - {{ $error}}<br>
+                        @endforeach
+                    </p>
+                @endif
             </div>
             @csrf
             <div>
                 <label for="">رقم المشروع</label>
-                <input type="text" readonly class="readOnly" @if (session('project')) ? value="{{ session('project')->id }}" : value='' @endif>
+                <input type="text" readonly class="readOnly" name="project_id"
+                    value="{{ session('project') ? session('project')->id : null }}">
             </div>
             <div>
                 <label for="">رقم العميل</label>
-                <input type="text" readonly class="readOnly" @if (session('project')) ? value="{{ session('project')->customer_id }}" : value='' @endif>
+                <input type="text" readonly class="readOnly" name="customer_id"
+                    value="{{ session('project') ? session('project')->customer_id : null }}">
             </div>
             <div>
                 <label for="">اسم العميل</label>
-                <input type="text" readonly class="readOnly" @if (session('project')) ? value="{{ session('project')->customer_name }}" : value='' @endif>
+                <input type="text" readonly class="readOnly"
+                    value="{{ session('project') ? session('project')->customer_name : null }}">
             </div>
             <div>
                 <label for="">تليفون العميل</label>
-                <input type="text" readonly class="readOnly" @if (session('project')) ? value="{{ session('project')->customer_phone }}" : value='' @endif>
+                <input type="text" readonly class="readOnly"
+                    value="{{ session('project') ? session('project')->customer_phone : null }}">
             </div>
             <div>
                 <label for="">التاريخ</label>
-                <input type="date" id="date">
+                <input type="date" id="date" name="date">
             </div>
             <div>
                 <label for="">الوقت</label>
-                <input type="time" id="time"> 
+                <input type="time" id="time" name="time">
             </div>
             <div>
                 <label for="">المبلغ</label>
-                <input class="amount" type="text">
+                <input class="amount" type="text" id="amount" name="amount" value=0>
                 <label for="">المبلغ المستحق</label>
-                <input class="remaining readOnly" type="text" readonly>
+                <input class="remaining readOnly" type="text" id="remainingCalculated" readonly
+                    value="{{ session('project') ? session('project')->amount : null }}">
+                <input type="hidden" id="remaining" value="{{ session('project') ? session('project')->amount : null }}">
             </div>
             <div>
                 <label for="">تفاصيل اخرى</label>
-                <textarea name=""></textarea>
+                <textarea name="details"></textarea>
             </div>
             <div>
                 <input type="submit" value="حفظ">

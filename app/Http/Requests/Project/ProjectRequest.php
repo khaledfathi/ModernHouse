@@ -27,7 +27,7 @@ class ProjectRequest extends FormRequest
             'end_date'=>'date|nullable',
             'amount'=>'required|numeric|not_in:0',
             'project_status' => 'required|exists:project_status,id',
-            'customer_id'=>'required|numeric'
+            'customer_id'=>'required|exists:customers,id'
         ];
     }
 
@@ -43,7 +43,7 @@ class ProjectRequest extends FormRequest
             'project_status.required'=>'حالة المشروع مطلوبة',
             'project_status.exists'=>'حالة المشروع غير معروفة',
             'customer_id.required'=>'رقم العميل مطلوب',
-            'customer_id.numeric'=>'رقم العميل غير صالح'
+            'customer_id.exists'=>'رقم العميل غير صالح'
         ]; 
     }
 }

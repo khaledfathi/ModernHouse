@@ -21,9 +21,9 @@ return new class extends Migration
             $table->timestamps();
             //FK
             $table->foreignId('user_id')->nullable(true)->references ('id')->on('users')->onDelete('set null'); 
-            $table->foreignId('bill_id')->nullable(false)->default(null)->references ('id')->on('bills')->cascadeOnDelete(); 
+            $table->foreignId('bill_id')->nullable(true)->default(null)->references ('id')->on('bills')->cascadeOnDelete(); 
             $table->foreignId('project_id')->nullable(true)->default(null)->references ('id')->on('projects')->cascadeOnDelete(); 
-            $table->foreignId('transaction_type_id')->nullable(false)->references ('id')->on('transactions'); 
+            $table->foreignId('transaction_type_id')->nullable(false)->references ('id')->on('transaction_types'); 
         });
     }
 

@@ -4,15 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Customer\CustomerRequest;
 use App\Http\Requests\Project\ProjectRequest;
+use App\Http\Requests\Transaction\TransactionRequest;
 use App\Models\ProjectStatusModel;
 use App\Repository\Contracts\ProjectRepoContract;
+use App\Repository\Contracts\TransactionRepoContract;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
     private $projectProvider ; 
-    public function __construct(ProjectRepoContract $projectProvider){
+    private $transactionProvider; 
+    public function __construct(
+        ProjectRepoContract $projectProvider,
+        TransactionRepoContract $transactionProvider
+        )
+    {
         $this->projectProvider = $projectProvider; 
+        $this->transactionProvider = $transactionProvider;
     }
     public function ProjectPage ()
     {
@@ -35,5 +43,9 @@ class ProjectController extends Controller
     }
     public function PaymentPage(){
         return view('project.payment'); 
+    }
+    public function NewPayment(TransactionRequest $request){
+        $this->transactionProvider->StoreNewProjectPayment($request); 
+        return "تم الحفظ بنجاح <br> it will return to customer page with his projects"; 
     }
 }

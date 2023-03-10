@@ -36,5 +36,23 @@ class DatabaseSeeder extends Seeder
 
             ]); 
         }
+        $transactionTypes = [
+            'غير مصنف',
+            'فاتورة',
+            'سداد لمشروع', 
+            'ايجار العقار',
+            'فاتورة كهرباء',
+            'فاتورة مياة',
+            'فاتورة تليفون',
+            'فاتورة انترنت' ,
+            'تكاليف معدات',
+            'تكاليف صيانة',
+            'ضرائب',
+        ]; 
+        foreach($transactionTypes as $type){
+            \App\Models\TransactionTypeModel::create([
+                'type'=>$type
+            ]); 
+        }
     }
 }
