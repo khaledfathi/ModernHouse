@@ -136,7 +136,7 @@
                                         <td>{{$record->materials}}</td>
                                         <td>{{$record->status}}</td>
                                         <td>{{$record->details}}</td>
-                                        <td><a href=""><img class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}" alt="view_icon"></a></td>
+                                        <td><a href="{{url('project/'.$record->id)}}"><img class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}" alt="view_icon"></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

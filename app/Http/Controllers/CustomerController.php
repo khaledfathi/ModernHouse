@@ -32,7 +32,7 @@ class CustomerController extends Controller
         return redirect('customer/'.$record->id)->with(['ok'=>"تم حفظ العميل ( رقم $record->id )"]); 
     }
     public function CustomerProfile (Request $request){
-        $projects = null ;
+        $projects = null;
         $customer = null;  
         $customerRecord = $this->customerProvider->GetById($request->id);
         if($customerRecord->count()){

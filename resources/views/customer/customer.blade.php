@@ -23,7 +23,7 @@
         @endif
         <div>
             <label for="">الاسم</label>
-            <input type="text" name="name" value="">
+            <input type="text" name="name" value="" >
         </div>
         <div class="d-flex">
             <label for="">التليفون</label>

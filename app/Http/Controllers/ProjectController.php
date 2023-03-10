@@ -48,4 +48,9 @@ class ProjectController extends Controller
         $this->transactionProvider->StoreNewProjectPayment($request); 
         return "تم الحفظ بنجاح <br> it will return to customer page with his projects"; 
     }
+    public function ProjectProfile($request){
+        $customer=null; 
+        $project=null; 
+        return view('project.projectProfile' ,['customer'=>$customer , 'project'=>$project]); 
+    }
 }

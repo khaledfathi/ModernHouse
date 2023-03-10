@@ -32,7 +32,7 @@ class ProjectRepo implements ProjectRepoContract {
         return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
             join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
             select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
-            where('customers.id' , '=' , $id)->orderBy('name' ,'asc')->get(); 
+            where('customers.id' , '=' , $id)->orderBy('date' ,'desc')->get(); 
     }
     public function GetByCustomerName(string $name):object
     {

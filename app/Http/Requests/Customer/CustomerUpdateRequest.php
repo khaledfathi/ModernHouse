@@ -23,6 +23,7 @@ class CustomerUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id'=>'required', 
             'name'=>'required',
             'phone'=>['required','numeric', new CustomerPhoneOnUpdate('customers' ,$this->id )],
             'coordinates'=>'nullable|url'
@@ -31,6 +32,7 @@ class CustomerUpdateRequest extends FormRequest
     public function messages() :array
     {
         return [
+            'id.required'=>'رقم العميل مطلوب',
             'name.required'=>'حقل الاسم مطلوب',
             'phone.required'=>'حقل التليفون مطلوب',
             'phone.numeric'=>'رقم التليفون غير صحيح',

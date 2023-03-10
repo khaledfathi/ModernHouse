@@ -28,7 +28,7 @@
             <div class="customerBlockA">
                 <div>
                     <label for="">رقم العميل</label>
-                    <input type="text" name="id" value="{{ $record ? $record->id : null }}">
+                    <input class="customerId" type="text" name="id" readonly value="{{ $record ? $record->id : null }}">
                 </div>
                 <div>
                     <label for="">الاسم</label>
@@ -74,8 +74,6 @@
                     <table>
                         <thead>
                             <th>رقم المشروع</th>
-                            <th>العميل</th>
-                            <th>تليفون</th>
                             <th>التاريخ</th>
                             <th>البدء</th>
                             <th>التسليم</th>
@@ -89,8 +87,6 @@
                             @foreach ($projects as $record)
                                 <tr>
                                     <td width="5%">{{ $record->id }}</td>
-                                    <td>{{ $record->name }}</td>
-                                    <td>{{ $record->phone }}</td>
                                     <td>{{ $record->date }}</td>
                                     <td>{{ $record->start_date }}</td>
                                     <td>{{ $record->end_date }}</td>
@@ -98,7 +94,7 @@
                                     <td>{{ $record->materials }}</td>
                                     <td>{{ $record->status }}</td>
                                     <td>{{ $record->details }}</td>
-                                    <td><a href=""><img
+                                    <td><a href="{{url('project/'.$record->id)}}"><img
                                                 class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}"
                                                 alt="view_icon"></a></td>
                                 </tr>
