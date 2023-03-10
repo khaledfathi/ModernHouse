@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Customer\CustomerRequest;
+use App\Http\Requests\Customer\CustomerUpdateRequest;
 use App\Repository\Contracts\CustomerRepoContract;
 use App\Repository\Contracts\ProjectRepoContract;
 use Illuminate\Http\Request;
@@ -47,6 +48,10 @@ class CustomerController extends Controller
         if ($isDeleted){
             return back()->with(['ok'=>'تم حذف العميل']);
         }
+    }
+    public function UpdateCustomer(CustomerUpdateRequest $request){
+        $this->customerProvider->Update((array)$request->except(['_token' , 'id']) , $request->id);
+        return back()->with(['ok' => 'تم تحديث البيانات']); 
     }
     
 }

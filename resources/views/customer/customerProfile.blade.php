@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="container">
-        <form class="d-grid" action="updatecustomer" method="get">
+        <form class="d-grid" action="{{url('customerupdate')}}" method="get">
             @csrf
             <div class="messages">
                 @if ($errors->any())
@@ -60,7 +60,7 @@
                 <div class="buttonsDiv">
                     <button class="" type="submit" name="direction" value="save">تحديث</button>
                     <button class="deleteButton" type="button" id="deleteButton" >حذف</button>
-                    <input type="hidden" value="{{($record) ? url('delete/'.$record->id) : null}}" id="deleteLink">
+                    <input type="hidden" value="{{($record) ? url('customerdelete/'.$record->id) :null }}" id="deleteLink">
                 </div>
             </div>
         </form>

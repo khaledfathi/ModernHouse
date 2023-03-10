@@ -38,6 +38,10 @@ class CustomerRepo implements CustomerRepoContract{
    }
    public function Update(array $toUpdate , string $id):bool
    {
+      $found =  CustomerModel::find($id); 
+      if ($found){
+         return ($found->update($toUpdate)); 
+      }
       return true ; 
    }
 

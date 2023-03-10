@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="container">
-        <form class="d-grid" action="newproject" , method="get">
+        <form class="d-grid" action="{{url('newproject')}}" , method="get">
             <div class="messageDiv">
                 @if ($errors->any())
                     <p class="error">

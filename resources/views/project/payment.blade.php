@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="container">
-        <form action="newpayment" method="get">
+        <form action="{{url('newpayment')}}" method="get">
             <div class="messageDiv">
                 @if ($errors->any())
                     <p class="error">

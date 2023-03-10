@@ -39,7 +39,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('customer' , [CustomerController::class , 'CustomerPage']); 
     Route::get('newcustomer' , [CustomerController::class , 'NewCustomer']); 
     Route::get('customer/{id}' , [CustomerController::class , 'CustomerProfile']);
-    Route::get('delete/{id}' , [CustomerController::class , 'DeleteCustomer']);
+    Route::get('customerdelete/{id}' , [CustomerController::class , 'DeleteCustomer']);
+    Route::get('customerupdate' , [CustomerController::class , 'UpdateCustomer']);
+
 
     Route::get('project' , [ProjectController::class , 'ProjectPage']);
     Route::get('newproject' , [ProjectController::class , 'NewProject']);

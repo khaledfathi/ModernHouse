@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="container">
-        <form class="d-grid" action="find" method="get">
+        <form class="d-grid" action="{{url('find')}}" method="get">
             <div class="searchFor">
                 <div>
                     <label for="">بحث عن</label>

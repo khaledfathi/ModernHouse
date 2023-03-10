@@ -12,7 +12,7 @@
 
 @section('content')
 <div class="container">
-    <form class="d-flex flex-col justify-content-center" action="newcustomer" method="get">
+    <form class="d-flex flex-col justify-content-center" action="{{url('newcustomer')}}" method="get">
         @csrf
         @if ($errors->any())
             <p class="error">
