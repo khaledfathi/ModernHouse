@@ -9,22 +9,154 @@
     box-shadow: 0px 0px 10px blue;
 
 }
+.error , .ok {
+    border-radius: 5px;
+    color:white; 
+    text-align: center;
+    padding: 10px;
+}
+.error{
+    background: red;
+}
+.ok{
+
+    background: green;
+}
+.readOnly {
+	background-color: rgba(173, 216, 230, 0.3);
+	font-weight: bold;
+	color: blue;
+}
 /* ################ */
 
-/* ### Project Container### */
-.projectContainer form {
+/* ### Project ### */
+.projectContainer input , .projectContainer textarea , .projectContainer select{
+    border: 1px solid blue;
+    border-radius: 5px;
+    height: 30px;
+    margin: 10px 0px;
+    width: 60%;
+}
+.projectContainer textarea{
+    resize: none;
+    height: 100px;
+}
+.projectContainer label{
+    display: inline-block;
+    width: 125px;
+}
+.projectContainer button{
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    color: white; 
+    height: 40px;
+    margin: auto;
+}
+.deleteButton{
+    background-color: red !important;
+}
+input[type="date"]{
+    direction: ltr;
+}
+.messages{
+    display: grid;
+    grid-column: 1 / span 12;
+    grid-row: 1;
+}
+.formBlockA{
+    display: grid;
+    grid-column: 1 / span 6;
+    grid-row: 2;
+}
+.formBlockB{
+    display: grid;
+    grid-column: 7 / span 6;
+    grid-row: 2;
+}
+.formBlockC{
+    margin-top: 20px;
+    display: grid;
+    grid-column: 3 / span 8;
+    grid-row: 3;
+    align-content: center;
+}
+.formBlockC input , .formBlockC textarea ,  .formBlockC select{
+    width: 70%;
+}
+.buttonBlock{
+    display: flex;
+    margin: 20px 0px;
+    grid-column: 1 / span 12;
+    grid-row: 4;
+}
+.buttonBlock button{
+    font-size: 13pt;
+    width: 20%;
+}
+.textareaDiv{
+    display: flex;
+    align-items: center;
+}
+
+@media only screen  and (max-width:860px){
+    .projectContainer{
+        width: 80%;
+        margin: auto;
+    }
+    .formBlockA{
+        grid-column: 1 / span 12;
+        grid-row: 2;
+    }
+    .formBlockB{
+        grid-column: 1 / span 12;
+        grid-row: 3;
+    }
+    .formBlockC{
+        display: grid;
+        grid-column: 1 / span 12;
+        grid-row: 4;
+    }
+    .buttonBlock{
+        grid-column: 1 / span 12;
+        grid-row: 5;
+    }
+    .projectContainer input , 
+    .projectContainer textarea , 
+    .projectContainer select {
+        width: 75%;
+    } 
+    
+}
+@media only screen  and (max-width:758px){
+    .projectContainer{
+        width:100%; 
+    }
+    .transactionContainer,
+    .projectContainer form {
+        width: 77%;
+    }
+    .projectContainer label{
+        display: block !important;
+        width: 100%;
+        text-align: center;
+    }
+    .textareaDiv{
+        display: block;
+    }
+    .projectContainer input , 
+    .projectContainer textarea , 
+    .projectContainer select {
+        width: 100%;
+    } 
 }
 /* ######################## */
 
-/* ### Payment Container### */
-.transactionContainer{
-}
-/* ######################## */
 
 
 /* ### payment ### */
  /* result secion  */
- .projectContainer{
+.transactionContainer{
     margin-bottom: 100px;
  }
 .noResult{

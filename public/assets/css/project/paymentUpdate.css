@@ -1,0 +1,35 @@
+ /* 
+screens sizes
+    320px
+    480px * 
+    600px  
+    768px *
+    900px
+    1024px * >
+    1200px 
+*/
+
+.deleteButton{
+    text-decoration: none;
+    display: flex;
+    background-color: red;
+    color:white;
+    width: 40%;
+    height: 40px;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+input[type='submit']{
+    margin: 20px 10px;
+}
+.buttonsDiv{
+    justify-content: center;
+}
+@media only screen and (max-width:480px){
+    .deleteButton {
+        width: 100%;
+    }
+}

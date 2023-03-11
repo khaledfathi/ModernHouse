@@ -7,7 +7,6 @@
     <script src="{{asset('assets/js/customer/customerProfile.js')}}"></script>
     <script src="{{asset('assets/js/external/sweatAlert/sweetalert2.all.min.js')}}"></script>
 @endsection
-@section('activeCustomer', 'active')
 
 @section('content')
     <div class="container">

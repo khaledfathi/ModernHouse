@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Customer\CustomerRequest;
 use App\Http\Requests\Project\ProjectRequest;
 use App\Http\Requests\Transaction\TransactionRequest;
 use App\Models\ProjectStatusModel;
@@ -52,9 +51,8 @@ class ProjectController extends Controller
         return view('project.payment'); 
     }
     public function NewPayment(TransactionRequest $request){
-        $this->transactionProvider->StoreNewProjectPayment($request);
-        Session::forget('project'); 
-        return redirect("project/$request->project_id"); 
+        $record = $this->transactionProvider->StoreNewProjectPayment($request);
+        return redirect("project/$request->project_id")->with(['ok'=>'تم حفظ معاملة مالية رقم ( '.$record->id.' )']);
     }
     public function ProjectProfile(Request $request){
         $customer=null; 
@@ -97,6 +95,7 @@ class ProjectController extends Controller
         return redirect('customer/'.$request->customer_id)->with(['ok'=> 'تم حذف المشروع رقم ( '.$request->id.' )']); 
     }
     public function UpdateProject(ProjectRequest $request){
+        $request->validate(['id'=>'required'],['id.required'=>'رقم العميل مطلوب']);
         $toUpdate = [
             'date'=>$request->date,
             'start_date'=>$request->start_date, 

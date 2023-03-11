@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'بحث')
+@section('title', 'استعلامات')
 @section('links')
     <link rel="stylesheet" href="{{ asset('assets/css/search/search.css') }}">
 @endsection

@@ -3,6 +3,7 @@
 
 @section('links')
     <link rel="stylesheet" href="{{ asset('assets/css/project/payment.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/project/paymentUpdate.css') }}">
 @endsection
 @section('scripts')
     <script src="{{ asset('assets/js/project/paymentUpdate.js') }}"></script>
@@ -68,9 +69,9 @@
                 <textarea name="details">{{$transaction->details}}</textarea>
 
             </div>
-            <div>
+            <div class="buttonsDiv">
                 <input type="submit" value="تحديث">
-                <a href="{{url('paymentdelete/'.$transaction->id.'?project_id='.$project->id)}}">حذف</a>
+                <a class ="deleteButton" href="{{url('paymentdelete/'.$transaction->id.'?project_id='.$project->id)}}">حذف</a>
                 
             </div>
         </form>
