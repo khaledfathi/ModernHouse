@@ -55,8 +55,9 @@
                 <input class="amount" type="text" id="amount" name="amount" value=0>
                 <label for="">المبلغ المستحق</label>
                 <input class="remaining readOnly" type="text" id="remainingCalculated" readonly name="remaining"
-                    value="{{ session('project') ? session('project')->amount : null }}">
-                <input type="hidden" id="remaining" value="{{ session('project') ? session('project')->amount : null }}">
+                    value="{{ session('project') ? session('project')->remaining : null }}">
+                <input type="hidden" id="remaining" value="{{ session('project') ? session('project')->remaining : null }}">
+                <input type="hidden" id="projectAmount" value="{{ session('project') ? session('project')->amount : null }}">
             </div>
             <div>
                 <label for="">تفاصيل اخرى</label>

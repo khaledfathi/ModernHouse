@@ -26,6 +26,7 @@ class TransactionRequest extends FormRequest
             'date' => 'required|date', 
             'time'=>'required|date_format:H:i',
             'amount'=>'required|numeric|not_in:0', 
+            'remaining'=>'gte:0'
         ];
     }
     public function messages(){
@@ -38,7 +39,8 @@ class TransactionRequest extends FormRequest
             'time.date_format'=>'صيغة الوقت غير صالحة',
             'amount.required'=>'المبلغ مطلوب',
             'amount.numeric'=>'المبلغ - ارقام فقط', 
-            'amount.not_in'=>'المبلغ لايمكن ان يكون صفر'
+            'amount.not_in'=>'المبلغ لايمكن ان يكون صفر',
+            'remaining.gte'=>'المبلغ المدخل اكبر من المستحق'
         ]; 
     }
 }

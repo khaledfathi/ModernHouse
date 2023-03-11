@@ -39,7 +39,10 @@ class ProjectController extends Controller
         $record->customer_name = session('customer')->name; 
         $record->customer_phone = session('customer')->phone; 
         Session::forget('customer'); 
-        if ($request->direction== 'saveAndAddPay'){        
+        if ($request->direction== 'saveAndAddPay'){   
+            $TransactionPaid = $this->transactionProvider->GetByProjectId($record->id)->sum('amount'); 
+            $remainingAmount = $record->amount - $TransactionPaid; 
+            $record->remaining = $remainingAmount; 
             session(['project'=>$record]); 
             return redirect('payment'); 
         }
@@ -62,13 +65,17 @@ class ProjectController extends Controller
         if ($project->count()){
             $project = $project[0]; 
             $customer = $this->customerProvider->GetById($project->customer_id)[0];            
-            $transactions = $this->transactionProvider->GetByProjectId($project->id); 
+            $transactions = $this->transactionProvider->GetByProjectId($project->id);
+            $TransactionPaid = $this->transactionProvider->GetByProjectId($project->id)->sum('amount'); 
+            $remainingAmount = $project->amount - $TransactionPaid; 
+
             if ( ! $transactions->count() ) $transactions = null ; 
             //for transaction page 
             $record=$project; 
             $record->customer_id = $customer->id; 
             $record->customer_name = $customer->name; 
             $record->customer_phone = $customer->phone; 
+            $record->remaining = $remainingAmount ; 
             session(['project'=>$record]); 
             /******************/
 
