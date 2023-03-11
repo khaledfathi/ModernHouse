@@ -32,7 +32,7 @@ class ProjectRepo implements ProjectRepoContract {
         return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
             join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
             select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
-            where('customers.id' , '=' , $id)->orderBy('date' ,'desc')->get(); 
+            where('customers.id' , '=' , $id)->orderBy('id' , 'desc')->orderBy('date','desc')->get(); 
     }
     public function GetByCustomerName(string $name):object
     {
@@ -47,6 +47,19 @@ class ProjectRepo implements ProjectRepoContract {
             join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
             select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
             where('customers.phone' , '=' , $phone)->orderBy('name' ,'asc')->get(); 
+    }
+    public function Destroy(string $id):bool
+    {
+        $found = ProjectModel::find($id); 
+        return ($found) ? $found->delete() : false ; 
+    }
+    public function Update(array $toUpdate , string $id):bool 
+    {
+        $found = ProjectModel::find($id); 
+        if($found){
+            return $found->update($toUpdate); 
+        }
+        return false ; 
     }
 
 }

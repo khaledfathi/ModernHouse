@@ -78,9 +78,7 @@
                             <th>البدء</th>
                             <th>التسليم</th>
                             <th>المبلغ</th>
-                            <th>الخامات</th>
                             <th>حالة المشروع</th>
-                            <th>تفاصيل</th>
                             <th>عرض</th>
                         </thead>
                         <tbody>
@@ -91,9 +89,7 @@
                                     <td>{{ $record->start_date }}</td>
                                     <td>{{ $record->end_date }}</td>
                                     <td>{{ $record->amount }}</td>
-                                    <td>{{ $record->materials }}</td>
                                     <td>{{ $record->status }}</td>
-                                    <td>{{ $record->details }}</td>
                                     <td><a href="{{url('project/'.$record->id)}}"><img
                                                 class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}"
                                                 alt="view_icon"></a></td>

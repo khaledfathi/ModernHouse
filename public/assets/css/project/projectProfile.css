@@ -1,0 +1,72 @@
+
+/* ### General ### */
+.transactionContainer,
+.projectContainer form {
+    width: 90%;
+    margin: 50px auto 10px;
+    padding: 30px;
+    border-radius:10px;
+    box-shadow: 0px 0px 10px blue;
+
+}
+/* ################ */
+
+/* ### Project Container### */
+.projectContainer form {
+}
+/* ######################## */
+
+/* ### Payment Container### */
+.transactionContainer{
+}
+/* ######################## */
+
+
+/* ### payment ### */
+ /* result secion  */
+ .projectContainer{
+    margin-bottom: 100px;
+ }
+.noResult{
+    display: block;
+    text-align: center;
+    margin: 10px auto ;
+}
+.results{
+    overflow: scroll;
+    max-height: 400px;
+    min-height: 100px;
+}
+.results table {
+    min-width: 1000px;
+    width: 100%; 
+}
+.results thead{
+    background-color: lightblue;
+    position: sticky;
+    top:0px;
+}
+.results td{
+    border-bottom: 1px solid blue;
+    text-align: center;
+    white-space: pre;
+}
+.inTableIcon{
+    width:30px; 
+}
+.addTransactionButton{
+    display: block;
+    margin: 10px 10px 20px ;
+    width: 130px;    
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    background-color: blue;
+    color: white;
+}
+
+/* end result section */
+
+/* ############### */

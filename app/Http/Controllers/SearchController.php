@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CustomerModel;
 use App\Repository\Contracts\CustomerRepoContract;
 use App\Repository\Contracts\ProjectRepoContract;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class SearchController extends Controller
 {

@@ -22,4 +22,28 @@ class TransactionRepo implements TransactionRepoContract
             'details'=>$request->details
         ]); 
     } 
+    public function GetById(string $id):object
+    {
+        return TransactionModel::where('id' , $id)->get(); 
+    }
+    public function GetByProjectId(string $id):object
+    {
+        return TransactionModel::where('project_id' , $id)->get(); 
+    }
+    public function Update(array $toUpdate , string $id):bool
+    {
+        $found = TransactionModel::find($id); 
+        if($found){
+            return  $found->update($toUpdate) ; 
+        }
+        return false ; 
+    }
+    public function Destroy(string $id):bool 
+    {
+        $found = TransactionModel::find($id); 
+        if ($found){
+            return $found->delete(); 
+        }
+        return false ; 
+    }
 }
