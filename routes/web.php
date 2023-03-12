@@ -11,6 +11,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +65,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('setting' , [SettingController::class , 'SettingPage']); 
 
-    Route::get('profile' , [ProfileController::class , 'ProfilePage']); 
+    Route::get('profile' , [ProfileController::class , 'ProfilePage']);
+    Route::get('changepassword' , [ProfileController::class , 'ChangePassword']);
+    Route::get('changephone' , [ProfileController::class , 'ChangePhone']);
+
 });
 
 

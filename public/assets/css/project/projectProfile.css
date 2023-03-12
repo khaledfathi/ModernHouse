@@ -56,9 +56,6 @@
 .deleteButton{
     background-color: red !important;
 }
-input[type="date"]{
-    direction: ltr;
-}
 .messages{
     display: grid;
     grid-column: 1 / span 12;

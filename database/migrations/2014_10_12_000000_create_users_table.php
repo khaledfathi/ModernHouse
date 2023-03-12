@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50)->unique()->nullable(false);
-            $table->string('password' , 255)->unique()->nullable(false);
-            $table->string('phone', 255)->nullable(false); 
+            $table->string('password' , 255)->nullable(false);
+            $table->string('phone', 255)->unique()->nullable(false); 
             $table->enum('type' , ['admin' , 'user'])->nullable(false);
             $table->enum('status' , ['enabled' , 'disabled'])->nullable(false);
             $table->rememberToken();

@@ -22,6 +22,13 @@ class DatabaseSeeder extends Seeder
             'type'=>'admin', 
             'status'=>'enabled'
         ]);
+        \App\Models\User::create([
+            'name' => 'waleed',
+            'phone'=>'01110112198',
+            'password'=> Hash::make('admin'),
+            'type'=>'admin', 
+            'status'=>'enabled'
+        ]);
         
         $projectStatus = [
             'قيد التنفيذ',
