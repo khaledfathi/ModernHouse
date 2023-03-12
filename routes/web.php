@@ -58,6 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('bill' , [BillController::class , 'BillPage']); 
 
     Route::get('product' , [ProductController::class , 'ProductPage']); 
+    Route::get('addproduct' , [ProductController::class , 'AddProductPage']); 
 
     Route::get('transaction' , [TransactionController::class , 'TransactionPage']);
 

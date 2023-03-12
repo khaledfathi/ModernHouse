@@ -39,14 +39,14 @@ class ProjectRepo implements ProjectRepoContract {
         return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
             join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
             select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
-            where('customers.name' , 'like' , '%'.$name.'%')->orderBy('name' ,'asc')->get(); 
+            where('customers.name' , 'like' , '%'.$name.'%')->orderBy('date' ,'desc')->get(); 
     }
     public function GetByCustomerPhone(string $phone):object
     {
         return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
             join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
             select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
-            where('customers.phone' , '=' , $phone)->orderBy('name' ,'asc')->get(); 
+            where('customers.phone' , '=' , $phone)->orderBy('date' ,'desc')->get(); 
     }
     public function Destroy(string $id):bool
     {

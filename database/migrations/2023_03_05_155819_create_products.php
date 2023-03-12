@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('description')->nullable(true); 
             $table->bigInteger('price')->nullable(false); 
             $table->text('image')->nullable(true); 
-            $table->bigInteger('stock')->nullable(false); 
             $table->timestamps();
             //FK
             $table->foreignId('user_id')->nullable(true)->default(null)->references ('id')->on('users'); 
