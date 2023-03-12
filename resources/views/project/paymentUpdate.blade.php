@@ -7,6 +7,7 @@
 @endsection
 @section('scripts')
     <script src="{{ asset('assets/js/project/paymentUpdate.js') }}"></script>
+    <script src="{{ asset('assets/js/external/sweatAlert/sweetalert2.all.min.js') }}"></script>
 @endsection
 
 
@@ -71,7 +72,8 @@
             </div>
             <div class="buttonsDiv">
                 <input type="submit" value="تحديث">
-                <a class ="deleteButton" href="{{url('paymentdelete/'.$transaction->id.'?project_id='.$project->id)}}">حذف</a>
+                <button type="button" class="deleteButton" id="deleteButton">حذف</button>
+                <input type="hidden" id="deleteLink" value="{{url('paymentdelete/'.$transaction->id.'?project_id='.$project->id)}}">
                 
             </div>
         </form>

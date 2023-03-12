@@ -79,10 +79,10 @@
                     @case('customer')
                         <table>
                             <thead>
-                                <th width="5%">رقم العميل</th>
+                                <th width="10%">رقم العميل</th>
                                 <th width="20%">الاسم</th>
                                 <th width="10%">التليفون</th>
-                                <th width="30%">العنوان</th>
+                                <th width="20%">العنوان</th>
                                 <th width="20%">تفاصيل</th>
                                 <th width="5%">الموقع</th>
                                 <th width="5%">عرض</th>
@@ -111,7 +111,7 @@
                     @case('project')
                         <table>
                             <thead>
-                                <th>رقم المشروع</th>
+                                <th width="10%">رقم المشروع</th>
                                 <th>التاريخ</th>
                                 <th>العميل</th>
                                 <th>تليفون</th>

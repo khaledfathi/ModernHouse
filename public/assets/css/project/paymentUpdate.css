@@ -18,9 +18,11 @@ screens sizes
     height: 40px;
     text-align: center;
     margin: 20px 10px;
+    border: none;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
+
 }
 input[type='submit']{
     margin: 20px 10px;

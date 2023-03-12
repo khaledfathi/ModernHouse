@@ -115,7 +115,7 @@
                     @if ($transactions)
                         <table>
                             <thead>
-                                <th>رقم العملية</th>
+                                <th width="10%">رقم العملية</th>
                                 <th>التاريخ</th>
                                 <th>الوقت</th>
                                 <th>المبلغ</th>

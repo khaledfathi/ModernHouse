@@ -10,7 +10,7 @@ class CustomerPhoneOnUpdate implements ValidationRule
 {
     private $table;
     private $id; 
-    public function __construct(string $table ,string $id){
+    public function __construct(string $table=null ,string $id=null){
         $this->table = $table; 
         $this->id = $id; 
     }

@@ -149,6 +149,14 @@ input[type="date"]{
     .projectContainer select {
         width: 100%;
     } 
+    .buttonBlock{
+        display: flex;
+        flex-direction: column;
+    }
+    .buttonBlock button{
+        margin: 50px auto 0px;
+        width: 40%;
+    }
 }
 /* ######################## */
 
