@@ -32,7 +32,7 @@
             </div>
             <div>
                 <label for="">وصف المنتج</label>
-                <textarea name="" name="description">{{($record) ? $record->name : null}}</textarea>
+                <textarea name="description">{{($record) ? $record->description : null}}</textarea>
             </div>
             <div>
                 <label for="">السعر</label>

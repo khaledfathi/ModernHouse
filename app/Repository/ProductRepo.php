@@ -5,6 +5,7 @@ use App\Http\Requests\Product\ProductRequest;
 use App\Models\ProductModel;
 use App\Repository\Contracts\ProductRepoContract; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductRepo implements ProductRepoContract{
     public function Store(ProductRequest $request):ProductModel
@@ -28,15 +29,24 @@ class ProductRepo implements ProductRepoContract{
     public function Destroy(string $id):bool 
     {
         $found = ProductModel::find($id); 
+        $defaultImage = config('constants.defaultProductImagePath');
         if ($found){
+            if ($found->image != $defaultImage){
+                File::delete(public_path($found->image)); 
+            }
             return $found->delete(); 
         }
         return false; 
     }
     public function Update(array $data , string $id):bool
     {
+
+        $defaultImage = config('constants.defaultProductImagePath');
         $found = ProductModel::find($id);
         if ($found){
+            if ($found->image && ($found->image != $defaultImage) ){
+                File::delete(public_path($found->image)); 
+            }
             return $found->update($data); 
         }
         return false ; 
