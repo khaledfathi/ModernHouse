@@ -13,6 +13,7 @@ class ProductModel extends Model
         'name',
         'description', 
         'price', 
-        'image',         
+        'quantity',
+        'image',
     ]; 
 }
