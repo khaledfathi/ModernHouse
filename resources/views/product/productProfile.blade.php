@@ -32,7 +32,7 @@
             </div>
             <div>
                 <label for="">وصف المنتج</label>
-                <textarea name="" name="description"> {{($record) ? $record->name : null}}</textarea>
+                <textarea name="" name="description">{{($record) ? $record->name : null}}</textarea>
             </div>
             <div>
                 <label for="">السعر</label>
@@ -40,7 +40,7 @@
             </div>
             <div>
                 <label for="">الكمية</label>
-                <input type="text" name="quantity" id="" value= "{{($record) ? $record->name : null}}">
+                <input type="text" name="quantity" id="" value= "{{($record) ? $record->quantity : null}}">
             </div>
             <div class="uploadSectionDiv">
                 {{-- <label for="">صورة</label> --}}
