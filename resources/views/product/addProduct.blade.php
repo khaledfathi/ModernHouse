@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/product/addProduct.css') }}">
 @endsection
 @section('scripts')
-    <script src="{{asset('assets/js/product/addProduct.js')}}"></script>
+    <script src="{{ asset('assets/js/product/addProduct.js') }}"></script>
 @endsection
 
 
@@ -19,11 +19,21 @@
                 </p>
             @endif
         </div>
-        <form action="{{url('newproduct')}}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('newproduct') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div>
                 <label for="">اسم المنتج</label>
                 <input type="text" name="name" id="">
+            </div>
+            <div>
+                <label for="">الصنف</label>
+                <select name="category" id="">
+                    @if ($categories)
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    @endif
+                </select>
             </div>
             <div>
                 <label for="">وصف المنتج</label>

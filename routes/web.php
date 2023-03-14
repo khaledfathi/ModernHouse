@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\LoginController;
@@ -62,7 +63,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('productupdate' , [ProductController::class , 'UpdateProduct']); 
     Route::get('addproduct' , [ProductController::class , 'AddProductPage']); 
     Route::post('newproduct' , [ProductController::class , 'NewProduct']); 
-    Route::get('productdelete/{id}' , [ProductController::class , 'DeleteProduct']); 
+    Route::get('productdelete/{id}' , [ProductController::class , 'DeleteProduct']);
+
+    route::get('category' , [CategoryController::class , 'CategoryPage']);
+    route::get('newcategory' , [CategoryController::class , 'NewCategory']);
+    route::get('categorydelete/{id}' , [CategoryController::class , 'DestroyCategory']);
+    route::get('categoryupdate/{id}' , [CategoryController::class , 'UpdateCategory']);
 
     Route::get('transaction' , [TransactionController::class , 'TransactionPage']);
 

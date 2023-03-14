@@ -23,8 +23,9 @@ class ProductRequest extends FormRequest
     {
         return [
             'name'=>'required',
+            'category'=>'required|numeric|exists:categories,id',
             'price'=>'required|numeric|not_in:0',
-            'quantity' => 'required|numeric',
+            'quantity' => 'required|numeric',            
             'image' => 'nullable|mimes:jpeg,jpg,png,gif,webp,tif,tiff|max:10000' // max 10000kb/10MB
         ];
     }
@@ -32,6 +33,9 @@ class ProductRequest extends FormRequest
     {
         return [
             'name.required'=>'اسم المنتج مطلوب',
+            'category.required'=>'الصنف مطلوب',
+            'category.numeric'=>'الصنف غير صالح',
+            'category.exists'=>'الصنف غير صالح',
             'price.required'=>'السعر مطلوب',
             'price.numeric'=>'السعر - ارقام فقط',
             'price.not_in'=>'السعر لا يمكن ان يكون صفر',

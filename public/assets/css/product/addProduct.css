@@ -20,7 +20,7 @@ form > div {
     width: 100px;
     align-items: center;
 }
-.container input , .container textarea{
+.container input , .container textarea , .container select{
     height: 30px;
     width: 80%;
     border-radius: 5px;

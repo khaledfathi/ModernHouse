@@ -14,6 +14,18 @@
     <div class="container">
         <div class="addProductDiv">
             <a href="{{ url('addproduct') }}">اضافة منتج</a>
+            <a href="{{ url('category') }}">الاصناف</a>
+            <div class="category">
+                <label for="">تصنيف</label>
+                <select name="category" id="">
+                    <option value="all">الكل</option>
+                    @if ($categories)
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    @endif
+                </select>
+            </div>
         </div>
         <div class="productsDiv d-flex">
             @if ($records)

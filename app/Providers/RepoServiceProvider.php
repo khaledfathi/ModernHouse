@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\CategoryRepo;
+use App\Repository\Contracts\CategoryRepoContract;
 use App\Repository\Contracts\CustomerRepoContract;
 use App\Repository\Contracts\ProductRepoContract;
 use App\Repository\Contracts\ProjectRepoContract;
@@ -23,6 +25,7 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(ProjectRepoContract::class , ProjectRepo::class); 
         $this->app->bind(TransactionRepoContract::class , TransactionRepo::class); 
         $this->app->bind(ProductRepoContract::class , ProductRepo::class); 
+        $this->app->bind(CategoryRepoContract::class , CategoryRepo::class); 
     }
 
     /**

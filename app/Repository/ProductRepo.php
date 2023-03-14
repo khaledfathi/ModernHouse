@@ -12,9 +12,10 @@ class ProductRepo implements ProductRepoContract{
     {
         return ProductModel::create([
             'name' => $request->name, 
+            'category_id'=>$request->category, 
             'description' => $request->description,             
-            'price'=> $request->price,
-            'quantity'=>$request->quantity,
+            'price'=> $request->price,            
+            'quantity'=>$request->quantity,            
             'image' => $request->image
         ]); 
     } 
@@ -44,8 +45,13 @@ class ProductRepo implements ProductRepoContract{
         $defaultImage = config('constants.defaultProductImagePath');
         $found = ProductModel::find($id);
         if ($found){
-            if ($found->image && ($found->image != $defaultImage) ){
-                File::delete(public_path($found->image)); 
+            $currentImage = $found->image; 
+            if ( $found->image && ($found->image != $defaultImage) && $data['image'] &&$currentImage != $data['image']){
+                File::delete(public_path($found->image));
+                return $found->update($data); 
+            }elseif(! $data['image']) {
+                $data['image'] = $currentImage; 
+                return $found->update($data); 
             }
             return $found->update($data); 
         }
