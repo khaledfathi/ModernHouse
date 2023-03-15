@@ -61,5 +61,7 @@ class DatabaseSeeder extends Seeder
                 'type'=>$type
             ]); 
         }
+
+        \App\Models\CategoryModel::create(['name'=>'غير مصنف']);
     }
 }

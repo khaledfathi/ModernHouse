@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repository\Contracts\CustomerRepoContract;
+use App\Repository\Contracts\ProductRepoContract;
 use App\Repository\Contracts\ProjectRepoContract;
 use Illuminate\Http\Request;
 
@@ -10,13 +11,16 @@ class SearchController extends Controller
 {
     private $customerProvider ; 
     private $projectProvider; 
+    private $productProvider; 
     public function __construct(
             CustomerRepoContract $customerProvider ,
             ProjectRepoContract $projectProvider ,
+            ProductRepoContract $productProvider
         )
     {
         $this->customerProvider = $customerProvider; 
         $this->projectProvider = $projectProvider; 
+        $this->productProvider = $productProvider; 
     }
     public function SearchPage(){
         return view('search.search'); 
@@ -67,11 +71,20 @@ class SearchController extends Controller
                     return back(); 
                     break; 
                 case 'product':
-                    // $data['searchFor']= 'product'; 
-                    return back(); 
+                    $data['searchFor']= 'product';
+                    switch($request->productSearchBy){
+                        case 'product_id':
+                            $records = $this->productProvider->GetById($request->find); 
+                            $data['records'] =$records;
+                            break; 
+                        case 'product_name':
+                            $records = $this->productProvider->GetByName($request->find); 
+                            $data['records'] =$records;
+                            break;
+                        } 
                     break;
                 default : 
-            }
+        }
 
             if($data['records']->count()){
                 return back()->with($data); 

@@ -45,7 +45,11 @@
                             @foreach ($categories as $category)
                                 <tr>
                                     <td>{{ $category->id }}</td>
-                                    <td>{{ $category->name }}</td>
+                                    @if($category->id == 1 )
+                                        <td style="color:red;font-weight:bold">{{ $category->name }}</td>
+                                    @else
+                                        <td>{{ $category->name }}</td>
+                                    @endif
                                     <td>
                                         <a href="{{ url('category/' . $category->id) }}">
                                             <img src="{{ url('assets/images/svg/edit_icon.svg') }}" alt="">

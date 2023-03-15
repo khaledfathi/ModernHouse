@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="container">
-        <form class="d-grid" action="{{url('find')}}" method="get">
+        <form class="d-grid" action="{{ url('find') }}" method="get">
             <div class="searchFor">
                 <div>
                     <label for="">بحث عن</label>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="searchBy">
-                <div >
+                <div>
                     <label for="">بحث بواسطة</label>
                     <select name="customerSearchBy" id="customerSearchBy">
                         {{-- customer --}}
@@ -33,24 +33,24 @@
                         <option value="customer_phone">التليفون</option>
                     </select>
 
-                        {{-- project --}}
+                    {{-- project --}}
                     <select hidden name="projectSearchBy" id="projectSearchBy">
-                        <option selected  value="project_id">رقم المشروع</option>
-                        <option  value="project_customer_name">اسم العميل</option>
-                        <option  value="project_customer_phone">تليفون العميل</option>
+                        <option selected value="project_id">رقم المشروع</option>
+                        <option value="project_customer_name">اسم العميل</option>
+                        <option value="project_customer_phone">تليفون العميل</option>
                     </select>
 
-                        {{-- Bill --}}
+                    {{-- Bill --}}
                     <select hidden name="billSearchBy" id="billSearchBy">
-                        <option selected  value="phone">رقم الفاتورة</option>
-                        <option  value="id">تليفون العميل</option>
-                        <option  value="phone">اسم العميل</option>
+                        <option selected value="phone">رقم الفاتورة</option>
+                        <option value="id">تليفون العميل</option>
+                        <option value="phone">اسم العميل</option>
                     </select>
 
-                        {{-- product --}}
+                    {{-- product --}}
                     <select hidden name="productSearchBy" id="productSearchBy">
-                        <option selected value="phone">رقم المنتج</option>
-                        <option value="phone">اسم المنتج</option>
+                        <option selected value="product_id">رقم المنتج</option>
+                        <option value="product_name">اسم المنتج</option>
                     </select>
                 </div>
             </div>
@@ -101,7 +101,9 @@
                                         @else
                                             <td></td>
                                         @endif
-                                        <td><a href="{{url('customer/'.$record->id)}}"><img class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}" alt="view_icon"></a></td>
+                                        <td><a href="{{ url('customer/' . $record->id) }}"><img
+                                                    class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}"
+                                                    alt="view_icon"></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -124,15 +126,17 @@
                             <tbody>
                                 @foreach (session('records') as $record)
                                     <tr>
-                                        <td width="5%">{{$record->id}}</td>
-                                        <td>{{$record->date}}</td>
-                                        <td>{{$record->name}}</td>
-                                        <td>{{$record->phone}}</td>
-                                        <td>{{$record->start_date}}</td>
-                                        <td>{{$record->end_date}}</td>
-                                        <td>{{$record->amount}}</td>
-                                        <td>{{$record->status}}</td>
-                                        <td><a href="{{url('project/'.$record->id)}}"><img class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}" alt="view_icon"></a></td>
+                                        <td width="5%">{{ $record->id }}</td>
+                                        <td>{{ $record->date }}</td>
+                                        <td>{{ $record->name }}</td>
+                                        <td>{{ $record->phone }}</td>
+                                        <td>{{ $record->start_date }}</td>
+                                        <td>{{ $record->end_date }}</td>
+                                        <td>{{ $record->amount }}</td>
+                                        <td>{{ $record->status }}</td>
+                                        <td><a href="{{ url('project/' . $record->id) }}"><img
+                                                    class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}"
+                                                    alt="view_icon"></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -146,7 +150,37 @@
                     @break
 
                     @case('product')
+                        <div class="productsDiv d-flex">
+                            @if (session('records'))
+                                @foreach (session('records') as $record)
+                                    <div class="product">
+                                        @if ($record->image)
+                                            <a href="{{ url('product/' . $record->id) }}"><img src="{{ asset($record->image) }}"
+                                                    alt="ProductImage"></a>
+                                        @else
+                                            <img href="{{ url('product/' . $record->id) }} "src="{{ asset('assets/images/default/default.jpg') }}"
+                                                alt="ProductImage">
+                                        @endif
+                                        <div class="productDataDiv">
+                                            @if ($record->quantity)
+                                                <p>ID : {{ $record->id }} - متاح: {{ $record->quantity }}</p>
+                                            @else
+                                                <p>ID : {{ $record->id }} - <span class="outOfStock"> غير متاح</span></p>
+                                            @endif
+
+                                            <p class="price">{{ $record->price }} جنية</p>                                           
+                                            <input type="hidden" value="{{ $record->category_id }}">
+                                            <a href="{{ url('product/' . $record->id) }}">
+                                                <img src="{{ asset('assets/images/svg/edit_icon.svg') }}" alt="edit_icon">
+                                            </a>
+                                     
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
                     @break
+
                 @endswitch
             @endif
             @if (session('noResult'))

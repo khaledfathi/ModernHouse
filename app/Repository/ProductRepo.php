@@ -27,6 +27,10 @@ class ProductRepo implements ProductRepoContract{
     {
         return ProductModel::where('id' , $id)->get(); 
     }
+    public function GetByName(string $name):object
+    {
+        return ProductModel::where('name' , $name)->get(); 
+    }
     public function GetByCategoryId(string $category_id):object
     {
         return ProductModel::where('category_id' , $category_id)->get(); 
@@ -45,7 +49,6 @@ class ProductRepo implements ProductRepoContract{
     }
     public function Update(array $data , string $id):bool
     {
-
         $defaultImage = config('constants.defaultProductImagePath');
         $found = ProductModel::find($id);
         if ($found){

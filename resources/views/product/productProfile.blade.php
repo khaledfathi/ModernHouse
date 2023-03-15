@@ -58,7 +58,6 @@
                 <input type="text" name="quantity" id="" value="{{ $record ? $record->quantity : null }}">
             </div>
             <div class="uploadSectionDiv">
-                {{-- <label for="">صورة</label> --}}
                 <div id="uploadButton" class="uploadButton">
                     <img src="{{ asset('assets/images/svg/upload_icon.svg') }}" alt="">
                 </div>
@@ -67,7 +66,10 @@
                 <img id="imagePreview" class="imagePreview" src="{{ url($record ? $record->image : '') }}"
                     alt="صورة المنتج">
             </div>
-            <input type="submit" value="تحديث">
+            <div>
+                <input type="submit" value="تحديث">
+                <button type="button">حذف</button>
+            </div>
         </form>
 
     </div>

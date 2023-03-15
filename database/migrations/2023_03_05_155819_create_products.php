@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
             //FK
             $table->foreignId('user_id')->nullable(true)->default(null)->references ('id')->on('users'); 
-            $table->foreignId('category_id')->nullable(false)->references ('id')->on('categories')->cascadeOnDelete(); 
+            $table->foreignId('category_id')->nullable(true)->references ('id')->on('categories')->onDelete('set null'); 
         });
     }
 

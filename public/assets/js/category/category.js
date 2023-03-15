@@ -5,8 +5,8 @@ for (let i of deleteButton){
   i.addEventListener('click' , ()=>{
     let deleteLink = i.parentElement.parentElement.childNodes[9].innerHTML; 
     Swal.fire({
-        title: 'حذف الصنف والمنتجات',
-        text: "سيتم حذف كل المنتجات تحت هذا التصنيف",
+        title: 'حذف الصنف ',
+        text: "سيتم نقل المنتجات تحت هذا الصنف الى غير مصنف",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
