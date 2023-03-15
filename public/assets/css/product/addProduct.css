@@ -77,3 +77,30 @@ form > div {
     padding: 10px 0px;
     text-align: center;
 }
+
+@media only screen and (max-width:845px){
+    .container{
+        width: 70%;
+    }
+    .uploadButton{
+        width: 50px;
+        height: 50px;
+    }
+    form > div{
+        display: block;
+        text-align: center;
+    }
+    form  input[type="text"] ,
+    form  select ,
+    form  textarea
+    {
+        width: 100% !important;
+    }
+    .imagePreview{
+        width: 100%;
+        height: 100%;
+        max-height: 200px;
+        margin: unset;
+    }    
+  
+}

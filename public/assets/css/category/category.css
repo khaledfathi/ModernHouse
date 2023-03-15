@@ -1,0 +1,114 @@
+
+/* #### Genereal ### */
+.newCategory,
+.allCategories{
+    width: 80%;
+    margin: 40px auto ;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px blue;
+    padding: 20px;
+}
+.error , .ok{
+    width: 85%;
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+    border-radius: 5px;
+    color: white;    
+}
+.error{
+    background-color: red;
+}
+.ok{
+    background-color: green;
+}
+/* ########## */
+
+/* ### New Category ### */
+.newCategory > * {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.newCategory .goToProductDiv a{
+    display: block;
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    margin: 20px;
+
+}
+form label{
+    display: inline-block;
+    width: 120px;
+}
+form input[type="text"]{
+    width: 80%;
+    height: 30px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 20px 0px;
+}
+form input[type="submit"]{
+    background-color: blue;
+    color:white; 
+    height: 40px;
+    width: 25%;
+    margin: 10px auto;
+    border: none;
+    border-radius: 5px;
+}
+
+/* ######### */
+
+/* ### all Category ### */
+.allCategories > * {
+    width: 100%;
+}
+
+.allCategories .resultDiv{
+    overflow: scroll;
+    min-height: 100px;
+    max-height: 400px ;
+}
+.allCategories table {
+    min-width: 600px;
+}
+.allCategories table thead {
+	background-color: lightblue;
+	position: sticky;
+	top: 0px;
+}
+.allCategories table td {
+	border-bottom: 1px solid blue;
+	text-align: center;
+    padding: 5px 0px;
+}
+.allCategories table a {
+    text-decoration: none;
+}
+.allCategories table img {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+@media only screen and (max-width:850px){
+    .newCategory * {
+        display: block;
+        text-align: center;
+        margin: auto; 
+    }
+    .newCategory input[type="text"]{
+        width: 90%;
+        margin: 10px auto;
+    }
+    .newCategory input[type="submit"]{
+        width: 50%;
+    }
+}
+/* ######### */

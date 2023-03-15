@@ -76,3 +76,21 @@
     width: 30px;
     height: 55px;
 }
+@media only screen and (max-width:480px){
+    .container {
+        margin: 10px;
+    }
+    .product {
+       height: 400px !important;
+    }
+    .productDataDiv{
+        position: initial;
+    }
+    .productsDiv > div{
+        width: 100%;
+        position: initial !important;
+        display: block; 
+    }
+
+    
+}

@@ -1,5 +1,8 @@
 const deleteButton = document.getElementsByClassName('deleteButton');  //select by class name
+const categorySelect = document.querySelector('#category'); 
+const product = document.getElementsByClassName('product'); //products
 
+//for deletebutton action 
 for (let i of deleteButton) {
     i.addEventListener('click', () => {
         Swal.fire({
@@ -19,3 +22,17 @@ for (let i of deleteButton) {
 
     });
 }
+
+
+//for classified products depend on its category when change the category select item 
+categorySelect.addEventListener('change' , ()=>{
+    for (let i of product){
+        if (categorySelect.value=='all'){
+            i.hidden=false ; 
+        }else{
+            //get category_id
+            productCategoryId = i.childNodes[3].childNodes[7].value; 
+            (productCategoryId == categorySelect.value)? i.hidden=false : i.hidden=true ; 
+        }
+    }   
+}); 

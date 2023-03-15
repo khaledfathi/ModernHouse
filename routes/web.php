@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
     route::get('category' , [CategoryController::class , 'CategoryPage']);
     route::get('newcategory' , [CategoryController::class , 'NewCategory']);
     route::get('categorydelete/{id}' , [CategoryController::class , 'DestroyCategory']);
-    route::get('categoryupdate/{id}' , [CategoryController::class , 'UpdateCategory']);
+    route::get('category/{id}' , [CategoryController::class , 'CategoryProfile']);
 
     Route::get('transaction' , [TransactionController::class , 'TransactionPage']);
 

@@ -27,6 +27,10 @@ class ProductRepo implements ProductRepoContract{
     {
         return ProductModel::where('id' , $id)->get(); 
     }
+    public function GetByCategoryId(string $category_id):object
+    {
+        return ProductModel::where('category_id' , $category_id)->get(); 
+    }
     public function Destroy(string $id):bool 
     {
         $found = ProductModel::find($id); 
