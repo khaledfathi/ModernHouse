@@ -46,7 +46,7 @@ class ProductController extends Controller
     public function DeleteProduct(Request $request)
     {
         $this->productProvider->Destroy($request->id); 
-        return back()->with(['ok'=>'تم حذف منتج رقم ( '.$request->id.' )']); 
+        return redirect('product')->with(['ok'=>'تم حذف منتج رقم ( '.$request->id.' )']); 
     } 
     public function  ProductProfile(Request $request)
     {

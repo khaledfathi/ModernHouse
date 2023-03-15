@@ -31,8 +31,7 @@
                 @foreach ($records as $record)
                     <div class="product">
                         @if ($record->image)
-                            <a href="{{ url('product/' . $record->id) }}"><img src="{{ asset($record->image) }}"
-                                    alt="ProductImage"></a>
+                            <img src="{{ asset($record->image) }}"alt="ProductImage">
                         @else
                             <img href="{{ url('product/' . $record->id) }} "src="{{ asset('assets/images/default/default.jpg') }}"
                                 alt="ProductImage">

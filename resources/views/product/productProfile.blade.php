@@ -5,7 +5,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/product/updateProduct.css') }}">
 @endsection
 @section('scripts')
+
+    <script src="{{ asset('assets/js/external/sweatAlert/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('assets/js/product/addProduct.js') }}"></script>
+    <script src="{{asset('assets/js/product/productProfile.js')}}"></script>
 @endsection
 
 
@@ -68,7 +71,8 @@
             </div>
             <div>
                 <input type="submit" value="تحديث">
-                <button type="button">حذف</button>
+                <button id="deleteButton" class="deleteButton" type="button">حذف</button>
+                <input id="deleteLink" type="hidden" value="{{url('productdelete/'.$record->id)}}">
             </div>
         </form>
 
