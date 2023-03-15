@@ -6,6 +6,7 @@ use App\Repository\Contracts\CategoryRepoContract;
 use App\Repository\Contracts\ProductRepoContract;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use App\Rules\CategoryNameOnUpdate; 
 
 class CategoryController extends Controller
 {
@@ -49,6 +50,22 @@ class CategoryController extends Controller
         return redirect('category')->withErrors('لم يتم العثور على هذا الصنف'); 
     }
     public function CategoryProfile (Request $request){
-        return $request->id; 
+        $record = $this->categoryProvider->GetById($request->id); 
+        if($record->count()){
+            $record = $record[0];
+        }else{
+            $record= null ; 
+        }
+        return view('category.categoryProfile' , ['record'=>$record]); 
+    }
+    public function UpdateCategory(Request $request){
+        $request->validate([
+            'name'=>['required', new CategoryNameOnUpdate('categories',$request->id)]
+        ],[
+            'name.required'=> 'اسم الصنف مطلوب',
+            'name.unique'=> 'اسم الصنف مسجل مسبقاً' 
+        ]);
+        $this->categoryProvider->Update(['name'=>$request->name], $request->id); 
+        return redirect('category')->with(['ok'=>'تم تحديث الصنف رقم ( '.$request->id.' )']); 
     }
 }

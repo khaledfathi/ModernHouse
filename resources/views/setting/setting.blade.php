@@ -18,5 +18,6 @@
     <p>change logo</p>
     <p>changeStyle(o)</p>
     <p>process monitoring</p>
+    <p>Manage All Tables</p>
 @endsection
     

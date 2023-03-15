@@ -9,6 +9,11 @@ class CategoryRepo implements CategoryRepoContract{
     {
         return CategoryModel::orderBy('id' , 'asc')->get(); 
     }
+    public function GetById(string $id):object
+    {
+        return  CategoryModel::where('id' , $id)->get(); 
+        
+    }
     public function Store(Request $request):CategoryModel
     {
         return CategoryModel::create([
@@ -20,6 +25,14 @@ class CategoryRepo implements CategoryRepoContract{
         $found = CategoryModel::find($id); 
         if ($found){
             return $found->delete(); 
+        }
+        return false ; 
+    }
+    public function Update(array $data , string $id):bool 
+    {
+        $found = CategoryModel::find($id); 
+        if ($found){
+           return $found->update($data); 
         }
         return false ; 
     }
