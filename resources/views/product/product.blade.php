@@ -15,7 +15,6 @@
             <a href="{{ url('addproduct') }}">اضافة منتج</a>
             <a href="{{ url('category') }}">الاصناف</a>
             <div class="category">
-                <label for="">تصنيف</label>
                 <select name="category" id="category">
                     <option value="all">الكل</option>
                     @if ($categories)

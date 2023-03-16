@@ -29,7 +29,7 @@ class ProductRepo implements ProductRepoContract{
     }
     public function GetByName(string $name):object
     {
-        return ProductModel::where('name' , $name)->get(); 
+        return ProductModel::where('name' , 'like' , '%'.$name.'%')->get(); 
     }
     public function GetByCategoryId(string $category_id):object
     {
