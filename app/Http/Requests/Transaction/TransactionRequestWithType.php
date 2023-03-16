@@ -27,6 +27,7 @@ class TransactionRequestWithType extends FormRequest
             'date' => 'required|date', 
             'time'=>'required|date_format:H:i',
             'amount'=>'required|numeric|not_in:0',
+            'documentImage'=>'nullable|mimes:jpeg,jpg,png,gif,webp,tif,tiff|max:10000', //max file size 10MB
             'transaction_type'=>'required|exists:transaction_types,id',
             'direction'=> [ 'required' , new Enum(PaymentDirection::class)],
 
@@ -41,6 +42,8 @@ class TransactionRequestWithType extends FormRequest
             'amount.required'=>'المبلغ مطلوب',
             'amount.numeric'=>'المبلغ - ارقام فقط', 
             'amount.not_in'=>'المبلغ لايمكن ان يكون صفر',
+            'documentImage'=>'الحد الاقصى للصورة 10 ميجابايت',
+            'mimes'=>'صيغة الملف غير مدعومة',
             'transaction_type.required'=>'نوع العميلة مطلوب',
             'transaction_type.exists'=>'نوع العملية غير صالح',
             'direction.required'=>'اتجاه العملية مطلوب',

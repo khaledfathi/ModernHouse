@@ -42,7 +42,7 @@ class ProductRequest extends FormRequest
             'quantity.required' => 'الكمية مطلوبة',
             'quantity.numeric'=> 'الكمية- ارقام فقط', 
             'image.mimes'=>'صيغة الصورة غير مدعومة',
-            'image.max' => 'الحد الاقصى لصورة 10 ميجابايت'
+            'image.max' => 'الحد الاقصى للصورة 10 ميجابايت'
         ]; 
     }
 }

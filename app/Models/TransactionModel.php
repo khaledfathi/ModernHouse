@@ -13,6 +13,7 @@ class TransactionModel extends Model
         'date', 
         'time', 
         'amount',
+        'document_image',
         'direction', 
         'details', 
         'details', 

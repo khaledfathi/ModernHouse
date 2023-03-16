@@ -29,7 +29,8 @@ class TransactionRepo implements TransactionRepoContract
         return TransactionModel::create([
             'user_id'=>auth()->user()->id,
             'transaction_type_id'=> $request->transaction_type,
-            'date' => $request->date, 
+            'date' => $request->date,
+            'document_image'=>$request->documentImage, 
             'time'=>$request->time,
             'amount'=>$request->amount, 
             'direction'=>$request->direction,

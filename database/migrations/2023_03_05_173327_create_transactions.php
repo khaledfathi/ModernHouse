@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->date('date')->nullable(false);
             $table->time('time')->nullable(false);
-            $table->bigInteger('amount')->nullable(false); 
+            $table->bigInteger('amount')->nullable(false);
+            $table->text('document_image')->nullable(true);
             $table->enum('direction' , ['deposit' , 'withdraw'])->nullable(true); 
             $table->text('details')->nullable(true); 
             $table->timestamps();
