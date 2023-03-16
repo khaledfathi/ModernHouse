@@ -1,6 +1,5 @@
 <?php 
 namespace App\Repository;
-use App\Enums\PaymentDirection;
 use App\Http\Requests\Transaction\TransactionRequest;
 use App\Http\Requests\Transaction\TransactionRequestWithType;
 use App\Models\TransactionModel;
@@ -10,7 +9,6 @@ use Illuminate\Support\Carbon;
 
 class TransactionRepo implements TransactionRepoContract 
 {
-
     public function StoreNewProjectPayment(TransactionRequest $request):TransactionModel
     {
         return TransactionModel::create([
@@ -49,6 +47,47 @@ class TransactionRepo implements TransactionRepoContract
     public function GetById(string $id):object
     {
         return TransactionModel::where('id' , $id)->get(); 
+    }
+    public function GetAllLimited():object{
+        return TransactionModel::whereNotIn('transaction_type_id' , config('constants.transaction_types_execlude'))->get(); 
+    } 
+    public function GetByIdLimited(string $id):object
+    {
+        return TransactionModel::leftJoin('transaction_types' , 'transaction_types.id' , '=' , 'transactions.transaction_type_id')->
+        where('transactions.id' , $id)->whereNotIn('transactions.transaction_type_id' , config('constants.transaction_types_execlude'))->
+        select('transactions.*' , 'transaction_types.type')->get();
+    }
+    public function GetByIdAndTypeLimited(string $id , string $transactionTypeId):object
+    {
+        return TransactionModel::where('id' , $id)->where('transaction_type_id' , $transactionTypeId)->whereNotIn('transaction_type_id' , config('constants.transaction_types_execlude'))->get(); 
+    }
+    public function GetByDateLimted (string $date):object
+    {
+        return TransactionModel::leftJoin('transaction_types' , 'transaction_types.id' , '=' , 'transactions.transaction_type_id')->
+        where('transactions.date' , $date)->whereNotIn('transactions.transaction_type_id' , config('constants.transaction_types_execlude'))->
+        select('transactions.*' , 'transaction_types.type')->orderBy('transactions.date' , 'desc')->get();
+    
+    }
+    
+    public function GetByDateAndTypeLimted (string $date , string $type):object
+    {
+        return TransactionModel::leftJoin('transaction_types' , 'transaction_types.id' , '=' , 'transactions.transaction_type_id')->
+        where('transactions.date' , $date)->where('transactions.transaction_type_id' , $type)->whereNotIn('transactions.transaction_type_id' , config('constants.transaction_types_execlude'))->
+        select('transactions.*' , 'transaction_types.type')->orderBy('transactions.date' , 'desc')->get();
+
+    }
+    public function GetByPeriodLimted(string $dateFrom , string $dateTo):object
+    {
+        return TransactionModel::leftJoin('transaction_types' , 'transaction_types.id' , '=' , 'transactions.transaction_type_id')->
+        whereBetween('transactions.date' , [$dateFrom , $dateTo])->whereNotIn('transactions.transaction_type_id' , config('constants.transaction_types_execlude'))->
+        select('transactions.*' , 'transaction_types.type')->orderBy('transactions.date' , 'desc')->get();
+}
+    public function GetByPeriodAndTypeLimted(string $dateFrom , string $dateTo , string $type):object
+    {
+         return TransactionModel::leftJoin('transaction_types' , 'transaction_types.id' , '=' , 'transactions.transaction_type_id')->
+        whereBetween('transactions.date' , [$dateFrom , $dateTo])->where('transactions.transaction_type_id' , $type)->whereNotIn('transactions.transaction_type_id' , config('constants.transaction_types_execlude'))->
+        select('transactions.*' , 'transaction_types.type')->orderBy('transactions.date' , 'desc')->get();
+       
     }
     public function GetByProjectId(string $id):object
     {

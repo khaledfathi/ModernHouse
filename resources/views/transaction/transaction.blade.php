@@ -12,13 +12,17 @@
 
 @section('content')
 <div class="container">
+    <div></div>
     <div>
+        <p>ERROR/OK</p>
+        <a href="{{url('transactionquery')}}">استعلام مالى</a>
         @if ($errors->any())
             @foreach ($errors->all() as $error) 
                 <p>- {{$error}}<br></p>
             @endforeach
+        @elseif(session('ok'))
+            <p>{{session('ok')}}</p>
         @endif
-        <p>ERROR/OK</p>
     </div>
     <div>
         <h3>رصيد اليوم ( {{$todayBalance}} ) جنية</h3>

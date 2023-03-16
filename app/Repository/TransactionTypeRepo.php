@@ -11,6 +11,11 @@ class TransactionTypeRepo implements TransactionTypeRepoContract
     {
         return TransactionTypeModel::get(); 
     }
+    public function GetAllLimited():object
+    {
+        return TransactionTypeModel::whereNotIn('id', config('constants.transaction_types_execlude'))->get(); 
+    } 
+
     public function GetWhereNotInList (array $list):object
     {
         return TransactionTypeModel::whereNotIn('id' , $list)->get(); 

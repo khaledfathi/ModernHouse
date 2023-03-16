@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\PaymentDirection;
 use App\Http\Requests\Transaction\TransactionRequestWithType;
 use App\Repository\Contracts\TransactionRepoContract;
 use App\Repository\Contracts\TransactionTypeRepoContract;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Enum;
 
 class TransactionController extends Controller
 {
@@ -43,6 +41,56 @@ class TransactionController extends Controller
         }
         //make record
         $record = $this->transactionProvider->StoreTransaction($request);
-        return back()->with(['ok'=>'تم حفظ معاملة مالية رقم ( '.$record.' )']); 
+        return back()->with(['ok'=>'تم حفظ معاملة مالية رقم ( '.$record->id.' )']); 
+    }
+    public function TransactionQueryPage(){
+        $transactionTypes = $this->transactionTypeProvider->GetAllLimited(); 
+        return view('transaction.transactionQuery', ['transactionTypes'=>$transactionTypes]);
+    }
+    public function QueryFind(Request $request)
+    {
+        $data = null; 
+        switch ($request->queryFor){
+            case 'byId':  
+                $data['queryFor'] = 'byId';
+                ($request->findById) ? $request->findById : $request->findById='' ;
+                $data['records'] = $this->transactionProvider->GetByIdLimited($request->findById);
+                break;
+            case 'byDate': 
+                $data['queryFor'] = 'byDate'; 
+                
+                //false for if 'all' seleceted
+                $request->transactionType = ($request->transactionType == 'all') ? false : $request->transactionType ; 
+                //prevent Date error from database
+                $request->findByDate = ($request->findByDate) ? $request->findByDate : '0000-00-00'; 
+                $request->findByToDate = ($request->findByToDate) ? $request->findByToDate : '0000-00-00'; 
+                
+                //if quey in period (from date and to  date)
+                if($request->has('period')){
+                     //is transaction type = spcific id ?
+                    if ($request->transactionType){
+                        $data['records']  = $this->transactionProvider->GetByPeriodAndTypeLimted($request->findByDate , $request->findByToDate , $request->transactionType);
+                    }else{                        
+                        $data['records']  = $this->transactionProvider->GetByPeriodLimted($request->findByDate , $request->findByToDate);
+                    }
+                }else {
+                    //is transaction type = spcific id ?
+                    if ($request->transactionType){
+                        $data['records'] = $this->transactionProvider->GetByDateAndTypeLimted($request->findByDate , $request->transactionType);  
+                    }else{                        
+                        $data['records'] = $this->transactionProvider->GetByDateLimted($request->findByDate); 
+                    }
+                }
+
+                break;
+            default : 
+                return back();  
+        }
+        if (isset($data['records'])){
+            if ($data['records']->count()){
+                return back()->with(['data'=>$data]); 
+            }
+        }
+        return back()->with(['noResults'=>'لم يتم العثور على نتائج']);
     }
 }

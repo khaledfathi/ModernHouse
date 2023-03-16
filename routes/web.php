@@ -72,7 +72,9 @@ Route::middleware(['auth'])->group(function () {
     route::get('categoryupdate' , [CategoryController::class , 'UpdateCategory']);
 
     Route::get('transaction' , [TransactionController::class , 'TransactionPage']);
-    Route::post('newtransaction' , [TransactionController::class , 'NewTransaction']); 
+    Route::post('newtransaction' , [TransactionController::class , 'NewTransaction']);
+    Route::get('transactionquery',[TransactionController::class , 'TransactionQueryPage']); 
+    Route::get('transactionfind' , [TransactionController::class , 'QueryFind']); 
 
     Route::get('report' , [ReportController::class , 'ReportPage']); 
 
