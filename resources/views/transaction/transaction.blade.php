@@ -68,9 +68,9 @@
 
             <div class="docImageBlock">
                 <button type="button" id="uploadDocButton">صورة مستند</button>
-                <input id="browseFile" hidden type="file" name="documentImage">
+                <input id="browseFile" hidden type="file" name="documentImage" >
                 <div class="docPreview">
-                    <img id="documentImage" src="" alt="Document Image">
+                    <img id="documentImage" src="{{url('assets/images/default/default.jpg')}}" alt="Document Image">
                 </div>
             </div>
 

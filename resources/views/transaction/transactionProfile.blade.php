@@ -71,7 +71,9 @@
             <button type="button" id="uploadDocButton">صورة مستند</button>
             <input id="browseFile" hidden type="file" name="documentImage">
             <div class="docPreview">
-                <img id="documentImage" src="{{($record) ? asset($record->document_image) : null}}" alt="Document Image">
+                @if ($record)
+                    <img id="documentImage" src="{{($record->document_image) ? asset($record->document_image) : asset('assets/images/default/default.jpg')}}" alt="Document Image">
+                @endif 
             </div>
         </div>
 
