@@ -15,7 +15,9 @@
             <div class="errorOkDiv">
                 @if ($errors->any())
                     <p class="error">{{ $errors->first() }}</p>
-                @endif
+                @elseif(session('ok'))
+                    <p class="ok">{{ session('ok') }}</p>
+                @endif 
             </div>
 
             <form action="{{ url('transactionfind') }}" method="get">

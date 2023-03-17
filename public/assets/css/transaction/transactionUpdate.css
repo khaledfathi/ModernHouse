@@ -1,0 +1,7 @@
+.buttonBlock{
+    display: flex;
+}
+.deleteButton{
+    background-color: red;
+    border: none;
+}

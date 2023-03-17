@@ -7,7 +7,6 @@
     <script src="{{ asset('assets/js/product/addProduct.js') }}"></script>
 @endsection
 
-
 @section('content')
     <div class="container">
         <div>
@@ -54,7 +53,7 @@
                 </div>
                 <input type="file" accept=".jpeg,.jpg,.png,.WebP,.tif,.tiff" name="image" id="image"
                     style="display:none">
-                <img id="imagePreview" class="imagePreview" src="" alt="صورة المنتج">
+                <img id="imagePreview" class="imagePreview" src="{{url('assets/images/default/default.jpg')}}" alt="">
             </div>
             <input type="submit" value="حفظ">
         </form>

@@ -105,7 +105,9 @@ class TransactionController extends Controller
         return view('transaction.transactionProfile' , ['record'=>$record , 'transactionTypes'=>$transactionTypes]); 
     }
     public function DestroyTransaction (Request $request){
-        $this->transactionProvider->Destroy($request->id);
+        if ($this->transactionProvider->Destroy($request->id)){
+            return redirect('transactionquery')->with(['ok'=>'تم حذف معاملة مالية رقم ( '.$request->id.' )']);  
+        };
         return redirect('transactionquery');  
     }
     public function UpdateTransaction(TransactionRequestWithType $request){

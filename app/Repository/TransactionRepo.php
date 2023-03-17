@@ -42,7 +42,7 @@ class TransactionRepo implements TransactionRepoContract
     }
     public function GetTodayBalance():int
     {
-        return TransactionModel::where('date' , Carbon::now()->format('y-m-d'))->sum('amount') ; 
+        return TransactionModel::where('date' , Carbon::now()->setTimeZone('Africa/Cairo')->format('y-m-d'))->sum('amount') ; 
     }
     public function GetById(string $id):object
     {

@@ -2,9 +2,12 @@
 @section('title', 'تحديث معاملة مالية')
 @section('links')
     <link rel="stylesheet" href="{{ asset('assets/css/transaction/transaction.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/transaction/transactionUpdate.css') }}">
+    
 @endsection
 @section('scripts')
-    <script src= "{{url('assets/js/transaction/transactionsUpdate.js')}}"></script>
+    <script src= "{{asset('assets/js/transaction/transactionsUpdate.js')}}"></script>
+    <script src= "{{asset('assets/js/external/sweatAlert/sweetalert2.all.min.js')}}"></script>
 @endsection
 
 @section('content')
@@ -84,8 +87,8 @@
 
         <div class="buttonBlock">
             <input type="submit" value="تحدث">
-            <input type="submit" value="حذف">
-            <input type="hidden" value="{{($record) ? url('transactiondelete/'.$record->id) : null}}">
+            <input class="deleteButton" type="button" value="حذف" id="deleteButton">
+            <input type="hidden" value="{{($record) ? url('transactiondelete/'.$record->id) : null}}" id="deleteLink">
         </div>
     </form>
 </div>
