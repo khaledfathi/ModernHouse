@@ -1,0 +1,120 @@
+/* ### Container ### */
+.container {
+	width: 80%;
+	padding: 30px;
+	margin: 50px auto;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px blue;
+}
+.errorOkDiv{
+    grid-column: 1 / span 12;
+}
+.errorOkDiv a{
+    text-decoration: none;
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+.balanceDiv{
+    grid-column: 1 / span 12;
+    grid-row: 2 ;
+}
+form{
+    grid-column: 1 / span 12;
+    grid-row: 3 ;
+}
+.error , .ok{
+    color: white;
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    width: 85%;
+}
+.error{
+    background-color: red;
+}
+.ok{
+   background-color: green; 
+}
+/* ############### */
+
+/* ### Form ### */
+/* grid */
+.dateAndTimeBlock{
+    grid-column: 1 / sapn 6;
+    grid-row: 1;
+    width: 50%;
+}
+.transactionProcessBlock{
+    grid-column: 7 / sapn 6;
+    grid-row: 1;
+}
+.docImageBlock{
+    grid-column: 1 / sapn 6;
+    grid-row: 2;
+    width: 50%;
+}
+.detailsBlock{
+    grid-column: 7 / sapn 6;
+    grid-row: 2;
+    display:flex; 
+    align-items: center;
+}
+.buttonBlock{
+    grid-column: 1 / sapn 12;
+    grid-row: 3;
+}
+/* end grid */
+
+/* other */
+form label{
+    display: inline-block;
+    width :80px ; 
+}
+form input , form textarea , form select{
+    border: 1px solid blue;
+    border-radius: 5px;
+    height: 30px;
+    width: 70%;
+    margin: 10px 5px;
+}
+form textarea {
+    height: 100px;
+    resize:none;
+}
+.buttonBlock > * {
+    display: block;
+    margin: 40px auto 10px;
+    width: 30%;
+    height: 40px;
+    background-color: blue;
+    color: white;
+}
+form .transactionTypeDiv > * {
+    width: inherit;
+    height: inherit;
+}
+
+form .transactionTypeDiv label{
+    margin-left: 30px;
+
+}
+form .transactionTypeDiv label:first-child{
+    margin: 0px;
+    width: 80px;
+}
+.docPreview img{
+	width: 80%;
+	display: block;
+	margin: 10px auto;
+	border-radius: 10px;
+}
+/* end other */
+/* ############ */

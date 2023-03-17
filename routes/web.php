@@ -75,6 +75,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('newtransaction' , [TransactionController::class , 'NewTransaction']);
     Route::get('transactionquery',[TransactionController::class , 'TransactionQueryPage']); 
     Route::get('transactionfind' , [TransactionController::class , 'QueryFind']); 
+    Route::get('transaction/{id}' , [TransactionController::class , 'TransactionProfile']);
+    Route::post('transactionupdate', [TransactionController::class , 'UpdateTransaction']);
+    Route::get('transactiondelete/{id}', [TransactionController::class , 'DestroyTransaction']);
+
+
 
     Route::get('report' , [ReportController::class , 'ReportPage']); 
 

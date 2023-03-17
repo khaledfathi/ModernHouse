@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Transaction\TransactionRequest;
 use App\Http\Requests\Transaction\TransactionRequestWithType;
 use App\Repository\Contracts\TransactionRepoContract;
 use App\Repository\Contracts\TransactionTypeRepoContract;
@@ -34,10 +35,13 @@ class TransactionController extends Controller
             $file->move(public_path($path) , $imageName);
             $request->documentImage = $path.'/'.$imageName ;  
         }
-
-        //convert to negtaive numbe in withdraw case
+        /*
+        convert to negtaive numbe in withdraw case,
+        and make all transaction mark as withdraw except unclassified case
+        */
         if ($request->direction == 'withdraw' || $request->transaction_type > 1 ){
             $request->amount = $request->amount * -1 ;
+            $request->direction ='withdraw'; 
         }
         //make record
         $record = $this->transactionProvider->StoreTransaction($request);
@@ -58,7 +62,6 @@ class TransactionController extends Controller
                 break;
             case 'byDate': 
                 $data['queryFor'] = 'byDate'; 
-                
                 //false for if 'all' seleceted
                 $request->transactionType = ($request->transactionType == 'all') ? false : $request->transactionType ; 
                 //prevent Date error from database
@@ -67,6 +70,8 @@ class TransactionController extends Controller
                 
                 //if quey in period (from date and to  date)
                 if($request->has('period')){
+                    $request->validate(['findByDate'=>'nullable|date'],['findByDate.date'=>'صيغة التاريخ غير صالحة']);
+                    $request->validate(['findByToDate'=>'nullable|date'],['findByToDate.date'=>'صيغة التاريخ غير صالحة']);
                      //is transaction type = spcific id ?
                     if ($request->transactionType){
                         $data['records']  = $this->transactionProvider->GetByPeriodAndTypeLimted($request->findByDate , $request->findByToDate , $request->transactionType);
@@ -74,6 +79,7 @@ class TransactionController extends Controller
                         $data['records']  = $this->transactionProvider->GetByPeriodLimted($request->findByDate , $request->findByToDate);
                     }
                 }else {
+                    $request->validate(['findByDate'=>'nullable|date'],['findByDate.date'=>'صيغة التاريخ غير صالحة']);
                     //is transaction type = spcific id ?
                     if ($request->transactionType){
                         $data['records'] = $this->transactionProvider->GetByDateAndTypeLimted($request->findByDate , $request->transactionType);  
@@ -81,7 +87,6 @@ class TransactionController extends Controller
                         $data['records'] = $this->transactionProvider->GetByDateLimted($request->findByDate); 
                     }
                 }
-
                 break;
             default : 
                 return back();  
@@ -92,5 +97,36 @@ class TransactionController extends Controller
             }
         }
         return back()->with(['noResults'=>'لم يتم العثور على نتائج']);
+    }
+    public function TransactionProfile(Request $request){
+        $record = $this->transactionProvider->GetByIdLimited($request->id); 
+        $transactionTypes = $this->transactionTypeProvider->GetAllLimited(); 
+        ($record->count()) ? $record = $record[0] : $record = null; 
+        return view('transaction.transactionProfile' , ['record'=>$record , 'transactionTypes'=>$transactionTypes]); 
+    }
+    public function DestroyTransaction (Request $request){
+        $this->transactionProvider->Destroy($request->id);
+        return redirect('transactionquery');  
+    }
+    public function UpdateTransaction(TransactionRequestWithType $request){
+        /*
+        convert to negtaive numbe in withdraw case,
+        and make all transaction mark as withdraw except unclassified case
+        */
+        if ($request->direction == 'withdraw' || $request->transaction_type > 1 ){
+            $request->amount = $request->amount * -1 ;
+            $request->direction ='withdraw'; 
+        }
+        $data = [
+            'date'=>$request->date, 
+            'time'=>$request->time, 
+            'amount'=>$request->amount,
+            // 'document_image'=>$request->documentImage,
+            'direction'=>$request->direction,
+            'details'=>$request->details,
+            'transaction_type_id'=>$request->transaction_type
+        ];
+        $this->transactionProvider->Update($data , $request->id); 
+        return back()->with(['ok'=>'تم تحديث معاملة مالية رقم ( '.$request->id.' )']); 
     }
 }

@@ -1,0 +1,148 @@
+/* ### Container ### */
+.container {
+    display: flex;
+    flex-direction: column;
+	width: 80%;
+	padding: 30px;
+	margin: 50px auto;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px blue;
+}
+.backToTransactionButton{
+    text-decoration: none;
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+.errorOkDiv{
+    grid-column: 1 / span 12;
+}
+.errorOkDiv a{
+    text-decoration: none;
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+.error {
+    background-color: red;
+    color: white;
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    width: 85%;
+}
+/* ############### */
+
+/* ### form ### */
+form {
+    display: flex;
+    flex-direction: column;
+}
+form input[type="submit"]{
+    width: 100px;
+    font-size: 13pt;
+    height: 40px;
+    background-color: blue;
+    color: white;
+    border: none ;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+
+/* General ********** */
+form .findBlock .queryByDateDiv input[type="date"],
+form .findBlock .queryByIdDiv input[name="findById"]{
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 0px 10px;
+    height: 30px;
+}
+/* end General ********** */
+
+/* queryForBlock */
+form .queryForBlock{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+}
+form .queryForBlock label{
+    margin-left: 10px; 
+    line-height: 30px;
+}
+form .queryForBlock select {
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 0px 10px;
+    width: 20vw;
+    height: 30px;
+}
+/* End queryForBlock */
+
+/* FindBlock */
+form .findBlock .queryByIdDiv{
+    display: flex;
+    justify-content: center;
+}
+
+form .findBlock .queryByIdDiv input[name="findById"]{
+    width:40%;
+}
+form .findBlock .queryByDateDiv{
+    /* display will change to flex by javascript */
+    display: none; 
+    justify-content: center;
+}
+
+form .findBlock .queryByDateDiv input[type='date']{
+    width: 20vw;
+}
+form .findBlock .queryByDateDiv label{
+    line-height: 30px;
+}
+/* End FindBlock */
+/* ############ */
+
+
+/* ### Results ### */
+.results {
+	overflow: scroll;
+	max-height: 400px;
+	min-height: 30px;
+}
+.results table {
+    width: 100%;
+    min-width: 700px;
+}
+.results td {
+	border-bottom: 1px solid blue;
+	text-align: center;
+	white-space: pre;
+}
+.results thead {
+	background-color: lightblue;
+	position: sticky;
+	top: 0px;
+}
+.results .docImage{
+    width: 100px;
+    height:100px ;
+}
+.results a {
+    text-decoration: none;
+}
+.results .inTableIcon {
+	width: 30px;
+}
+
+/* ############### */

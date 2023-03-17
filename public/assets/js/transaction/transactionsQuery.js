@@ -7,12 +7,12 @@ const transactionTypeList = document.querySelector('#transactionTypeList');
 
 queryFor.addEventListener('change' , ()=>{
     if(queryFor.value == 'byId'){
-        queryByIdDiv.hidden=false; 
-        queryBydateDiv.hidden=true;
+        queryByIdDiv.style.display='flex'; 
+        queryBydateDiv.style.display='none';
         transactionTypeList.hidden=true ; 
     }else if(queryFor.value == 'byDate'){
-        queryByIdDiv.hidden=true; 
-        queryBydateDiv.hidden=false;
+        queryByIdDiv.style.display='none'; 
+        queryBydateDiv.style.display='flex';
         transactionTypeList.hidden=false ; 
     }
     periodCheck.checked=false;
