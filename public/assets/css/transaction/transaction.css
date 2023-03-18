@@ -2,7 +2,7 @@
 .container {
 	width: 80%;
 	padding: 30px;
-	margin: 50px auto;
+	margin: 50px auto 150px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px blue;
 }
@@ -19,6 +19,9 @@
     background-color: blue;
     color: white;
     border-radius: 5px;
+}
+.readOnly{
+    background-color: lightblue ;
 }
 .balanceDiv{
     grid-column: 1 / span 12;
@@ -117,4 +120,76 @@ form .transactionTypeDiv label:first-child{
 	border-radius: 10px;
 }
 /* end other */
+/* ############ */
+
+/* #### Responsive #### */
+@media only screen and (max-width:950px){
+    /* grid */
+    .dateAndTimeBlock,
+    .transactionProcessBlock,
+    .docImageBlock,
+    .buttonBlock{
+        width:90%;
+    }
+    .dateAndTimeBlock{
+        grid-column: 1 / sapn 12;
+        grid-row: 1;
+    }
+    .transactionProcessBlock{
+        grid-column: 1 / sapn 12;
+        grid-row: 2;
+    }
+    .docImageBlock{
+        grid-column: 1 / sapn 12;
+        grid-row: 3;
+    }
+    .detailsBlock{
+        grid-column: 1 / sapn 12;
+        grid-row: 4;
+        display:flex; 
+        align-items: center;
+    }
+    .buttonBlock{
+        grid-column: 1 / sapn 12;
+        grid-row: 5;
+    }
+    .docPreview img{
+        width: 50%;
+    }
+    /* end grid */ 
+}
+
+@media only screen and (max-width:480px){
+    /* grid */
+    .dateAndTimeBlock,
+    .transactionProcessBlock,
+    .docImageBlock,
+    .buttonBlock{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    } 
+    form label {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    form input , form select , form textarea{
+        width: 100%;
+    }
+    .detailsBlock{
+        display: block;
+    }
+    .transactionTypeDiv *{
+        display: inline-block;
+        margin: 20px 0px ;
+    }
+    .transactionTypeDiv label{
+        margin-left:20px ;
+    }
+    .docPreview img{
+        width: 100%;
+    }
+    /* end grid */ 
+}
 /* ############ */

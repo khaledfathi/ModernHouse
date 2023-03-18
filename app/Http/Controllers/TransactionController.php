@@ -7,6 +7,7 @@ use App\Http\Requests\Transaction\TransactionRequestWithType;
 use App\Repository\Contracts\TransactionRepoContract;
 use App\Repository\Contracts\TransactionTypeRepoContract;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class TransactionController extends Controller
 {
@@ -105,7 +106,13 @@ class TransactionController extends Controller
         return view('transaction.transactionProfile' , ['record'=>$record , 'transactionTypes'=>$transactionTypes]); 
     }
     public function DestroyTransaction (Request $request){
-        if ($this->transactionProvider->Destroy($request->id)){
+
+        $record =  $this->transactionProvider->GetByIdLimited($request->id); 
+        if ($record->count()){
+            //perpare 'document image's path to delete
+            $imagePath = $record[0]->document_image; 
+            ($imagePath)? File::delete(public_path($imagePath)) : null ;  
+            $this->transactionProvider->Destroy($request->id); 
             return redirect('transactionquery')->with(['ok'=>'تم حذف معاملة مالية رقم ( '.$request->id.' )']);  
         };
         return redirect('transactionquery');  
@@ -128,6 +135,26 @@ class TransactionController extends Controller
             'details'=>$request->details,
             'transaction_type_id'=>$request->transaction_type
         ];
+        //perpare old 'document image's path to delete
+        $record =  $this->transactionProvider->GetByIdLimited($request->id); 
+        $imagePath = $record[0]->document_image; 
+        if ($imagePath){
+            //delete old document image 
+            File::delete(public_path($imagePath)) ;
+            //save document image file 
+            $file = $request->file('documentImage'); 
+            $path= 'assets/upload/DocumentsImages'; 
+            $imageName = time().'.'.$file->extension(); 
+            $file->move(public_path($path) , $imageName);
+            $data['document_image'] = $path.'/'.$imageName ; 
+        }else {
+            $file = $request->file('documentImage'); 
+            $path= 'assets/upload/DocumentsImages'; 
+            $imageName = time().'.'.$file->extension(); 
+            $file->move(public_path($path) , $imageName);
+            $data['document_image'] = $path.'/'.$imageName ;
+        }
+
         $this->transactionProvider->Update($data , $request->id); 
         return back()->with(['ok'=>'تم تحديث معاملة مالية رقم ( '.$request->id.' )']); 
     }

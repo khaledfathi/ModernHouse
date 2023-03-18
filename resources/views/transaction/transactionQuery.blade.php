@@ -10,14 +10,14 @@
 
 @section('content')
     <div class="container d-flex">
-        <a class="backToTransactionButton" href="{{url('transaction')}}">عودة للماليات</a>
+        <a class="backToTransactionButton" href="{{ url('transaction') }}">عودة للماليات</a>
         <div class="query">
             <div class="errorOkDiv">
                 @if ($errors->any())
                     <p class="error">{{ $errors->first() }}</p>
                 @elseif(session('ok'))
                     <p class="ok">{{ session('ok') }}</p>
-                @endif 
+                @endif
             </div>
 
             <form action="{{ url('transactionfind') }}" method="get">
@@ -27,7 +27,7 @@
                         <option value="byId" selected>رقم العملية</option>
                         <option value="byDate">تاريخ العملية</option>
                     </select>
-                    <div hidden id="transactionTypeList">
+                    <div hidden class="transactionTypeList" id="transactionTypeList">
                         <label for="">نوع العملية</label>
                         <select name="transactionType" id="">
                             <option selected value="all">الكل</option>
@@ -44,8 +44,10 @@
                     </div>
 
                     <div class="queryByDateDiv" id="queryByDateDiv">
-                        <input type="checkbox" name="period" id="periodCheck">
-                        <label for="periodCheck">مدة</label>
+                        <div class="checkBoxDiv">
+                            <input type="checkbox" name="period" id="periodCheck">
+                            <label  for="periodCheck">مدة</label>
+                        </div>
                         <div>
                             <input type="date" name="findByDate">
                         </div>
@@ -88,12 +90,14 @@
                                 @endif
                                 <td>{{ abs($record->amount) }}</td>
                                 @if ($record->document_image)
-                                    <td><img class="docImage" src="{{ asset($record->document_image) }}" alt="DocImage"></td>
+                                    <td><img class="docImage" src="{{ asset($record->document_image) }}" alt="DocImage">
+                                    </td>
                                 @else
                                     <td></td>
                                 @endif
                                 <td>{{ $record->details }}</td>
-                                <td><a href="{{ url('transaction/' . $record->id) }}"><img class="inTableIcon" src="{{asset('assets/images/svg/view_icon.svg')}}" alt=""></a></td>
+                                <td><a href="{{ url('transaction/' . $record->id) }}"><img class="inTableIcon"
+                                            src="{{ asset('assets/images/svg/view_icon.svg') }}" alt=""></a></td>
                             </tr>
                         @endforeach
                     </tbody>
