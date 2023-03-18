@@ -130,7 +130,6 @@ class TransactionController extends Controller
             'date'=>$request->date, 
             'time'=>$request->time, 
             'amount'=>$request->amount,
-            // 'document_image'=>$request->documentImage,
             'direction'=>$request->direction,
             'details'=>$request->details,
             'transaction_type_id'=>$request->transaction_type
@@ -138,7 +137,7 @@ class TransactionController extends Controller
         //perpare old 'document image's path to delete
         $record =  $this->transactionProvider->GetByIdLimited($request->id); 
         $imagePath = $record[0]->document_image; 
-        if ($imagePath){
+        if ($imagePath && $request->has('documentImage')){
             //delete old document image 
             File::delete(public_path($imagePath)) ;
             //save document image file 
@@ -147,7 +146,7 @@ class TransactionController extends Controller
             $imageName = time().'.'.$file->extension(); 
             $file->move(public_path($path) , $imageName);
             $data['document_image'] = $path.'/'.$imageName ; 
-        }else {
+        }else if ($request->has('documentImage')){
             $file = $request->file('documentImage'); 
             $path= 'assets/upload/DocumentsImages'; 
             $imageName = time().'.'.$file->extension(); 

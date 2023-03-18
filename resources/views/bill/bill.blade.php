@@ -34,7 +34,7 @@
             <label for=""> رقم المنتج</label>
             <input type="text">
             <label for="">الكمية</label>
-            <input type="text">
+            <input type="number">
         </div>
         <div>
             <input type="submit" value="تسجيل">
