@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_name',100)->nullable(true); 
+            $table->string('customer_name',100)->nullable(false); 
+            $table->string('customer_phone',100)->nullable(false); 
             $table->date('date')->nullable(false);
             $table->time('time')->nullable(false);
             $table->enum('status',['ok', 'returned'])->nullable(false);

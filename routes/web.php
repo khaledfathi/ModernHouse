@@ -56,7 +56,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('projectdelete/{id}' , [ProjectController::class , 'DeleteProject']); 
     Route::get('projectupdate' , [ProjectController::class , 'UpdateProject']); 
 
-    Route::get('bill' , [BillController::class , 'BillPage']); 
+    Route::get('bill' , [BillController::class , 'BillPage']);
+    Route::get('newbill' , [BillController::class , 'NewBill']);
+    //For Ajax
+    Route::get('bill/getcustomerbyphone' , [BillController::class , 'AjaxGetCustomerByPhone']);
+
 
     Route::get('product' , [ProductController::class , 'ProductPage']); 
     Route::get('product/{id}' , [ProductController::class , 'ProductProfile']); 
@@ -78,7 +82,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('transaction/{id}' , [TransactionController::class , 'TransactionProfile']);
     Route::post('transactionupdate', [TransactionController::class , 'UpdateTransaction']);
     Route::get('transactiondelete/{id}', [TransactionController::class , 'DestroyTransaction']);
-
 
 
     Route::get('report' , [ReportController::class , 'ReportPage']); 

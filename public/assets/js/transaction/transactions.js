@@ -8,7 +8,7 @@ const uploadDocButton = document.querySelector('#uploadDocButton');
 const browseFile = document.querySelector('#browseFile');
 const documentImage = document.querySelector('#documentImage');
 
-//get current datee
+//get current date
 function currentDate(){
     const now = new Date(); 
     var day = ("0" + now.getDate()).slice(-2);
