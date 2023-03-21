@@ -1,6 +1,7 @@
 
-
+/* General */
 .container{
+    width: 80%; 
     margin: 40px auto;
     border: 1px solid black;
     padding: 20px;
@@ -14,7 +15,7 @@
     grid-column: 7 / span 6;
     grid-row: 1;
 }
-table{
+.resultDiv{
     grid-column: 1 / span 12;
     grid-row: 2;
 }
@@ -27,12 +28,20 @@ table{
     grid-column: 1 / span 12;
     grid-row: 4;
 }
+/* end General */
+
+/* resultDiv */
+.resultDiv{
+    overflow: scroll;
+}
+/* end resultDiv */
 
 /* table */
 table{
      width: 80%;
+     min-width: 700px;
      margin: 30px 0px;
-     text-align: center;
+     text-align: center;     
 }
 table thead {
     background-color: lightblue;
@@ -42,15 +51,59 @@ table td{
 }
 /* end table */
 
+/* totalInvoice  */
+.totalInvoice {
+    font-weight: bold;
+}
+/* end totalInvoice  */
 
-@media print {
+/* printButton */
+.printButton{
+    margin: 20px;
+    width: 120px;
+    height: 40px;
+    background-color: blue;    
+    color:white;
+    border: none;
+    border-radius: 5px;
+    font-size: 13pt;
+}
+/* end printButton */
+
+/* media query */
+@media only  print {
     nav{
         display: none !important;
     }
     .printButton{
         display: none;
     }
-    .totalInvoice {
-        font-weight: bold;
+    table{
+        min-width: fit-content;
     }
 }
+
+
+@media only screen and (max-width:480px) {
+    .blockA{
+        grid-column: 1 / span 12;
+        grid-row: 1;
+    }
+    
+    .blockB{
+        grid-column: 1 / span 12;
+        grid-row: 2;
+    }
+    .resultDiv{
+        grid-row: 3;
+    }
+    
+    .totalInvoice{
+        grid-row: 4;
+    }
+    .printButton{
+        grid-row: 5;
+    }
+    /* end General */
+}
+/* end media query */

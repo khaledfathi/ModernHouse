@@ -18,24 +18,26 @@
             <p> عميل : {{ $fullBill[0]->customer_name }}</p>
             <p> تليفون : {{ $fullBill[0]->customer_phone }}</p>
         </div>
-        <table>
-            <thead>
-                <th>المنتج</th>
-                <th width="20%">الكمية</th>
-                <th width="20%">سعر القطعة</th>
-                <th width="20%">الاجمالى</th>
-            </thead>
-            <tbody>
-                @foreach ($fullBill as $product)
-                    <tr>
-                        <td>{{ $product->product_name }}</td>
-                        <td>{{ $product->quantity }}</td>
-                        <td>{{ $product->price }}</td>
-                        <td>{{ $product->total }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="resultDiv">
+            <table>
+                <thead>
+                    <th>المنتج</th>
+                    <th width="20%">الكمية</th>
+                    <th width="20%">سعر القطعة</th>
+                    <th width="20%">الاجمالى</th>
+                </thead>
+                <tbody>
+                    @foreach ($fullBill as $product)
+                        <tr>
+                            <td>{{ $product->product_name }}</td>
+                            <td>{{ $product->quantity }}</td>
+                            <td>{{ $product->price }}</td>
+                            <td>{{ $product->total }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         <p class="totalInvoice">اجمالى قيمة الفاتورة : {{ $totalInvoice }}</p>
         <button class="printButton" onclick="window.print()">طابعة الفاتورة</button>
     </div>

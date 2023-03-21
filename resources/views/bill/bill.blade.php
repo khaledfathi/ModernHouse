@@ -4,45 +4,54 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bill/bill.css') }}">
 @endsection
 @section('scripts')
-    <script src="{{asset('assets/js/bill/bill.js')}}"></script>
+    <script src="{{ asset('assets/js/bill/bill.js') }}"></script>
 @endsection
 @section('activeBill', 'active')
 
 @section('content')
     <div class="container">
         <div>
+            <p>ERROR/OK</p>
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
-                    <p>{{$error}}</p>
+                    <p>{{ $error }}</p>
                 @endforeach
             @endif
         </div>
-        <form action="{{url('newbill')}}" , method="get">
+        <form class="d-grid" action="{{ url('newbill') }}" , method="get">
             @csrf
-            <div>
-                <label for="">التاريخ</label>
-                <input type="date" id="date" name="date">
+            <div class="dateTimeBlock">
+                <div>
+                    <label for="">التاريخ</label>
+                    <input type="date" id="date" name="date">
+                </div>
+                <div>
+                    <label for="">الوقت</label>
+                    <input type="time" id="time" name="time">
+                </div>
             </div>
-            <div>
-                <label for="">الوقت</label>
-                <input type="time" id="time" name="time">
+
+            <div class="customrBlock">
+                <div>
+                    <input type="checkbox" name="existCustomerCheck" id="existCustomerCheck">
+                    <label for="existCustomerCheck">عميل مسجل</label>
+                    <input type="checkbox" name="newCustomerCheck" id="newCustomerCheck">
+                    <label for="newCustomerCheck">عميل جديد</label>
+                </div>
+                <div>
+                    <label for="">العميل</label>
+                    <input type="text" name="customerName" id="customerNameInput">
+                </div>
+                <div>
+                    <label for="">تليفون</label>
+                    <input type="text" name="customerPhone" id="customerPhoneInput">
+                    <img src="{{ asset('assets/images/svg/exist_error_icon.svg') }}" alt="" width=25px
+                        id="phoneExistIcon" hidden>
+                </div>
             </div>
-            <div>
-                <input type="checkbox" name="existCustomerCheck" id="existCustomerCheck" >
-                <label for="existCustomerCheck">عميل مسجل</label>
-                <input type="checkbox" name="newCustomerCheck" id="newCustomerCheck">
-                <label for="newCustomerCheck">عميل جديد</label>
-            </div>
-            <div>
-                <label for="">العميل</label>
-                <input type="text" name="customerName" id="customerNameInput">
-            </div>
-            <div>
-                <label for="">تليفون</label>
-                <input type="text" name="customerPhone" id="customerPhoneInput">
-                <img src="{{asset('assets/images/svg/exist_error_icon.svg')}}" alt="" width=25px id="phoneExistIcon" hidden>
-            </div>
-            <div id="productParentDiv">
+
+
+            <div id="productParentDiv" class="productParentDivBlock">
                 <div id="productBlock" hidden>
                     <label for=""> رقم المنتج</label>
                     <input type="number" name="ProductId" id="productIdInput">
@@ -57,13 +66,16 @@
                 </div>
             </div>
             <input type="hidden" name="collectedProducts" id="collectedProducts"> {{-- collect products details --}}
-            <div>
+
+            <div class="addProductButtonBlock">
                 <button type="button" id="addProductButton">اضافة منتج</button>
             </div>
-            <div>
+
+            <div class="invoiceValueBlock">
                 <p id="invoiceValue">اجمالى الفاتورة 0 جنية</p>
             </div>
-            <div>
+
+            <div class="saveButtonBlock">
                 <input type="submit" value="تسجيل" id="saveButton">
             </div>
         </form>
