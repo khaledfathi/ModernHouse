@@ -1,0 +1,56 @@
+
+
+.container{
+    margin: 40px auto;
+    border: 1px solid black;
+    padding: 20px;
+}
+.blockA{
+    grid-column: 1 / span 6;
+    grid-row: 1;
+}
+
+.blockB{
+    grid-column: 7 / span 6;
+    grid-row: 1;
+}
+table{
+    grid-column: 1 / span 12;
+    grid-row: 2;
+}
+
+.totalInvoice{
+    grid-column: 1 / span 12;
+    grid-row: 3;
+}
+.printButton{
+    grid-column: 1 / span 12;
+    grid-row: 4;
+}
+
+/* table */
+table{
+     width: 80%;
+     margin: 30px 0px;
+     text-align: center;
+}
+table thead {
+    background-color: lightblue;
+}
+table td{
+    border-bottom: 1px solid blue;
+}
+/* end table */
+
+
+@media print {
+    nav{
+        display: none !important;
+    }
+    .printButton{
+        display: none;
+    }
+    .totalInvoice {
+        font-weight: bold;
+    }
+}

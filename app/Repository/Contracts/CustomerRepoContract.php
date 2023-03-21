@@ -5,6 +5,7 @@ use App\Models\CustomerModel;
 
 interface CustomerRepoContract{
    public function Store(CustomerRequest $request):CustomerModel;
+   function StoreFromBill(array $data):CustomerModel; 
    public function GetById(string $id):object;
    public function GetByName(string $name):object;
    public function GetByPhone(string $phone):object;

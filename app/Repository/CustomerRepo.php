@@ -6,8 +6,8 @@ use App\Http\Requests\Customer\CustomerRequest;
 use App\Models\CustomerModel;
 
 class CustomerRepo implements CustomerRepoContract{
-    
-   public function Store (CustomerRequest $request):CustomerModel
+   
+   function Store (CustomerRequest $request):CustomerModel
    {
         return CustomerModel::create([
             'name'=>$request->name, 
@@ -17,6 +17,14 @@ class CustomerRepo implements CustomerRepoContract{
             'details'=>$request->details,
             'user_id'=>auth()->user()->id,
         ]); 
+   }
+   function StoreFromBill(array $data):CustomerModel
+   {
+      return  CustomerModel::create([
+         'name'=> $data['name'], 
+         'phone'=>$data['phone'],
+         'user_id'=>auth()->user()->id  
+      ]); 
    }
    public function GetById(string $id):object
    {

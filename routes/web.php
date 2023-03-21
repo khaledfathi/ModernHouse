@@ -12,7 +12,6 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +59,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('newbill' , [BillController::class , 'NewBill']);
     //For Ajax
     Route::get('bill/getcustomerbyphone' , [BillController::class , 'AjaxGetCustomerByPhone']);
-
+    Route::get('bill/getproductbyid' , [BillController::class , 'AjaxGetProductById']);
+    Route::get('bill/preview' , [BillController::class , 'BillPreviewPage']); 
 
     Route::get('product' , [ProductController::class , 'ProductPage']); 
     Route::get('product/{id}' , [ProductController::class , 'ProductProfile']); 
@@ -95,7 +95,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-
 Route::get ('dd' , function (){
-    dd(session()->all()); 
+    dd(session()->all());
 }); 
