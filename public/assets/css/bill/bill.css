@@ -1,3 +1,4 @@
+/* General */
 .container {
 	width: 80%;
 	padding: 30px;
@@ -5,13 +6,17 @@
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px blue;
 }
+.container label{
+    user-select: none;
+}
+/* enb General */
 
 /* grid blocks */
 .dateTimeBlock{
     grid-column: 1 / span 6;
     grid-row: 1; 
 }
-.customrBlock{
+.customerBlock{
     grid-column: 7 / span 6;
     grid-row: 1; 
 }
@@ -36,3 +41,76 @@
     grid-row: 5; 
 }
 /* end grid blocks*/
+
+/* for all blocks */
+input[type="date"], 
+input[type="time"],
+input[type="text"],
+input[type="number"]
+{
+    height: 30px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 10px 0px ;
+}
+.dateTimeBlock label,
+.customerBlock label{
+    display: inline-block;
+    width: 90px;
+}
+
+/* end for all blocks */
+
+
+
+/* dataTimeBlock */
+.dateTimeBlock input{
+    width: 65%;
+}
+/* end dateTimeBlock */
+
+/* customerBlock */
+.customerBlock input[type="text"]{
+    width: 65%;
+}
+/* end customerBlock */
+
+/* customerCheckBoxes */
+.customerCheckBoxes{
+    margin: 10px 0px;
+}
+/* end customerCheckBoxes */
+
+/* productParentDivBlock */
+.productParentDivBlock{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+.productParentDivBlock > div{
+    border: 1px solid blue;
+    border-radius: 10px;
+    margin: 10px 5px ;
+    padding: 10px;
+}
+
+.productParentDivBlock > div:not(:first-child){
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.productParentDivBlock > div img{
+    margin: 0px auto;
+    width: 200px;
+    border-radius: 5px;
+}
+.productParentDivBlock .removeProductButton{
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 50%;
+    height: 30px;
+    margin: 10px auto;
+}
+/* end productParentDivBlock */

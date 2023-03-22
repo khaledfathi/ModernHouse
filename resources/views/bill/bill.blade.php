@@ -11,7 +11,7 @@
 @section('content')
     <div class="container">
         <div>
-            <p>ERROR/OK</p>
+            {{-- <p>ERROR/OK</p> --}}
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     <p>{{ $error }}</p>
@@ -31,8 +31,8 @@
                 </div>
             </div>
 
-            <div class="customrBlock">
-                <div>
+            <div class="customerBlock">
+                <div class="customerCheckBoxes">
                     <input type="checkbox" name="existCustomerCheck" id="existCustomerCheck">
                     <label for="existCustomerCheck">عميل مسجل</label>
                     <input type="checkbox" name="newCustomerCheck" id="newCustomerCheck">
@@ -55,7 +55,7 @@
                 <div id="productBlock" hidden>
                     <label for=""> رقم المنتج</label>
                     <input type="number" name="ProductId" id="productIdInput">
-                    <img src="" alt="Product Image" id="productImage" width="70" min="0">
+                    <img hidden src="" alt="Product Image" id="productImage" >
                     <label for="">الكمية</label>
                     <input type="number" name="quantity" id="quantity" value=1 min="0">
                     <label for="">سعر القطعة</label>

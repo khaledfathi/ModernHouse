@@ -114,7 +114,14 @@ function setProductRecordDataEvent (event){
         return response.json();  
     }
     record().then((res)=>{
-        event.target.parentElement.children[2].src=res.record.image;
+        //set product image if exist 
+        if(res.record.image) {
+            event.target.parentElement.children[2].src=res.record.image;
+            event.target.parentElement.children[2].hidden=false; 
+        }else {
+            event.target.parentElement.children[2].hidden=true; 
+        }
+
         let price = res.record.price; 
         
         let priceField = event.target.parentElement.children[6]; 
@@ -153,6 +160,7 @@ addProductButton.addEventListener('click', () => {
     let removeProductButton = document.createElement('button');
     removeProductButton.setAttribute('type', 'button');
     removeProductButton.innerHTML = 'حذف';
+    removeProductButton.setAttribute('class', 'removeProductButton'); 
     newProductBlock.appendChild(removeProductButton);
     
     //product id input event
