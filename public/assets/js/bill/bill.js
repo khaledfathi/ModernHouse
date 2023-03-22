@@ -119,7 +119,7 @@ function setProductRecordDataEvent (event){
             event.target.parentElement.children[3].innerHTML = 'الكمية ( المنتج غير متاح )';
             event.target.parentElement.children[3].style.color= 'red'; 
         }else if (res.record.quantity > 0 ){
-            event.target.parentElement.children[3].innerHTML = `الكمية ( المتاح  ${res.ecord.quantity} )`;
+            event.target.parentElement.children[3].innerHTML = 'الكمية ( المتاح '+res.record.quantity+')';
             event.target.parentElement.children[3].style.color = 'black'; 
         }else {
             event.target.parentElement.children[3].innerHTML = 'الكمية';
