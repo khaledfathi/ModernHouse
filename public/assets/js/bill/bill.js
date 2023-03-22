@@ -114,6 +114,18 @@ function setProductRecordDataEvent (event){
         return response.json();  
     }
     record().then((res)=>{
+        //if product out of stock
+        if (res.record.quantity == 0 ){
+            event.target.parentElement.children[3].innerHTML = 'الكمية ( المنتج غير متاح )';
+            event.target.parentElement.children[3].style.color= 'red'; 
+        }else if (res.record.quantity > 0 ){
+            event.target.parentElement.children[3].innerHTML = `الكمية ( المتاح  ${res.ecord.quantity} )`;
+            event.target.parentElement.children[3].style.color = 'black'; 
+        }else {
+            event.target.parentElement.children[3].innerHTML = 'الكمية';
+            event.target.parentElement.children[3].style.color = 'black'; 
+        }
+
         //set product image if exist 
         if(res.record.image) {
             event.target.parentElement.children[2].src=res.record.image;
