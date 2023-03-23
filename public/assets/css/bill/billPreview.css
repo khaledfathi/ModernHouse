@@ -75,7 +75,7 @@ table td{
     nav{
         display: none !important;
     }
-    .printButton{
+    .printButton , .deleteButton{
         display: none;
     }
     table{

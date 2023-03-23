@@ -66,6 +66,14 @@ screens sizes
 .searchBy label , .searchFor label{
     margin-left: 10px;
 }
+.ok{
+    color: white ;
+    background-color: green;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px 0px;
+}
 
 @media only screen and (max-width:768px){
     .searchFor{

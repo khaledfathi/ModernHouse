@@ -57,10 +57,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('bill' , [BillController::class , 'BillPage']);
     Route::get('newbill' , [BillController::class , 'NewBill']);
+    Route::get('bill/preview' , [BillController::class , 'BillPreviewPage']);
+    Route::get('billprofile/{id}' , [BillController::class , 'BillProfile']); 
+    Route::get('billdelete/{id}' , [BillController::class , 'DeleteBill']); 
     //For Ajax
     Route::get('bill/getcustomerbyphone' , [BillController::class , 'AjaxGetCustomerByPhone']);
     Route::get('bill/getproductbyid' , [BillController::class , 'AjaxGetProductById']);
-    Route::get('bill/preview' , [BillController::class , 'BillPreviewPage']); 
 
     Route::get('product' , [ProductController::class , 'ProductPage']); 
     Route::get('product/{id}' , [ProductController::class , 'ProductProfile']); 

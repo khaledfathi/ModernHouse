@@ -8,6 +8,7 @@ use App\Repository\Contracts\BillDetailsRepoContract;
 use App\Repository\Contracts\BillRepoContract;
 use App\Repository\Contracts\CustomerRepoContract;
 use App\Repository\Contracts\ProductRepoContract;
+use App\Repository\Contracts\TransactionRepoContract;
 use Illuminate\Http\Request;
 
 class BillController extends Controller
@@ -15,18 +16,21 @@ class BillController extends Controller
     private $customerProvider ;
     private $productProvider; 
     private $billProvider; 
-    private $billDetailsProvider; 
+    private $billDetailsProvider;
+    private $transactionProvider; 
     public function __construct(
         CustomerRepoContract $customerProvider,
         ProductRepoContract $productProvider,
         BillRepoContract $billProvider,
-        BillDetailsRepoContract $billDetailsProvider
+        BillDetailsRepoContract $billDetailsProvider,
+        TransactionRepoContract $transactionProvider
         )
     {
         $this->customerProvider = $customerProvider; 
         $this->productProvider = $productProvider; 
         $this->billProvider = $billProvider;
-        $this->billDetailsProvider = $billDetailsProvider;  
+        $this->billDetailsProvider = $billDetailsProvider;
+        $this->transactionProvider = $transactionProvider; 
     }
     public function BillPage(){
         return view('bill.bill'); 
@@ -51,7 +55,7 @@ class BillController extends Controller
         }else {
             $actionFlag= 'unknownCustomer'; 
         }
-
+             
         //creat bill (function)
         $createBill = function ($request , $customerId=null){
             $data =[
@@ -132,6 +136,15 @@ class BillController extends Controller
         $fullBill = $this->billProvider->GetFullBillById($bill->id);
         $totalInvoice = $this->billProvider->GetTotalInvoiceById($bill->id); 
         
+        //save the total invoice value into transacition 
+         $data = [
+            'bill_id' => $fullBill[0]->id,
+            'date' => $fullBill[0]->date,
+            'time' => $fullBill[0]->time,
+            'amount' => $totalInvoice, 
+        ]; 
+        $this->transactionProvider->StoreNewInvoice($data); 
+
         session(['fullBill'=>$fullBill , 'totalInvoice'=>$totalInvoice]); 
         return redirect('bill/preview');
     }
@@ -139,7 +152,19 @@ class BillController extends Controller
     {
         return view('bill.billPreview', ['fullBill'=>session('fullBill') , 'totalInvoice'=>session('totalInvoice')]); 
     }
-
+    public function BillProfile(Request $request)
+    {
+        $fullBill = $this->billProvider->GetFullBillById($request->id); 
+        $totalInvoice = $fullBill->sum('total'); 
+        return view('bill.billProfile' , ['fullBill'=>$fullBill , 'totalInvoice'=>$totalInvoice]); 
+    }
+    public function DeleteBill(Request $request){
+        //delete trasaction for this bill first
+        $this->transactionProvider->DestroyByBillId($request->id);
+        //delete bill
+        $this->billProvider->Destroy($request->id);
+        return redirect('search')->with(['ok'=>'تم حذف فاتورة رقم ( '.$request->id.' )']); 
+    }
     /*#################################*/ 
     /* THESE NEXT MTHODS ARE FOR AJAX */ 
     public function AjaxGetCustomerByPhone (Request $request){
@@ -170,4 +195,5 @@ class BillController extends Controller
         }
         return response()->json(['isExist'=>$isExist , 'record'=>$record]);
     }
+    
 }

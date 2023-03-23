@@ -22,6 +22,15 @@ class TransactionRepo implements TransactionRepoContract
             'details'=>$request->details
         ]); 
     }
+   public function StoreNewInvoice(array $data):TransactionModel
+    {
+        $data['transaction_type_id']= config('constants.transaction_type.payforinvoice'); 
+        $data['direction']='deposit';
+        $data['user_id'] = auth()->user()->id;
+       
+        return TransactionModel::create($data) ; 
+    
+    }
     public function StoreTransaction (TransactionRequestWithType $request):TransactionModel
     {
         return TransactionModel::create([
@@ -93,6 +102,10 @@ class TransactionRepo implements TransactionRepoContract
     {
         return TransactionModel::where('project_id' , $id)->get(); 
     }
+    public function GetByBillId(string $id):object
+    {
+        return TransactionModel::where('bill_id' , $id)->get(); 
+    }
     public function Update(array $toUpdate , string $id):bool
     {
         $found = TransactionModel::find($id); 
@@ -100,6 +113,10 @@ class TransactionRepo implements TransactionRepoContract
             return  $found->update($toUpdate) ; 
         }
         return false ; 
+    }
+    public function DestroyByBillId(string $id):bool 
+    {
+        return TransactionModel::where('bill_id', $id)->delete();     
     }
     public function Destroy(string $id):bool 
     {

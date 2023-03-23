@@ -196,7 +196,7 @@ saveButton.addEventListener('click' , ()=>{
         products.push(data)
         data={}; 
     }
-    products.shift(); 
+    products.shift();
     collectedProducts.value= JSON.stringify(products); 
 }); 
 /* ############# END - Products Section ############ */

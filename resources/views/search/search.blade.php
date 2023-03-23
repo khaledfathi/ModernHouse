@@ -11,6 +11,9 @@
 
 @section('content')
     <div class="container">
+        @if (session('ok'))
+            <p class="ok">{{session('ok')}}</p>
+        @endif 
         <form class="d-grid" action="{{ url('find') }}" method="get">
             <div class="searchFor">
                 <div>
@@ -42,9 +45,9 @@
 
                     {{-- Bill --}}
                     <select hidden name="billSearchBy" id="billSearchBy">
-                        <option selected value="phone">رقم الفاتورة</option>
-                        <option value="id">تليفون العميل</option>
-                        <option value="phone">اسم العميل</option>
+                        <option selected value="bill_id">رقم الفاتورة</option>
+                        <option value="bill_customer_phone">تليفون العميل</option>
+                        <option value="bill_customer_name">اسم العميل</option>
                     </select>
 
                     {{-- product --}}
@@ -144,6 +147,41 @@
                     @break
 
                     @case('bill')
+                    <table>
+                        <thead>
+                            <thead>
+                                <th>رقم الفاتورة</th>
+                                <th>عميل</th>
+                                <th>تليفون</th>
+                                <th>تاريخ</th>
+                                <th>وقت</th>
+                                <th>عدد المنتجات</th>
+                                <th>عدد القطع</th>
+                                <th>اجمالى الفاتورة</th>
+                                <th>حالة الفاتورة</th>
+                                <th>عرض</th>
+                            </thead>
+                        </thead>
+                        <tbody>
+                            @foreach (session('records') as $record)
+                                <tr>
+                                    <td>{{$record->id}}</td>
+                                    <td>{{$record->customer_name}}</td>
+                                    <td>{{$record->customer_phone}}</td>
+                                    <td>{{$record->date}}</td>
+                                    <td>{{$record->time}}</td>
+                                    <td>{{$record->productsCount}}</td>
+                                    <td>{{$record->itemsCount}}</td>
+                                    <td>{{$record->totalInvoice}}</td>
+                                    <td>{{$record->status}}</td>
+                                    <td><a href="{{ url('billprofile/' . $record->id) }}"><img
+                                                    class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}"
+                                                    alt="view_icon"></a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    
                     @break
 
                     @case('transaction')
