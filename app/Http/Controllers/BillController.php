@@ -45,7 +45,8 @@ class BillController extends Controller
             $customerRecord = $this->customerProvider->StoreFromBill([
                 'name'=> $request->customerName, 
                 'phone'=>$request->customerPhone
-            ]); 
+            ]);
+            $request->session()->flash('ok','تم حفظ عميل جديد رقم ( '.$customerRecord->id.' )'); 
             $actionFlag='newCustomer'; 
         }else {
             $actionFlag= 'unknownCustomer'; 
@@ -69,9 +70,18 @@ class BillController extends Controller
         {
             $productsFlag = false ; 
             foreach($products as $product){
-                //check if procuct id is  exist
                 if($product->productId){
-                    if ( ! $this->productProvider->GetById($product->productId)->count()) return false; ;
+                    //check if procuct id is  exist
+                    $productObject = $this->productProvider->GetById($product->productId);
+                    if ( ! $productObject->count()) return false;
+                    $productObject = $productObject[0]; //get first
+                    // check if product quantity 
+                    if ( $product->quantity > $productObject->quantity || $productObject->quantity == 0 ) return false;
+                    
+                    //pull product from products table (stock)
+                    $this->productProvider->UpdateQuantity($productObject->quantity - $product->quantity , $product->productId); 
+
+                    //store product details
                     $productsFlag = true ; 
                     $this->billDetailsProvider->Store([
                         'product_name' => $product->productName,
@@ -98,7 +108,7 @@ class BillController extends Controller
                     $bill = $createBill($request , $customerRecord->id); 
                     //bind products to this bill
                     if (!$bindProductsToBill($products , $bill)){
-                        return back()->withErrors('خطأ - منتج او اكثر غير موجود بالنظام'); 
+                        return back()->withErrors('خطأ - المنتج  غير مسجل او الكمية غير متاحة'); 
                     }; 
                 }else{
                     return back()->withErrors('لا توجد منتجات بالفاتورة'); 
@@ -111,7 +121,7 @@ class BillController extends Controller
                     $bill = $createBill($request ); 
                     //bind products to this bill 
                     if (!$bindProductsToBill($products , $bill)){
-                        return back()->withErrors('خطأ - منتج او اكثر غير موجود بالنظام'); 
+                        return back()->withErrors('خطأ - المنتج  غير مسجل او الكمية غير متاحة'); 
                     }; 
                 }else {
                     return back()->withErrors('لا توجد منتجات بالفاتورة'); 

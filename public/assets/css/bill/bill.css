@@ -61,8 +61,6 @@ input[type="number"]
 
 /* end for all blocks */
 
-
-
 /* dataTimeBlock */
 .dateTimeBlock input{
     width: 65%;
@@ -114,3 +112,88 @@ input[type="number"]
     margin: 10px auto;
 }
 /* end productParentDivBlock */
+
+/* addProductButtonBlock & saveButtonBlock*/
+.addProductButtonBlock button,
+.saveButtonBlock input{
+    background-color: blue;
+    color: white ; 
+    width: 100px ;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+}
+.saveButtonBlock input{
+    font-size: 13pt;
+    height: 40px;
+}
+/* end addProductButtonBlock & saveButtonBlock*/
+
+/* invoiceValueBlock */
+.invoiceValueBlock p{
+    font-size: 13pt;
+    font-weight: bold;
+}
+/* invoiceValueBlock */
+
+
+/* error & ok */
+.error , .ok {
+    color: white;
+    margin: 15px auto;
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 13pt;
+}
+.error{
+    background-color: red;
+}
+.ok{
+    background-color: green;
+}
+/* end error & ok */
+
+
+/* media query */
+@media only screen and (max-width:840px) {
+    /* grid blocks */
+    .dateTimeBlock{
+        grid-column: 1 / span 12;
+        grid-row: 1; 
+    }
+    .customerBlock{
+        grid-column: 1 / span 12;
+        grid-row: 2; 
+    }
+    .productParentDivBlock{
+        grid-row: 3; 
+    }
+    .addProductButtonBlock{
+        align-content: center;
+        grid-row: 4; 
+    }
+    .invoiceValueBlock{
+        grid-row: 5; 
+    }
+    .saveButtonBlock{
+        grid-row: 6; 
+    }
+    /* end grid blocks*/ 
+   
+    /* inputs */
+    input[type="date"], 
+    input[type="time"],
+    input[type="text"],
+    input[type="number"]{
+        width: 80% !important;
+    }
+    .productParentDivBlock > div{
+        width: 100% !important;
+    }
+    /* end inputs */
+    
+}
+
+/* end media query */

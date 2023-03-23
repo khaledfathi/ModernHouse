@@ -65,5 +65,17 @@ class ProductRepo implements ProductRepoContract{
         return false ; 
 
     }
+    public function UpdateQuantity (string $quantity , string $id):bool
+    {
+        $found = ProductModel::find($id);
+        if ($found){
+            $found->update([
+                'quantity'=>$quantity
+            ]); 
+            return true; 
+        }
+        
+        return false ; 
+    }
     
 }

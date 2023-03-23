@@ -12,4 +12,5 @@ interface ProductRepoContract {
     public function GetByCategoryId(string $category_id):object; 
     public function Destroy(string $id):bool ; 
     public function Update(array $data , string $id):bool; 
+    public function UpdateQuantity (string $quantity , string $id):bool; 
 }

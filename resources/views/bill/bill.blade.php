@@ -11,11 +11,15 @@
 @section('content')
     <div class="container">
         <div>
-            {{-- <p>ERROR/OK</p> --}}
+            @if (session('ok'))
+                <p class="ok">{{ session('ok') }}</p>
+            @endif
             @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
+                <p class="error">
+                    @foreach ($errors->all() as $error)
+                        - {{ $error }}<br>
+                    @endforeach
+                </p>
             @endif
         </div>
         <form class="d-grid" action="{{ url('newbill') }}" , method="get">
@@ -55,7 +59,7 @@
                 <div id="productBlock" hidden>
                     <label for=""> رقم المنتج</label>
                     <input type="number" name="ProductId" id="productIdInput">
-                    <img hidden src="" alt="Product Image" id="productImage" >
+                    <img hidden src="" alt="Product Image" id="productImage">
                     <label for="">الكمية</label>
                     <input type="number" name="quantity" id="quantity" value=1 min="0">
                     <label for="">سعر القطعة</label>

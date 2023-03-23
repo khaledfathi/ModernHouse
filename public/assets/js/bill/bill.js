@@ -152,7 +152,6 @@ function changeTotalOnQuantityChangeEvent (event){
     let price =  event.target.parentElement.children[6].value
     let total = event.target.parentElement.children[8].value= price * event.target.value; 
     getInvoiceTotal(); 
-
 }
 
 
