@@ -11,6 +11,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserManagmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,7 +89,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('report' , [ReportController::class , 'ReportPage']); 
 
-    Route::get('setting' , [SettingController::class , 'SettingPage']); 
+    Route::get('setting' , [SettingController::class , 'SettingPage']);
+    
+    Route::get('usersmanagment' , [UserManagmentController::class , 'UserManagmentPage']); 
+    Route::get('user', [UserManagmentController::class , 'UserPage']); 
+    Route::post('newuser', [UserManagmentController::class , 'NewUser']); 
+    Route::get('userdelete/{id}' , [UserManagmentController::class , 'DestroyUser']);
 
     Route::get('profile' , [ProfileController::class , 'ProfilePage']);
     Route::get('changepassword' , [ProfileController::class , 'ChangePassword']);

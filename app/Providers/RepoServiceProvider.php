@@ -13,11 +13,13 @@ use App\Repository\Contracts\ProductRepoContract;
 use App\Repository\Contracts\ProjectRepoContract;
 use App\Repository\Contracts\TransactionRepoContract;
 use App\Repository\Contracts\TransactionTypeRepoContract;
+use App\Repository\Contracts\UserRepoContract;
 use App\Repository\CustomerRepo;
 use App\Repository\ProductRepo;
 use App\Repository\ProjectRepo;
 use App\Repository\TransactionRepo;
 use App\Repository\TransactionTypeRepo;
+use App\Repository\UserRepo;
 use Illuminate\Support\ServiceProvider;
 
 class RepoServiceProvider extends ServiceProvider
@@ -35,6 +37,7 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(TransactionTypeRepoContract::class , TransactionTypeRepo::class); 
         $this->app->bind(BillRepoContract::class , BillRepo::class); 
         $this->app->bind(BillDetailsRepoContract::class , BillDetailsRepo::class); 
+        $this->app->bind(UserRepoContract::class , UserRepo::class); 
     }
 
     /**
