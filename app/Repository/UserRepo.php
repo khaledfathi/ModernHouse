@@ -10,9 +10,9 @@ class UserRepo implements UserRepoContract{
     {
         return UserModel::get(); 
     }
-    public function GetById(string $id):object
+    public function GetById(string $id):mixed
     {
-        return UserModel::where('id' , $id)->select('name')->first();
+        return UserModel::where('id' , $id)->first();
     }
     public function Store(UserRequest $request):UserModel
     {
@@ -33,5 +33,14 @@ class UserRepo implements UserRepoContract{
             return true; 
         }
         return false ; 
+    }
+    public function Update (array $data , string $id):bool
+    {
+        $found = UserModel::find($id); 
+        if($found){
+            $found->update($data); 
+            return true ; 
+        }
+        return false ;        
     }
 }

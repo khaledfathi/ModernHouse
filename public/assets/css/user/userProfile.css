@@ -1,0 +1,10 @@
+.ok{
+    background-color: green;
+    width: 90%;
+    color:white; 
+    line-height: 30px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0px auto;
+}

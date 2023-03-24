@@ -95,6 +95,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user', [UserManagmentController::class , 'UserPage']); 
     Route::post('newuser', [UserManagmentController::class , 'NewUser']); 
     Route::get('userdelete/{id}' , [UserManagmentController::class , 'DestroyUser']);
+    Route::get('user/{id}', [UserManagmentController::class , 'UserProfile']); 
+    Route::post('userupdate', [UserManagmentController::class , 'UpdateUser']); 
 
     Route::get('profile' , [ProfileController::class , 'ProfilePage']);
     Route::get('changepassword' , [ProfileController::class , 'ChangePassword']);

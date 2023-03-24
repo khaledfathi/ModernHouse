@@ -1,0 +1,143 @@
+/* container */
+.container {
+	width: 80%;
+	margin: 80px auto;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px blue;
+}
+.container > a{
+    text-decoration: none;
+    color: white;
+    background-color: blue;
+    display: block;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    margin: 20px;
+    width: 200px;
+}
+/* end container */
+
+
+/* grid */
+.blockA{
+    grid-column: 1 / span 6;
+    grid-row: 1; 
+}
+.blockB{
+    grid-column: 7 / span 6;
+    grid-row: 1; 
+}
+.blockC{
+    grid-column: 1 / span 6;
+    grid-row: 2; 
+
+}
+.blockD{
+    grid-column: 7 / span 6;
+    grid-row: 2; 
+
+}
+.buttonDiv{
+    grid-column: 1 / span 12;
+    grid-row: 3;
+    display: grid;
+    justify-items: center; 
+
+}
+/* end grid */
+
+/* form */
+form > div {
+    margin: 10px 0px;
+}
+form label {
+    display: inline-block;
+    width: 120px;
+}
+form input[type="text"] , 
+form input[type="password"] , 
+form select{
+    height: 30px;
+    width: 70%;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 10px 0px;
+}
+input[type="submit"] , .deleteButton{
+    width: 200px;
+    margin: 20px auto;
+    height: 40px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius:5px ;
+}
+.deleteButton{
+    background-color: red;
+}
+/* end from */
+
+/* error */
+.error{
+    background-color: red;
+    text-align: center;
+    margin: 0px auto;
+    color: white;
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+}
+/* end error */
+
+
+/* media query */
+@media only screen and (max-width:1190px){
+    form label{
+        display: block;
+    }
+    form input[type="text"] , 
+    form input[type="password"] , 
+    form select{
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width:600px){
+    .container{
+        width: 75%;
+    }
+    form input[type="text"] , 
+    form input[type="password"] , 
+    form select{
+        width: 95%;
+    }
+    form label{
+        width: 100%;
+        text-align: center;
+    }
+    /* grid */
+    .blockA{
+        grid-column: 1 / span 12;
+    }
+    .blockB{
+        grid-column: 1 / span 12;
+        grid-row: 2; 
+    }
+    .blockC{
+        grid-column: 1 / span 12;
+        grid-row: 3; 
+    }
+    .blockD{
+        grid-column: 1 / span 12;
+        grid-row: 4; 
+    }
+    .buttonDiv{
+        grid-row: 5;
+    }
+    /* end grid */
+}
+
+/* end media query */

@@ -1,0 +1,75 @@
+/* Container */
+.container {
+	width: 80%;
+    min-height: 300px;
+    margin: 80px auto;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px blue;
+}
+/* end Container */
+
+/* add new user div */
+.addNewUserDiv a{
+    text-decoration: none;
+    display: block;    
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin:20px;
+    border-radius: 5px;
+    background-color: blue;
+    color:white; 
+}
+/* end add new user div */
+
+/* table div */
+.tableDiv{
+	overflow: scroll;
+	max-height: 400px;
+	min-height: 100px;
+}
+.tableDiv a{
+    text-decoration: none;
+}
+.tableDiv img {
+    width: 30px;
+}
+.tableDiv table {
+	min-width: 1000px;
+	width: 100%;
+}
+.tableDiv  thead {
+	background-color: lightblue;
+	position: sticky;
+	top: 0px;
+}
+.tableDiv  td{
+    border-bottom: 1px solid blue;
+    text-align: center;
+}
+/* end table div */
+
+/* error & ok */
+.error , .ok {
+    width: 90%;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+.ok{
+    background-color: green;
+}
+.error {
+    background-color: red;
+}
+/* end error & ok */
+
+/* delete button */
+.deleteButton{
+    cursor: pointer;
+}
+/* delete button */

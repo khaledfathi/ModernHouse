@@ -1,10 +1,11 @@
 @extends('layout.layout')
 @section('title', 'ادارة المستخدمين')
 @section('links')
-    <link rel="stylesheet" href="{{ asset('') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/user/user.css') }}">
 @endsection
 @section('scripts')
-    <script src="{{ asset('') }}"></script>
+    <script src="{{ asset('assets/js/external/sweatAlert/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('assets/js/user/user.js') }}"></script>
 @endsection
 
 @section('content')
@@ -12,13 +13,13 @@
         <div>
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
+                    <p class="error">{{ $error }}</p>
                 @endforeach
             @elseif(session('ok'))
-                <p>{{ session('ok') }}</p>
+                <p class="ok">{{ session('ok') }}</p>
             @endif
         </div>
-        <div>
+        <div class="addNewUserDiv">
             <a href="{{url('user')}}">اضافة مستخدم</a>
         </div>
         <div class="tableDiv">
@@ -28,8 +29,8 @@
                     <th>تليفون</th>
                     <th>نوع المستخدم</th>
                     <th>الحالة</th>
-                    <th>تعديل</th>
-                    <th>حذف</th>
+                    <th width="10%">تعديل</th>
+                    <th width="10%">حذف</th>
                 </thead>
                 <tbody>
                     @foreach ($records as $record)
@@ -42,8 +43,9 @@
                             @else 
                                 <td>غير نشط</td>
                             @endif
-                            <td><a href="">Edit</a></td>
-                            <td><a href="{{ url('userdelete/' . $record->id) }}">Delete</a></td>
+                            <td><a href="{{url('user/'.$record->id)}}"><img src="{{asset('assets/images/svg/edit_icon.svg')}}" alt="edit"></a></td>
+                            <td><img name='deleteButton' class="deleteButton" src="{{asset('assets/images/svg/delete_icon.svg')}}" alt="delete"></td>
+                            <input name='deleteLink' type="hidden" value="{{ url('userdelete/' . $record->id) }}">
                         </tr>
                     @endforeach
                 </tbody>
