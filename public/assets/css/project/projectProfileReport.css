@@ -1,0 +1,147 @@
+/* container */
+.container {
+    width: 60%;
+    padding: 30px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px blue;
+}
+label{
+    display: inline-block;
+    width: 120px;
+} 
+p{
+    display: inline-block;
+}
+.blockE > div , .blockF > div{
+    overflow-wrap: break-word;
+    white-space: pre;
+}
+/* end container */
+
+/* grid */
+.blockA{
+    grid-column: 1 / span 6;
+    grid-row: 1;
+}
+.blockB{
+    grid-column: 7/ span 6;
+    grid-row: 1;
+}
+.blockC{
+    grid-column: 1 / span 6;
+    grid-row: 2;
+}
+.blockD{
+    grid-column: 7 / span 6;
+    grid-row: 2;
+}
+.blockE{
+    grid-column: 1 / span 6;
+    grid-row: 3;
+}
+.blockF{
+    grid-column: 7 / span 6;
+    grid-row: 3;
+}
+.transactionsBlock{
+    grid-column: 1 / span 12;
+    grid-row: 4;
+}
+.totalDiv{
+    grid-column: 1 / span 6;
+    grid-row: 5;
+}
+.buttonBlock{
+    grid-column: 1 / span 12;
+    grid-row: 6;
+}
+/* end grid */
+
+/* table */
+table {
+    border-collapse: collapse;
+    width: 70%;
+}
+table td,
+table th{
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+/* end table */
+
+/* printButton */
+.printButton{
+    font-size: 13pt;
+    display: block;
+    background-color: blue;
+    color: white;
+    height: 40px;
+    width: 25%;
+    border: none;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+/* end printButton */
+
+/* media Query */
+@media  only print  {
+    nav{
+        display: none !important;
+    }
+    .container{
+        border: 1px solid black;
+        box-shadow: none;
+        width: 80%;
+        margin: 30px auto;
+    }
+    .printButton{
+        display: none;
+    }
+}
+@media only screen and (max-width:790px){
+    .container{
+        width: 80%;
+    }
+    table{
+        width: 100% ;
+    }
+    /* grid */
+    .blockA{
+        grid-column: 1 / span 12;
+    }
+    .blockB{
+        grid-column: 1/ span 12;
+        grid-row: 2;
+    }
+    .blockC{
+        grid-column: 1 / span 12;
+        grid-row: 3;
+    }
+    .blockD{
+        grid-column: 1 / span 12;
+        grid-row: 4;
+    }
+    .blockE{
+        grid-column: 1 / span 12;
+        grid-row: 5;
+    }
+    .blockF{
+        grid-column: 1 / span 12;
+        grid-row: 6;
+    }
+    .transactionsBlock{
+        grid-row: 7;
+    }
+    .totalDiv{
+        grid-column: 1 / span 12;
+        grid-row: 8;
+    }
+    .buttonBlock{
+        grid-row: 9;
+    }
+    /* end grid */
+}
+    
+/* end media Query */

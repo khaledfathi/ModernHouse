@@ -48,6 +48,27 @@ class ProjectRepo implements ProjectRepoContract {
             select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
             where('customers.phone' , '=' , $phone)->orderBy('date' ,'desc')->get(); 
     }
+    public function GetProjectReportByProjectId(string $id):object
+    {
+        return ProjectModel::leftJoin('customers' , 'customers.id' , '=' , 'projects.customer_id')->
+            join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
+            Join('transactions' , 'transactions.project_id' ,'=', 'projects.id' )->
+            where('projects.id' , '=' , $id)->select([
+                'customers.id as customer_id',
+                'customers.name as customer_name',
+                'customers.phone as customer_phone',
+                'projects.id as project_id', 
+                'projects.date as project_date',
+                'projects.start_date',
+                'projects.end_date',
+                'projects.amount as project_amount',
+                'projects.materials',
+                'projects.details',
+                'transactions.date as transaction_date',
+                'transactions.time',
+                'transactions.amount as transaction_amount',
+            ])->get(); 
+     }
     public function Destroy(string $id):bool
     {
         $found = ProjectModel::find($id); 

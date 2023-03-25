@@ -136,4 +136,17 @@ class ProjectController extends Controller
         $this->transactionProvider->Destroy($request->id); 
         return redirect('project/'.$request->project_id)->with(['ok'=>'تم حذف العملية المالية رقم ( '.$request->id.' )']); 
     }
+    public function ProjectReport(Request $request){
+        $record = $this->projectProvider->GetProjectReportByProjectId($request->id);
+        if ($record->count()){
+            $total = 0 ; 
+            foreach($record as $transaction){
+                $total+= $transaction->transaction_amount; 
+            }
+        }else{
+            $total = null; 
+            $record=null; 
+        }
+        return view('project.projectProfileReport' , ['record'=>$record , 'total'=>$total]);
+    }
 }

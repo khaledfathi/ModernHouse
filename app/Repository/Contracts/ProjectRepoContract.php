@@ -9,6 +9,7 @@ interface ProjectRepoContract {
     public function GetByCustomerId(string $id):object; 
     public function GetByCustomerName(string $id):object;
     public function GetByCustomerPhone(string $id):object;
+    public function GetProjectReportByProjectId(string $id):object; 
     public function Destroy(string $id):bool; 
     public function Update(array $toUpdate , string $id):bool; 
 }

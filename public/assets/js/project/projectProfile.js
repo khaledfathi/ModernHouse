@@ -1,7 +1,9 @@
 const amount = document.querySelector('#amount'); 
 const remaining = document.querySelector('#remaining'); 
 const deleteButton = document.querySelector('#deleteButton'); 
-const delteLink= document.querySelector('#deleteLink');  
+const deleteLink= document.querySelector('#deleteLink');  
+const projectReportButton = document.querySelector('#projectReportButton');
+const projectReportLink = document.querySelector('#projectReportLink');
 
 var paid = amount.value - remaining.value; 
 amount.addEventListener('input' , ()=>{
@@ -26,3 +28,6 @@ deleteButton.addEventListener('click' , ()=>{
       })
 }); 
 
+projectReportButton.addEventListener('click', ()=>{
+  window.location= projectReportLink.value; 
+});

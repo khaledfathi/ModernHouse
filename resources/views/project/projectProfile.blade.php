@@ -101,6 +101,8 @@
                 </div>
                 <div class="buttonBlock">
                     <button type="submit">تحديث</button>
+                    <button class="" id="projectReportButton" type="button" >تقرير كامل</button>
+                    <input type="hidden" id="projectReportLink" value="{{url('projectreport/'.$project->id)}}">
                     <button class="deleteButton" id="deleteButton" type="button">حذف</button>
                     <input id="deleteLink" type="hidden"
                         value="{{ $project ? url('projectdelete/' . $project->id . '?customer_id=' . $customer->id) : null }}">
