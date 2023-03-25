@@ -26,6 +26,10 @@ class CustomerRepo implements CustomerRepoContract{
          'user_id'=>auth()->user()->id  
       ]); 
    }
+   public function GetAll():object
+   {
+      return CustomerModel::get(); 
+   }
    public function GetById(string $id):object
    {
         return CustomerModel::where('id' , $id)->get(); 

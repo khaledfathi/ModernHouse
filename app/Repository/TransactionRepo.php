@@ -49,6 +49,23 @@ class TransactionRepo implements TransactionRepoContract
     {
         return TransactionModel::get(); 
     }
+    public function GetAllForToday():object
+    {
+        return TransactionModel::join('transaction_types' , 'transaction_types.id' , '=' , 'transactions.transaction_type_id')->
+            where('date' , Carbon::now()->timezone('Africa/Cairo')->format('y-m-d'))->
+            select('transactions.*' , 'transaction_types.type' )->
+            orderBy('transactions.date', 'desc')->orderBy('transactions.time', 'desc')->get(); 
+    }
+    public function GetAllTodayDepositeOnly ():object
+    {
+        return TransactionModel::where('direction', 'deposit')->
+        where('date' , Carbon::now()->timezone('Africa/Cairo')->format('y-m-d') )->get();
+    }
+    public function GetAllTodayWithdrawOnly ():object
+    {
+        return TransactionModel::where('direction', 'withdraw')->
+        where('date' , Carbon::now()->timezone('Africa/Cairo')->format('y-m-d') )->get();
+    }
     public function GetTodayBalance():int
     {
         return TransactionModel::where('date' , Carbon::now()->setTimeZone('Africa/Cairo')->format('y-m-d'))->sum('amount') ; 

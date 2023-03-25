@@ -10,6 +10,7 @@ interface TransactionRepoContract{
    public function StoreNewInvoice(array $data):TransactionModel; 
     public function StoreTransaction (TransactionRequestWithType $request):TransactionModel; 
     public function GetAll():object; 
+    public function GetAllForToday():object; 
     public function GetAllLimited():object; 
     public function GetByIdLimited(string $id):object; 
     public function GetByIdAndTypeLimited(string $id , string $transactionTypeId):object; 
@@ -18,6 +19,8 @@ interface TransactionRepoContract{
     public function GetByPeriodLimted(string $dateFrom , string $dateTo):object; 
     public function GetByPeriodAndTypeLimted(string $dateFrom , string $dateTo , string $type):object; 
     public function GetTodayBalance():int; 
+    public function GetAllTodayDepositeOnly ():object;
+    public function GetAllTodayWithdrawOnly ():object;
     public function GetById(string $id):object; 
     public function GetByProjectId(string $id):object; 
     public function GetByBillId(string $id):object;

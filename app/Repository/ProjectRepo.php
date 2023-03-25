@@ -20,6 +20,10 @@ class ProjectRepo implements ProjectRepoContract {
             'project_status_id'=>$request->project_status
         ]);  
     }
+    public function GetAll():object
+    {
+       return  ProjectModel::get(); 
+    }
     public function GetById(string $id):object
     {
         return ProjectModel::Join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
@@ -68,7 +72,11 @@ class ProjectRepo implements ProjectRepoContract {
                 'transactions.time',
                 'transactions.amount as transaction_amount',
             ])->get(); 
-     }
+    }
+    public function GetOpenProjects():object
+    {
+        return ProjectModel::where('project_status_id', config('constants.project_status.open'))->get(); 
+    }
     public function Destroy(string $id):bool
     {
         $found = ProjectModel::find($id); 
