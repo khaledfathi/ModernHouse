@@ -76,16 +76,6 @@
         </div>
 
 
-
-
-        <div>
-            <h3>عدد العملاء المسجلين ( {{ $customersCount ? $customersCount : 0 }} ) عميل</h3>
-            <h3>عدد المشاريع المسجلة ( {{ $projectsCount ? $projectsCount : 0 }} ) مشروع</h3>
-            <h3>عدد المنتجات المسجلة ( {{ $productsCount ? $productsCount : 0 }} ) منتج</h3>
-            <h3>عدد الاصناف المسجلة ( {{ $categoriesCount ? $categoriesCount : 0 }} ) صنف</h3>
-            <h3>اجمالى القطع بالمنتجات المتاحة ( {{ $itemsOnProductsCount ? $itemsOnProductsCount : 0 }} ) قطعة</h3>
-        </div>
-
         <div>
             <h3> المشاريع المفتوحة ( {{ $projectsOpenCount ? $projectsOpenCount : 0 }} ) مشروع</h3>
             <div class="viewTableDiv">
@@ -210,6 +200,14 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        
+        <div>
+            <h3>عدد العملاء المسجلين ( {{ $customersCount ? $customersCount : 0 }} ) عميل</h3>
+            <h3>عدد المشاريع المسجلة ( {{ $projectsCount ? $projectsCount : 0 }} ) مشروع</h3>
+            <h3>عدد المنتجات المسجلة ( {{ $productsCount ? $productsCount : 0 }} ) منتج</h3>
+            <h3>عدد الاصناف المسجلة ( {{ $categoriesCount ? $categoriesCount : 0 }} ) صنف</h3>
+            <h3>اجمالى القطع بالمنتجات المتاحة ( {{ $itemsOnProductsCount ? $itemsOnProductsCount : 0 }} ) قطعة</h3>
         </div>
 
         <div hidden>
