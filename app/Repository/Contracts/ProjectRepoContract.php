@@ -12,6 +12,8 @@ interface ProjectRepoContract {
     public function GetByCustomerPhone(string $id):object;
     public function GetProjectReportByProjectId(string $id):object; 
     public function GetOpenProjects():object; 
+    public function GetEndedProjectWithIndebtedness ():object; 
+    public function GetEndedProjectNotDelivered():object; 
     public function Destroy(string $id):bool; 
     public function Update(array $toUpdate , string $id):bool; 
 }

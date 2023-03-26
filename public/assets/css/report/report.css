@@ -19,23 +19,37 @@
 }
 /* end container */
 
+/* balance block */
+.balanceBlock{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.balanceBlock > div{
+    width: 45%;
+}
+/* end balance block*/
+
 /* today transaction */
-.transactionTodayTableDiv th{
+.viewTableDiv th{
 	background-color: lightblue;
 	position: sticky;
 	top: 0px;
 }
-.transactionTodayTableDiv td{
+.viewTableDiv td{
     border-bottom: 1px solid blue;
 }
-.transactionTodayTableDiv table{
+.viewTableDiv table{
     width: 100%;
     min-width:800px;
     text-align: center;
 }
-.transactionTodayTableDiv{
+.viewTableDiv{
     overflow: scroll;
     height: 180px;
+}
+.viewTableDiv img {
+    width: 30px;
 }
 /* end today transaction */
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserManagmentController;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,74 +39,75 @@ Route::middleware(['auth'])->group(function () {
     Route::get('search' , [SearchController::class , 'SearchPage']); 
     Route::get('find' , [SearchController::class , 'Find']); 
 
-    Route::get('customer' , [CustomerController::class , 'CustomerPage']); 
-    Route::get('newcustomer' , [CustomerController::class , 'NewCustomer']); 
+    Route::get('customer' , [CustomerController::class , 'CustomerPage'])->middleware('admin'); 
+    Route::get('newcustomer' , [CustomerController::class , 'NewCustomer'])->middleware('admin'); 
     Route::get('customer/{id}' , [CustomerController::class , 'CustomerProfile']);
-    Route::get('customerdelete/{id}' , [CustomerController::class , 'DeleteCustomer']);
-    Route::get('customerupdate' , [CustomerController::class , 'UpdateCustomer']);
+    Route::get('customerdelete/{id}' , [CustomerController::class , 'DeleteCustomer'])->middleware('admin');
+    Route::get('customerupdate' , [CustomerController::class , 'UpdateCustomer'])->middleware('admin');
 
 
     Route::get('project' , [ProjectController::class , 'ProjectPage']);
-    Route::get('newproject' , [ProjectController::class , 'NewProject']);
+    Route::get('newproject' , [ProjectController::class , 'NewProject'])->middleware('admin');
     Route::get('payment' , [ProjectController::class , 'PaymentPage']); 
-    Route::get('newpayment' , [ProjectController::class , 'NewPayment']); 
+    Route::get('newpayment' , [ProjectController::class , 'NewPayment']);
     Route::get('payment/{id}' , [ProjectController::class , 'PaymentProfile']); 
-    Route::get('paymentupdate' , [ProjectController::class , 'UpdatePayment']); 
-    Route::get('paymentdelete/{id}' , [ProjectController::class , 'DeletePayment']); 
+    Route::get('paymentupdate' , [ProjectController::class , 'UpdatePayment']);
+    Route::get('paymentdelete/{id}' , [ProjectController::class , 'DeletePayment'])->middleware('admin');
     Route::get('project/{id}' , [ProjectController::class , 'ProjectProfile']); 
-    Route::get('projectdelete/{id}' , [ProjectController::class , 'DeleteProject']); 
-    Route::get('projectupdate' , [ProjectController::class , 'UpdateProject']);
-    Route::get('projectreport/{id}' , [ProjectController::class , 'ProjectReport']) ; 
+    Route::get('projectdelete/{id}' , [ProjectController::class , 'DeleteProject'])->middleware('admin'); 
+    Route::get('projectupdate' , [ProjectController::class , 'UpdateProject'])->middleware('admin');
+    Route::get('projectreport/{id}' , [ProjectController::class , 'ProjectReport']); 
 
     Route::get('bill' , [BillController::class , 'BillPage']);
     Route::get('newbill' , [BillController::class , 'NewBill']);
     Route::get('bill/preview' , [BillController::class , 'BillPreviewPage']);
     Route::get('billprofile/{id}' , [BillController::class , 'BillProfile']); 
-    Route::get('billdelete/{id}' , [BillController::class , 'DeleteBill']); 
+    Route::get('billdelete/{id}' , [BillController::class , 'DeleteBill'])->middleware('admin'); 
     //For Ajax
     Route::get('bill/getcustomerbyphone' , [BillController::class , 'AjaxGetCustomerByPhone']);
     Route::get('bill/getproductbyid' , [BillController::class , 'AjaxGetProductById']);
 
     Route::get('product' , [ProductController::class , 'ProductPage']); 
     Route::get('product/{id}' , [ProductController::class , 'ProductProfile']); 
-    Route::post('productupdate' , [ProductController::class , 'UpdateProduct']); 
-    Route::get('addproduct' , [ProductController::class , 'AddProductPage']); 
-    Route::post('newproduct' , [ProductController::class , 'NewProduct']); 
-    Route::get('productdelete/{id}' , [ProductController::class , 'DeleteProduct']);
+    Route::post('productupdate' , [ProductController::class , 'UpdateProduct'])->middleware('admin');
+    Route::get('addproduct' , [ProductController::class , 'AddProductPage'])->middleware('admin'); 
+    Route::post('newproduct' , [ProductController::class , 'NewProduct'])->middleware('admin'); 
+    Route::get('productdelete/{id}' , [ProductController::class , 'DeleteProduct'])->middleware('admin');
 
     route::get('category' , [CategoryController::class , 'CategoryPage']);
-    route::get('newcategory' , [CategoryController::class , 'NewCategory']);
-    route::get('categorydelete/{id}' , [CategoryController::class , 'DestroyCategory']);
+    route::get('newcategory' , [CategoryController::class , 'NewCategory'])->middleware('admin');
+    route::get('categorydelete/{id}' , [CategoryController::class , 'DestroyCategory'])->middleware('admin');
     route::get('category/{id}' , [CategoryController::class , 'CategoryProfile']);
-    route::get('categoryupdate' , [CategoryController::class , 'UpdateCategory']);
+    route::get('categoryupdate' , [CategoryController::class , 'UpdateCategory'])->middleware('admin');
 
-    Route::get('transaction' , [TransactionController::class , 'TransactionPage']);
-    Route::post('newtransaction' , [TransactionController::class , 'NewTransaction']);
-    Route::get('transactionquery',[TransactionController::class , 'TransactionQueryPage']); 
-    Route::get('transactionfind' , [TransactionController::class , 'QueryFind']); 
-    Route::get('transaction/{id}' , [TransactionController::class , 'TransactionProfile']);
-    Route::post('transactionupdate', [TransactionController::class , 'UpdateTransaction']);
-    Route::get('transactiondelete/{id}', [TransactionController::class , 'DestroyTransaction']);
+    Route::get('transaction' , [TransactionController::class , 'TransactionPage'])->middleware('admin');
+    Route::post('newtransaction' , [TransactionController::class , 'NewTransaction'])->middleware('admin');
+    Route::get('transactionquery',[TransactionController::class , 'TransactionQueryPage'])->middleware('admin'); 
+    Route::get('transactionfind' , [TransactionController::class , 'QueryFind'])->middleware('admin'); 
+    Route::get('transaction/{id}' , [TransactionController::class , 'TransactionProfile'])->middleware('admin');
+    Route::post('transactionupdate', [TransactionController::class , 'UpdateTransaction'])->middleware('admin');
+    Route::get('transactiondelete/{id}', [TransactionController::class , 'DestroyTransaction'])->middleware('admin');
 
 
-    Route::get('report' , [ReportController::class , 'ReportPage']); 
+    Route::get('report' , [ReportController::class , 'ReportPage'])->middleware('admin'); 
 
-    Route::get('setting' , [SettingController::class , 'SettingPage']);
-    
-    Route::get('usersmanagment' , [UserManagmentController::class , 'UserManagmentPage']); 
-    Route::get('user', [UserManagmentController::class , 'UserPage']); 
-    Route::post('newuser', [UserManagmentController::class , 'NewUser']); 
-    Route::get('userdelete/{id}' , [UserManagmentController::class , 'DestroyUser']);
-    Route::get('user/{id}', [UserManagmentController::class , 'UserProfile']); 
-    Route::post('userupdate', [UserManagmentController::class , 'UpdateUser']); 
+    Route::get('setting' , [SettingController::class , 'SettingPage'])->middleware('admin');
+    Route::get('usersmanagment' , [UserManagmentController::class , 'UserManagmentPage'])->middleware('admin'); 
+    Route::get('user', [UserManagmentController::class , 'UserPage'])->middleware('admin'); 
+    Route::post('newuser', [UserManagmentController::class , 'NewUser'])->middleware('admin'); 
+    Route::get('userdelete/{id}' , [UserManagmentController::class , 'DestroyUser'])->middleware('admin');
+    Route::get('user/{id}', [UserManagmentController::class , 'UserProfile'])->middleware('admin'); 
+    Route::post('userupdate', [UserManagmentController::class , 'UpdateUser'])->middleware('admin'); 
 
     Route::get('profile' , [ProfileController::class , 'ProfilePage']);
     Route::get('changepassword' , [ProfileController::class , 'ChangePassword']);
     Route::get('changephone' , [ProfileController::class , 'ChangePhone']);
 
+    Route::get('notallowed' , fn()=>view('notAllowed.notAllowed'));
+
 });
 
 
 Route::get ('dd' , function (){
-    dd(session()->all());
+    dd(Carbon::now()->timezone('Africa/Cairo')->format('m'));
 }); 

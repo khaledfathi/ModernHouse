@@ -19,6 +19,9 @@ interface TransactionRepoContract{
     public function GetByPeriodLimted(string $dateFrom , string $dateTo):object; 
     public function GetByPeriodAndTypeLimted(string $dateFrom , string $dateTo , string $type):object; 
     public function GetTodayBalance():int; 
+    public function GetThisMonthBalance():int;
+    public function GetThisMonthWithdraw():int;
+    public function GetThisMontDeposit():int;
     public function GetAllTodayDepositeOnly ():object;
     public function GetAllTodayWithdrawOnly ():object;
     public function GetById(string $id):object; 

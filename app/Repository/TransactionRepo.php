@@ -70,6 +70,20 @@ class TransactionRepo implements TransactionRepoContract
     {
         return TransactionModel::where('date' , Carbon::now()->setTimeZone('Africa/Cairo')->format('y-m-d'))->sum('amount') ; 
     }
+    public function GetThisMonthBalance():int
+    {
+        return TransactionModel::whereMonth('date' , Carbon::now()->timezone('Africa/Cairo')->format('m') )->sum('amount') ; 
+    }
+    public function GetThisMonthWithdraw():int
+    {
+        return TransactionModel::whereMonth('date' , Carbon::now()->timezone('Africa/Cairo')->format('m') )->
+            where('direction', 'withdraw')->sum('amount') ; 
+    }
+    public function GetThisMontDeposit():int
+    {
+        return TransactionModel::whereMonth('date' , Carbon::now()->timezone('Africa/Cairo')->format('m') )->  
+            where('direction', 'deposit')->sum('amount') ; 
+    }
     public function GetById(string $id):object
     {
         return TransactionModel::where('id' , $id)->get(); 

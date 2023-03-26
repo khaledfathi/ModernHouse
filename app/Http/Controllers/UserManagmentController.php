@@ -65,7 +65,12 @@ class UserManagmentController extends Controller
                 ]
             ); 
             $data['password']= Hash::make($request->password); 
-        }   
+        }
+        if($request->id == auth()->user()->id){
+            if ($request->type == 'user' || $request->status == 'disabled'){
+                return back()->withErrors('لا يمكن تغير نفسك الى مستخدم عادى او غير نشط'); 
+            };
+        }
         $this->userProvider->Update($data , $request->id); 
         return back()->with(['ok'=>'تم تحديث بيانات المستخدم']); 
     }

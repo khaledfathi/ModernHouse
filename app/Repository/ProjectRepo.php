@@ -75,7 +75,31 @@ class ProjectRepo implements ProjectRepoContract {
     }
     public function GetOpenProjects():object
     {
-        return ProjectModel::where('project_status_id', config('constants.project_status.open'))->get(); 
+        return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
+            join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
+            select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
+            where('projects.project_status_id' , '=' , config('constants.project_status.open'))->orderBy('date' ,'desc')->get(); 
+    }
+    public function GetEndedProjectWithIndebtedness ():object
+    {
+        return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
+            join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
+            select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
+            where('projects.project_status_id' , '=' , config('constants.project_status.ended_with_indebtedness'))->orderBy('date' ,'desc')->get(); 
+    }
+    public function GetEndedProjectNotDelivered():object
+    {
+        return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
+            join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
+            select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
+            where('projects.project_status_id' , '=' , config('constants.project_status.ended_not_delivered'))->orderBy('date' ,'desc')->get(); 
+    }
+    public function GetProjectDelayed():object
+    {
+        return ProjectModel::join('customers' , 'customers.id' , '=' , 'projects.customer_id')->
+            join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
+            select('projects.*' , 'customers.name' , 'customers.phone' , 'project_status.status')->
+            where('projects.project_status_id' , '=' , config('constants.project_status.delayed'))->orderBy('date' ,'desc')->get(); 
     }
     public function Destroy(string $id):bool
     {
