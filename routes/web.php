@@ -109,5 +109,5 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::get ('dd' , function (){
-    dd(Carbon::now()->timezone('Africa/Cairo')->format('m'));
+    dd(Logo()); 
 }); 

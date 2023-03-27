@@ -12,7 +12,7 @@
 <body>
     <nav class="d-grid">
         <div class="logo">
-            <img class="logo" src="{{asset('assets/images/logo/modern_house_logo.png')}}" alt="modern_house_logo">
+            <img class="logo" src="{{asset(Logo())}}" alt="modern_house_logo">
             <p><a href="{{url('profile')}}">{{auth()->user()->name}}</a></p>
         </div>
         <ul class="nav-list d-flex flex-row justify-content-center">

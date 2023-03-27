@@ -202,12 +202,12 @@
             </div>
         </div>
         
-        <div>
-            <h3>عدد العملاء المسجلين ( {{ $customersCount ? $customersCount : 0 }} ) عميل</h3>
-            <h3>عدد المشاريع المسجلة ( {{ $projectsCount ? $projectsCount : 0 }} ) مشروع</h3>
-            <h3>عدد المنتجات المسجلة ( {{ $productsCount ? $productsCount : 0 }} ) منتج</h3>
-            <h3>عدد الاصناف المسجلة ( {{ $categoriesCount ? $categoriesCount : 0 }} ) صنف</h3>
-            <h3>اجمالى القطع بالمنتجات المتاحة ( {{ $itemsOnProductsCount ? $itemsOnProductsCount : 0 }} ) قطعة</h3>
+        <div class="counterBlock">
+            <p>عدد العملاء المسجلين ( {{ $customersCount ? $customersCount : 0 }} ) عميل</p>
+            <p>عدد المشاريع المسجلة ( {{ $projectsCount ? $projectsCount : 0 }} ) مشروع</p>
+            <p>عدد المنتجات المسجلة ( {{ $productsCount ? $productsCount : 0 }} ) منتج</p>
+            <p>عدد الاصناف المسجلة ( {{ $categoriesCount ? $categoriesCount : 0 }} ) صنف</p>
+            <p>اجمالى القطع بالمنتجات المتاحة ( {{ $itemsOnProductsCount ? $itemsOnProductsCount : 0 }} ) قطعة</p>
         </div>
 
         <div hidden>
@@ -220,6 +220,3 @@
 
     </div>
 @endsection
-{{-- 
-    <p>count products in count category</p>
-    <p>project near to end (3 days)</p> --}}

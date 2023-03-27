@@ -56,7 +56,7 @@ class ProjectRepo implements ProjectRepoContract {
     {
         return ProjectModel::leftJoin('customers' , 'customers.id' , '=' , 'projects.customer_id')->
             join('project_status', 'projects.project_status_id', '=' , 'project_status.id')->
-            Join('transactions' , 'transactions.project_id' ,'=', 'projects.id' )->
+            leftJoin('transactions' , 'transactions.project_id' ,'=', 'projects.id' )->
             where('projects.id' , '=' , $id)->select([
                 'customers.id as customer_id',
                 'customers.name as customer_name',

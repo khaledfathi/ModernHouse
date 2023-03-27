@@ -12,8 +12,15 @@
 @section('content')
     <div class="container">
         <a href="{{url('usersmanagment')}}">ادارة المستخدمين</a>
-        <p>change logo</p>
-        <p>clear/empty database</p>
+        <div>
+            <p>change logo</p>
+            <form action="">
+                <input type="file">
+                <img src="" alt="new logo image">
+                <input type="submit" value="تحديث">
+            </form>
+        </div>
+        {{-- <p>clear/empty database</p> --}}
     </div>
 @endsection
     

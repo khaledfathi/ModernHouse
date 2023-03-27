@@ -17,14 +17,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::create([
             'name' => 'admin',
-            'phone'=>'01002049971',
-            'password'=> Hash::make('admin'),
-            'type'=>'admin', 
-            'status'=>'enabled'
-        ]);
-        \App\Models\User::create([
-            'name' => 'waleed',
-            'phone'=>'01110112198',
+            'phone'=>'0000000000',
             'password'=> Hash::make('admin'),
             'type'=>'admin', 
             'status'=>'enabled'
@@ -43,6 +36,7 @@ class DatabaseSeeder extends Seeder
 
             ]); 
         }
+
         $transactionTypes = [
             'غير مصنف',
             'فاتورة',
@@ -63,5 +57,7 @@ class DatabaseSeeder extends Seeder
         }
 
         \App\Models\CategoryModel::create(['name'=>'غير مصنف']);
+
+        \App\Models\SettingModel::create(['key'=>'logo' , 'value'=>'assets/images/logo/modern_house_logo.png']); 
     }
 }

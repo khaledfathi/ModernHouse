@@ -67,28 +67,30 @@
         @endif
 
         <div class="transactionsBlock">
-            <p>معاملات مالية</p>
-            <table>
-                <thead>
-                    <th>تاريخ</th>
-                    <th>وقت</th>
-                    <th>المبلغ</th>
-                </thead>
-                <tbody>
-                    @foreach ($record as $transaction)
-                        <tr>
-                            <td>{{ $transaction->transaction_date }}</td>
-                            <td>{{ $transaction->time }}</td>
-                            <td>{{ $transaction->transaction_amount }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            @if ($record)
+                <p>معاملات مالية</p>
+                <table>
+                    <thead>
+                        <th>تاريخ</th>
+                        <th>وقت</th>
+                        <th>المبلغ</th>
+                    </thead>
+                    <tbody>
+                        @foreach ($record as $transaction)
+                            <tr>
+                                <td>{{ $transaction->transaction_date }}</td>
+                                <td>{{ $transaction->time }}</td>
+                                <td>{{ $transaction->transaction_amount }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endif
         </div>
         <div class="totalDiv">
             <div>
                 <label for="">اجمالى المدفوع</label>
-                <p id="total">{{ $total ? $total : null }}</p>
+                <p id="total">{{ ($total) ? $total : 0 }}</p>
             </div>
             <div>
                 <label for="">المبلغ المستحق</label>
