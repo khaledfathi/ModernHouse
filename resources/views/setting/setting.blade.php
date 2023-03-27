@@ -3,8 +3,8 @@
 @section('links')
     <link rel="stylesheet" href="{{asset('assets/css/setting/setting.css')}}">
 @endsection
-@section('links')
-    <script src="#"></script>
+@section('scripts')
+    <script src="{{ asset('assets/js/setting/setting.js') }}"> </script>
 @endsection
 @section('activeSetting' , 'active')
 
@@ -13,10 +13,11 @@
     <div class="container">
         <a href="{{url('usersmanagment')}}">ادارة المستخدمين</a>
         <div>
-            <p>change logo</p>
+            <p>تغيير الشعار</p>
             <form action="">
-                <input type="file">
-                <img src="" alt="new logo image">
+                <button id="uploadButton" type="button">رفع صورة</button>
+                <input id="uploadInput" type="file" hidden>
+                <img id="logoImage" src="{{Logo()}}" alt="new logo image">
                 <input type="submit" value="تحديث">
             </form>
         </div>
