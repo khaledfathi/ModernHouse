@@ -1,3 +1,4 @@
+/* container */
 .container {
 	width: 90%;
 	padding: 30px;
@@ -5,7 +6,10 @@
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px blue;
 }
-.container a{
+/* container */
+
+/* user managment button */
+.userManagmentButton{
     text-decoration: none;
     display: block;
     width: 150px;
@@ -15,5 +19,63 @@
     background-color: blue;
     color: white;
     border-radius: 5px;
-
 }
+/* end managment button */
+
+/* form */
+form {
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    border: 1px solid blue;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 20px;
+}
+form p{
+    display: block !important;
+}
+form input {
+    background-color: blue;
+    color: white;
+    border: none ; 
+    border-radius: 5px ;
+    width: 100px;
+    height: 30px;
+}
+.uploadButtonIcon{
+    width: 50px !important;
+}
+form img {
+	width: 140px;
+	padding: 20px;
+    border-radius: 35px;
+}
+/* end form */
+
+/* app info */
+.appInfo{
+    text-align: center;
+    border: 1px solid blue;
+    border-radius: 10px ;
+    margin: 20px auto;    
+    width: fit-content;
+    padding: 20px;
+}
+/* end app info */
+
+/* media query */
+@media only screen and (max-width:600px){
+    .container{
+        width: 80%;
+    }
+    form, 
+    .appInfo{
+        width: 90%;
+        margin: 20px 0px  !important;
+    }
+    form{
+        flex-direction: column;
+    }
+}
+/* end media query */

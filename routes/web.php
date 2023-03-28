@@ -97,7 +97,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('newuser', [UserManagmentController::class , 'NewUser'])->middleware('admin'); 
     Route::get('userdelete/{id}' , [UserManagmentController::class , 'DestroyUser'])->middleware('admin');
     Route::get('user/{id}', [UserManagmentController::class , 'UserProfile'])->middleware('admin'); 
-    Route::post('userupdate', [UserManagmentController::class , 'UpdateUser'])->middleware('admin'); 
+    Route::post('userupdate', [UserManagmentController::class , 'UpdateUser'])->middleware('admin');
+    Route::post('logoupdate', [SettingController::class ,'UpdateLogo']);  
 
     Route::get('profile' , [ProfileController::class , 'ProfilePage']);
     Route::get('changepassword' , [ProfileController::class , 'ChangePassword']);

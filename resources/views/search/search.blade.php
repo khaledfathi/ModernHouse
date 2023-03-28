@@ -158,7 +158,6 @@
                                 <th>عدد المنتجات</th>
                                 <th>عدد القطع</th>
                                 <th>اجمالى الفاتورة</th>
-                                <th>حالة الفاتورة</th>
                                 <th>عرض</th>
                             </thead>
                         </thead>
@@ -173,7 +172,6 @@
                                     <td>{{$record->productsCount}}</td>
                                     <td>{{$record->itemsCount}}</td>
                                     <td>{{$record->totalInvoice}}</td>
-                                    <td>{{$record->status}}</td>
                                     <td><a href="{{ url('billprofile/' . $record->id) }}"><img
                                                     class="inTableIcon"src="{{ url('assets/images/svg/view_icon.svg') }}"
                                                     alt="view_icon"></a></td>

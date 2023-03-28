@@ -6,6 +6,5 @@ function Logo (){
     $found = SettingModel::where('key' , 'logo')->first(); 
     if ($found){
         return $found->value;
-
     }
 }
