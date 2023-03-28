@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\Contracts\CategoryRepoContract;
 use App\Repository\Contracts\CustomerRepoContract;
 use App\Repository\Contracts\ProductRepoContract;
 use App\Repository\Contracts\ProjectRepoContract;
@@ -20,7 +21,7 @@ class ReportController extends Controller
         TransactionRepoContract $transactionProvider,
         CustomerRepoContract $customerProvider,
         ProductRepoContract $productProvider,
-        ProductRepoContract $categoryProvider,
+        CategoryRepoContract $categoryProvider,
         ProjectRepoContract $projectProvider,
     )
     {
@@ -56,7 +57,7 @@ class ReportController extends Controller
         $itemsOnProductsCount = $this->productProvider->GetAll()->sum('quantity'); 
 
         //count all categories
-        $categoriesCount = $this->categoryProvider->GetAll()->count() - 1; //subtract 1 cuz 'unclassified is not a real category' 
+        $categoriesCount = $this->categoryProvider->GetAll()->count()-1; //subtract 1 cuz 'unclassified is not a real category' 
 
         //count all projects
         $projectsCount = $this->projectProvider->getAll()->count();
