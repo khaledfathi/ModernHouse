@@ -13,7 +13,7 @@
     <div class="container">
         <div class="balanceBlock">
             <div>
-                <h3>رصيد اليوم ({{ $todayBalance ? $todayBalance : 0 }} جنية )</h3>
+                <h3>رصيد اليوم ({{ $todayBalance ? $todayBalance : 0 }} جنية)</h3>
                 <p>ايرادات : {{ $todayDeposit ? $todayDeposit : 0 }} جنية </p>
                 <p>مصروفات : {{ $todayWithdraw ? $todayWithdraw : 0 }} جنية </p>
             </div>
@@ -203,11 +203,11 @@
         </div>
         
         <div class="counterBlock">
-            <p>عدد العملاء المسجلين ( {{ $customersCount ? $customersCount : 0 }} ) عميل</p>
-            <p>عدد المشاريع المسجلة ( {{ $projectsCount ? $projectsCount : 0 }} ) مشروع</p>
-            <p>عدد المنتجات المسجلة ( {{ $productsCount ? $productsCount : 0 }} ) منتج</p>
-            <p>عدد الاصناف المسجلة ( {{ $categoriesCount ? $categoriesCount : 0 }} ) صنف</p>
-            <p>اجمالى القطع بالمنتجات المتاحة ( {{ $itemsOnProductsCount ? $itemsOnProductsCount : 0 }} ) قطعة</p>
+            <p>عدد العملاء المسجلين ({{ $customersCount ? $customersCount : 0 }}) عميل</p>
+            <p>عدد المشاريع المسجلة ({{ $projectsCount ? $projectsCount : 0 }}) مشروع</p>
+            <p>عدد المنتجات المسجلة ({{ $productsCount ? $productsCount : 0 }}) منتج</p>
+            <p>عدد الاصناف المسجلة ({{ $categoriesCount ? $categoriesCount : 0 }}) صنف</p>
+            <p>اجمالى القطع بالمنتجات المتاحة ({{ $itemsOnProductsCount ? $itemsOnProductsCount : 0 }}) قطعة</p>
         </div>
 
         <div hidden>

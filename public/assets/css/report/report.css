@@ -71,7 +71,7 @@
     .balanceBlock{
         flex-direction: column;
         align-items: center;
-        height: 300px !important;
+        height: fit-content !important;
     }
     .balanceBlock > div{
         width: 100%;

@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <img src="{{asset('assets/images/logo/modern_house_logo.png')}}"  alt="logo_image">
+        <img src="{{asset(Logo())}}"  alt="logo_image">
     </header>
     <section>
         @if ($errors->any())
