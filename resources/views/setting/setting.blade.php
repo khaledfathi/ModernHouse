@@ -28,7 +28,7 @@
             <input type="submit" value="تحديث">
         </form>
         <div class="appInfo">
-            <p>App Version : 1.0 Beta</p>
+            <p>App Version : 1.0.1</p>
             <p>Technology : PHP 8.2 | Laravel 10.2</p>
             <p>Support : dev@khaledfathi.com</p>
         </div>
