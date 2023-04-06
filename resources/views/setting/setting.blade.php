@@ -12,6 +12,7 @@
 @section('content')
     <div class="container">
         <a class="userManagmentButton" href="{{ url('usersmanagment') }}">ادارة المستخدمين</a>
+        <a class="userManagmentButton" href="{{ url('backup') }}">النسخ الاحتياطى</a>
         <div>
             @if ($errors->any())
                 <p>{{ $errors->first() }}</p>
